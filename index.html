@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>إلى من ملكت قلبي وعمري كله ❤️</title>
-    <!-- استدعاء خط تاجويل الفاخر للروقان البصري -->
+    <!-- خط تاجويل الفاخر -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #020208;
             --text-light: #ffffff;
             --text-muted: #cbd5e0;
-            
-            /* ألوان النيون الهادئة المتناسقة مع ضوء القمر */
             --clr-pink: #ff4d6d;
             --clr-purple: #7b2cbf;
             --clr-blue: #00b4d8;
@@ -28,10 +26,10 @@
 
         body {
             background-color: var(--bg-dark);
-            /* خلفية حقيقية لليل ساحر، قمر كامل ملهم، وانعكاس مائي حقيقي */
+            /* رابط خلفية ليلية مستقرة تماماً وبجودة عالية لقمر ينعكس على الماء */
             background-image: 
-                linear-gradient(to bottom, rgba(2, 2, 8, 0.5) 0%, rgba(2, 2, 8, 0.8) 100%),
-                url('https://images.unsplash.com/photo-1465634836201-1d5651b9b6d6?auto=format&fit=crop&w=1920&q=80');
+                linear-gradient(to bottom, rgba(2, 2, 8, 0.6) 0%, rgba(2, 2, 8, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1505506838355-8b9592236ee5?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -40,7 +38,6 @@
             padding-bottom: 80px;
         }
 
-        /* حاوية العناصر اللامعة التي تطير لأعلى بروقان */
         #hearts-container {
             position: fixed;
             top: 0;
@@ -51,7 +48,7 @@
             pointer-events: none;
         }
 
-        /* شاشة قفل متناغمة تماماً مع الهوية الليلية الجديدة */
+        /* شاشة القفل بكلمة سر Rahma */
         #lock-screen {
             position: fixed;
             top: 0;
@@ -59,8 +56,8 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(to bottom, rgba(2, 2, 8, 0.7) 0%, rgba(2, 2, 8, 0.9) 100%),
-                url('https://images.unsplash.com/photo-1465634836201-1d5651b9b6d6?auto=format&fit=crop&w=1200&q=80');
+                linear-gradient(to bottom, rgba(2, 2, 8, 0.75) 0%, rgba(2, 2, 8, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1505506838355-8b9592236ee5?auto=format&fit=crop&w=800&q=80');
             background-size: cover;
             background-position: center;
             z-index: 9999;
@@ -71,7 +68,7 @@
         }
 
         .login-box {
-            background: rgba(10, 8, 20, 0.75);
+            background: rgba(10, 8, 20, 0.8);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -80,7 +77,7 @@
             width: 88%;
             max-width: 380px;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.8), 0 0 40px rgba(0, 180, 216, 0.1);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8), 0 0 40px rgba(0, 180, 216, 0.15);
         }
 
         .login-box .icon {
@@ -140,10 +137,6 @@
             transition: all 0.3s ease;
         }
 
-        .login-box button:active {
-            transform: scale(0.97);
-        }
-
         .error-msg {
             color: var(--clr-pink);
             font-size: 0.85rem;
@@ -152,7 +145,6 @@
             font-weight: 500;
         }
 
-        /* حاوية المحتوى الأساسي */
         #main-content {
             opacity: 0;
             position: relative;
@@ -180,9 +172,8 @@
             line-height: 1.6;
         }
 
-        /* العداد الرقمي المطور (شفاف وفخم) */
         .countdown-container {
-            background: rgba(10, 8, 20, 0.65);
+            background: rgba(10, 8, 20, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -200,7 +191,6 @@
             margin-bottom: 18px;
             font-weight: 500;
             text-align: center;
-            letter-spacing: 0.5px;
         }
 
         .counter-grid {
@@ -217,10 +207,10 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .box-days { background: linear-gradient(135deg, rgba(255, 77, 109, 0.8), rgba(201, 24, 74, 0.8)); }
-        .box-hours { background: linear-gradient(135deg, rgba(123, 44, 191, 0.8), rgba(90, 24, 154, 0.8)); }
-        .box-minutes { background: linear-gradient(135deg, rgba(0, 180, 216, 0.8), rgba(0, 119, 182, 0.8)); }
-        .box-seconds { background: linear-gradient(135deg, rgba(255, 117, 143, 0.8), rgba(255, 133, 161, 0.8)); }
+        .box-days { background: linear-gradient(135deg, rgba(255, 77, 109, 0.85), rgba(201, 24, 74, 0.85)); }
+        .box-hours { background: linear-gradient(135deg, rgba(123, 44, 191, 0.85), rgba(90, 24, 154, 0.85)); }
+        .box-minutes { background: linear-gradient(135deg, rgba(0, 180, 216, 0.85), rgba(0, 119, 182, 0.85)); }
+        .box-seconds { background: linear-gradient(135deg, rgba(255, 117, 143, 0.85), rgba(255, 133, 161, 0.85)); }
 
         .counter-number {
             font-size: clamp(1.1rem, 4.5vw, 1.5rem);
@@ -236,7 +226,6 @@
             display: block;
         }
 
-        /* الخط الزمني الروقان بلمسة نيون خفيفة */
         .timeline-container {
             max-width: 550px;
             margin: 0 auto;
@@ -269,9 +258,8 @@
             z-index: 3;
         }
 
-        /* كروت زجاجية شفافة ناعمة لتندمج مع ماء وقمر الخلفية */
         .memory-card {
-            background: rgba(15, 12, 28, 0.6);
+            background: rgba(15, 12, 28, 0.65);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             margin-right: 50px;
@@ -307,14 +295,13 @@
             line-height: 1.6;
         }
 
-        /* إطار الصورة المتحركة الدائري أو الناعم */
         .photo-frame {
             width: 100%;
             margin-top: 15px;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .photo-frame img {
@@ -329,7 +316,6 @@
             50% { transform: scale(1.05); opacity: 0.9; }
         }
 
-        /* حركة صعود قلوب ولمعات خفيفة تتماشى مع روقان البحر وقمر الليل */
         @keyframes floatNeonHeart {
             0% { transform: translateY(105vh) scale(0) rotate(0deg); opacity: 0; }
             10% { opacity: 0.6; }
@@ -340,7 +326,6 @@
 </head>
 <body>
 
-    <!-- 1. شاشة القفل بكلمة سر Rahma -->
     <div id="lock-screen">
         <div class="login-box">
             <div class="icon">💖</div>
@@ -354,7 +339,6 @@
         </div>
     </div>
 
-    <!-- 2. المحتوى الرئيسي -->
     <div id="main-content">
         <div id="hearts-container"></div>
 
@@ -363,7 +347,6 @@
             <p>كل ثانية معكِ هي عمر كامل من الأمان، وهنا نكتب أولى سطور قصتنا الأبدية</p>
         </header>
 
-        <!-- العداد الزمني الرومانسى الشفاف -->
         <div class="countdown-container">
             <div class="countdown-title">الوقت الذي عشته غارقاً في حبكِ وعشقكِ 🥰</div>
             <div class="counter-grid">
@@ -377,7 +360,6 @@
         <div class="timeline-container">
             <div class="timeline-line"></div>
 
-            <!-- ذكرى 1 المحتوية على صورة شلبى وبو اللطيفة -->
             <div class="memory-item card-pink">
                 <div class="memory-icon"></div>
                 <div class="memory-card">
@@ -385,12 +367,12 @@
                     <h3>أول لقاء جمعنا.. اللحظة التي ولدتُ فيها مجدداً ✨</h3>
                     <p>هنا كانت نبضة قلبي الأولى الحقيقية، ضحكتكِ العفوية غيرت مجرى حياتي بالكامل، وتمنيت حينها لو أن عقارب الساعة تتوقف للأبد.</p>
                     <div class="photo-frame">
-                        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3NpaXZyMW5mcm80Nmx5b2Q5MnRwZ3psM2YzdGdyOWV2NmY1bzhkdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/14rqB4gjTK3ygU/giphy.gif" alt="شلبي وبو">
+                        <!-- رابط مباشر ومستقر ومفتوح تماماً ليعمل بدون أي حظر مستقبلي -->
+                        <img src="https://i.postimg.co/N0M7vskx/sulley-boo.gif" alt="شلبي وبو اللطيفة">
                     </div>
                 </div>
             </div>
 
-            <!-- ذكرى 2 -->
             <div class="memory-item card-purple">
                 <div class="memory-icon"></div>
                 <div class="memory-card">
@@ -419,7 +401,6 @@
                     lockScreen.remove();
                     mainContent.style.opacity = '1';
                     setInterval(updateCounter, 1000);
-                    // صعود العناصر المتطايرة بريق رومانسي ممتد وهادئ
                     setInterval(createNeonHeart, 250);
                 }, 600);
             } else {
@@ -452,7 +433,6 @@
         }
         updateCounter();
 
-        // تشكيلة من العناصر المضيئة (قلوب ونجوم مائية) تطفو لأعلى بروقان
         const container = document.getElementById('hearts-container');
         const colorHearts = ['❤️', '💖', '✨', '💜', '🌟', '💕', '🌸', '💎'];
         
