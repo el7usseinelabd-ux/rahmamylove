@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متحف ذكرياتنا الجميلة ❤️</title>
+    <title>حكايتنا الجميلة ❤️</title>
     <style>
-        /* إعدادات الخطوط والخلفية العامة */
         :root {
-            --primary-color: #ff4d6d;
-            --secondary-color: #fff0f3;
-            --text-color: #2b2d42;
-            --accent-color: #ff758f;
+            --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #ffb3c6 100%);
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --primary: #ff4d6d;
+            --text-main: #2b2d42;
+            --text-muted: #595959;
         }
 
         * {
@@ -21,223 +21,291 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding-bottom: 60px;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding-bottom: 50px;
         }
 
-        /* الهيدر (رأس الصفحة) */
+        /* حاوية الخلفية المتساقطة للقلوب */
+        #hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* الهيدر العصري */
         header {
-            background: linear-gradient(135deg, #ff758f 0%, #ff4d6d 100%);
-            color: white;
             text-align: center;
-            padding: 80px 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-bottom-left-radius: 50% 20px;
-            border-bottom-right-radius: 50% 20px;
+            padding: 60px 20px 30px;
         }
 
         header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            animation: fadeInDown 1s ease-out;
+            font-size: 3rem;
+            color: #ff2a55;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
         }
 
-        header p {
-            font-size: 1.2rem;
+        /* العداد الرقمي الاحترافي */
+        .countdown-container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            max-width: 650px;
+            margin: 20px auto 40px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.15);
+            text-align: center;
+        }
+
+        .countdown-title {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .counter-box {
+            background: linear-gradient(135deg, #ff758f, #ff4d6d);
+            color: white;
+            padding: 15px 5px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .counter-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .counter-label {
+            font-size: 0.8rem;
             opacity: 0.9;
-            animation: fadeInUp 1s ease-out 0.3s backwards;
         }
 
-        /* الحاوية الرئيسية للذكريات */
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
+        /* حاوية الذكريات */
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
             padding: 0 20px;
-        }
-
-        /* خط زمني احترافي (Timeline) */
-        .timeline {
             position: relative;
-            padding: 20px 0;
         }
 
-        /* الخط الطولي في المنتصف */
-        .timeline::after {
-            content: '';
+        .timeline-line {
             position: absolute;
-            width: 4px;
-            background-color: var(--accent-color);
             top: 0;
             bottom: 0;
-            right: 30px; /* ليتناسب مع الاتجاه العربي */
-            margin-right: -2px;
+            right: 40px;
+            width: 4px;
+            background: linear-gradient(to bottom, #ff758f, #ff4d6d);
             border-radius: 2px;
         }
 
-        /* كارت الذكرى */
-        .memory-card {
-            padding: 20px 30px;
+        .memory-item {
             position: relative;
-            background-color: inherit;
-            width: 100%;
-            margin-bottom: 30px;
-            animation: fadeIn 1s ease-in-out;
+            margin-bottom: 40px;
         }
 
-        /* الدائرة على الخط الزمني */
-        .memory-card::after {
-            content: '❤️';
+        .memory-icon {
             position: absolute;
-            width: 25px;
-            height: 25px;
-            left: auto;
-            right: 16px;
-            top: 25px;
-            background-color: var(--secondary-color);
-            border: 2px solid var(--primary-color);
+            right: 28px;
+            top: 20px;
+            width: 28px;
+            height: 28px;
+            background: white;
+            border: 2px solid var(--primary);
             border-radius: 50%;
-            z-index: 1;
-            text-align: center;
-            font-size: 12px;
-            line-height: 22px;
-        }
-
-        /* صندوق المحتوى داخل الكارت */
-        .content {
-            padding: 25px;
-            background-color: white;
-            position: relative;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-right: 40px; /* مسافة للخط الزمني */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.15);
-        }
-
-        .date {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-            display: inline-block;
-        }
-
-        .content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: #1a1a1a;
-        }
-
-        .content p {
-            font-size: 1rem;
-            color: #555;
-        }
-
-        /* مكان مخصص للصورة القادمة */
-        .image-placeholder {
-            width: 100%;
-            height: 250px;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            margin-top: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #aaa;
+            z-index: 2;
+            font-size: 14px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+
+        /* كروت الزجاج الاحترافية */
+        .memory-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            margin-right: 65px;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+
+        .memory-card:hover {
+            transform: scale(1.02) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 77, 109, 0.15);
+        }
+
+        .memory-date {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .memory-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .memory-card p {
+            font-size: 1rem;
+            color: #4a4a4a;
+            line-height: 1.7;
+        }
+
+        /* مساحة عصرية ومجهزة للصور القادمة */
+        .photo-frame {
+            width: 100%;
+            height: 280px;
+            margin-top: 15px;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            border: 2px dashed rgba(255, 77, 109, 0.3);
+            font-size: 0.95rem;
             font-style: italic;
-            border: 2px dashed #ddd;
         }
 
-        /* الأنيميشن والتأثيرات الحركية */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .photo-frame span {
+            font-size: 2rem;
+            margin-bottom: 5px;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* تأثيرات حركة قلوب الخلفية */
+        @keyframes floatHeart {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* متوافق مع الشاشات الكبيرة لتوسيط الخط الزمني */
-        @media screen and (min-width: 768px) {
-            .timeline::after {
-                right: 50%;
-                margin-right: -2px;
-            }
-            .memory-card {
-                width: 50%;
-            }
-            .memory-card-left {
-                left: 50%;
-            }
-            .memory-card-left .content {
-                margin-right: 40px;
-            }
-            .memory-card-right {
-                left: 0;
-            }
-            .memory-card-right .content {
-                margin-left: 40px;
-                margin-right: 0;
-            }
-            .memory-card-right::after {
-                right: auto;
-                left: -14px;
-            }
-            .memory-card-left::after {
-                right: -12px;
-            }
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.2rem; }
+            .counter-number { font-size: 1.4rem; }
+            .memory-card { margin-right: 50px; padding: 20px; }
+            .timeline-line { right: 25px; }
+            .memory-icon { right: 13px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- رأس الصفحة -->
+    <!-- حاوية القلوب الطائرة -->
+    <div id="hearts-container"></div>
+
     <header>
-        <h1>متحف ذكرياتنا الجميلة الحية ❤️</h1>
-        <p>كل لحظة معكِ هي قصة تستحق أن تُروى وتُحفظ للأبد</p>
+        <h1>متحف ذكرياتنا الجميلة ❤️</h1>
     </header>
 
-    <!-- خط الذكريات الزمني -->
-    <div class="container">
-        <div class="timeline">
-
-            <!-- الذكرى الأولى -->
-            <div class="memory-card memory-card-left">
-                <div class="content">
-                    <span class="date">١٤ فبراير ٢٠٢٥</span>
-                    <h3>أول لقاء بيننا لن ينسى</h3>
-                    <p>هنا كانت البداية التي غيرت كل شيء في حياتي، الابتسامة الأولى والمكان الذي شهد على نبض قلبي لأول مرة.</p>
-                    <div class="image-placeholder">سيتم وضع صورتنا الأولى هنا قريباً 📸</div>
-                </div>
-            </div>
-
-            <!-- الذكرى الثانية -->
-            <div class="memory-card memory-card-right">
-                <div class="content">
-                    <span class="date">١ مايو ٢٠٢٥</span>
-                    <h3>يوم حفر في الذاكرة</h3>
-                    <p>تفاصيل هذا اليوم لا تغيب عن بالي، الضحكات العفوية والحديث المطول الذي تمنيته ألا ينتهي أبداً.</p>
-                    <div class="image-placeholder">سيتم وضع صورة هذا اليوم هنا قريباً 📸</div>
-                </div>
-            </div>
-
-            <!-- يمكنك إضافة ذكريات جديدة بنفس الطريقة هنا -->
-
+    <!-- العداد الديناميكي -->
+    <div class="countdown-container">
+        <div class="countdown-title">الوقت الذي عشناه معاً بحب وسعادة 🥰</div>
+        <div class="counter-grid">
+            <div class="counter-box"><span class="counter-number" id="days">00</span><span class="counter-label">يوم</span></div>
+            <div class="counter-box"><span class="counter-number" id="hours">00</span><span class="counter-label">ساعة</span></div>
+            <div class="counter-box"><span class="counter-number" id="minutes">00</span><span class="counter-label">دقيقة</span></div>
+            <div class="counter-box"><span class="counter-number" id="seconds">00</span><span class="counter-label">ثانية</span></div>
         </div>
     </div>
 
+    <!-- خط الذكريات الزمني الاحترافي -->
+    <div class="timeline-container">
+        <div class="timeline-line"></div>
+
+        <!-- ذكرى 1 -->
+        <div class="memory-item">
+            <div class="memory-icon">❤️</div>
+            <div class="memory-card">
+                <span class="memory-date">١٤ فبراير ٢٠٢٥</span>
+                <h3>أول لقاء بيننا.. البداية التي غيّرت كل شيء ✨</h3>
+                <p>هنا كانت نبضة قلبنا الأولى والمكان الذي شهد على ضحكاتنا وعفويتنا وتمنيت وقتها أن يتوقف الزمن عند تلك اللحظة.</p>
+                <div class="photo-frame">
+                    <span>📸</span> جاهزة لاستقبال صورتنا الأولى معاً
+                </div>
+            </div>
+        </div>
+
+        <!-- ذكرى 2 -->
+        <div class="memory-item">
+            <div class="memory-icon">❤️</div>
+            <div class="memory-card">
+                <span class="memory-date">١ مايو ٢٠٢٥</span>
+                <h3>يوم مميز لا يغيب عن البال 🥰</h3>
+                <p>كل تفصيلة صغيرة في هذا اليوم محفورة في ذاكرتي، حديثكِ المشوق الذي لا يُمل وعيناكِ التي أرى فيها مستقبلي كله.</p>
+                <div class="photo-frame">
+                    <span>📸</span> جاهزة لاستقبال صورة هذا اليوم السعيد
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // 1. كود تشغيل العداد التلقائي (احسب الوقت من تاريخ معين)
+        // قم بتعديل هذا التاريخ ليطابق تاريخ بداية علاقتكم (السنة، ثم الشهر - 1، ثم اليوم)
+        const startDate = new Date(2025, 1, 14, 0, 0, 0); // مثال: 14 فبراير 2025
+
+        function updateCounter() {
+            const now = new Date();
+            const difference = now - startDate;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((difference / 1000 / 60) % 60);
+            const seconds = Math.floor((difference / 1000) % 60);
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        }
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // 2. كود توليد تأثير تساقط قلوب عشوائية في الخلفية بشكل احترافي وبدون ثقل
+        const container = document.getElementById('hearts-container');
+        const heartIcons = ['❤️', '💖', '💕', '💗'];
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+            heart.style.position = 'absolute';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 15 + 12 + 'px';
+            heart.style.animation = `floatHeart ${Math.random() * 4 + 4}s linear forwards`;
+            
+            container.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+        setInterval(createHeart, 400);
+    </script>
 </body>
 </html>
