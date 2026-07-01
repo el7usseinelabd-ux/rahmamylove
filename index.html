@@ -6,16 +6,15 @@
     <title>إلى من ملكت قلبي وعمري كله ❤️</title>
     <style>
         :root {
-            --bg-dark: #09070f;
+            --bg-dark: #050409;
             --text-light: #ffffff;
-            --text-muted: #a0aec0;
+            --text-muted: #cbd5e0;
             
-            /* لوحة ألوان نيونية متنوعة */
+            /* ألوان النيون المبهجة */
             --clr-pink: #ff4d6d;
             --clr-purple: #9d4edd;
             --clr-blue: #00b4d8;
             --clr-coral: #ff758f;
-            --clr-amber: #ffb703;
         }
 
         * {
@@ -28,35 +27,41 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-dark);
+            /* خلفية مذهلة تجمع بين القمر والماء والليل الساحر */
             background-image: 
-                radial-gradient(circle at 5% 15%, rgba(255, 77, 109, 0.15) 0%, transparent 35%),
-                radial-gradient(circle at 95% 45%, rgba(0, 180, 216, 0.12) 0%, transparent 35%),
-                radial-gradient(circle at 15% 85%, rgba(157, 78, 221, 0.15) 0%, transparent 45%);
+                linear-gradient(to bottom, rgba(5, 4, 9, 0.4) 0%, rgba(5, 4, 9, 0.7) 100%),
+                url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center top;
             background-attachment: fixed;
             color: var(--text-light);
             overflow-x: hidden;
             padding-bottom: 60px;
         }
 
-        /* حاوية الخلفية المتساقطة للقلوب الملونة */
+        /* حاوية العناصر الكثيرة التي تطير لأعلى */
         #hearts-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 1; /* جعلها تظهر فوق الخلفية وتحت الكروت */
             pointer-events: none;
         }
 
-        /* شاشة قفل زجاجية جذابة وملونة التوهج */
+        /* شاشة قفل زجاجية فاخرة مدمجة مع الخلفية */
         #lock-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--bg-dark);
+            background-image: 
+                linear-gradient(to bottom, rgba(5, 4, 9, 0.6) 0%, rgba(5, 4, 9, 0.8) 100%),
+                url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center top;
             z-index: 9999;
             display: flex;
             align-items: center;
@@ -65,16 +70,16 @@
         }
 
         .login-box {
-            background: rgba(25, 20, 38, 0.65);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(15, 12, 25, 0.75);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 40px 25px;
             border-radius: 30px;
             width: 88%;
             max-width: 380px;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 30px rgba(157, 78, 221, 0.15);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7), 0 0 30px rgba(255, 77, 109, 0.15);
         }
 
         .login-box .icon {
@@ -103,8 +108,8 @@
         .login-box input {
             width: 100%;
             padding: 14px 20px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 16px;
             color: #fff;
             font-size: 1.1rem;
@@ -114,9 +119,9 @@
         }
 
         .login-box input:focus {
-            border-color: var(--clr-purple);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 15px rgba(157, 78, 221, 0.3);
+            border-color: var(--clr-pink);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(255, 77, 109, 0.3);
         }
 
         .login-box button {
@@ -130,7 +135,7 @@
             font-weight: 600;
             cursor: pointer;
             margin-top: 15px;
-            box-shadow: 0 5px 20px rgba(255, 77, 109, 0.25);
+            box-shadow: 0 5px 20px rgba(255, 77, 109, 0.3);
             transition: all 0.3s ease;
         }
 
@@ -149,12 +154,14 @@
         /* حاوية المحتوى الأساسي */
         #main-content {
             opacity: 0;
+            position: relative;
+            z-index: 2; /* لتكون فوق القلوب الطائرة */
             transition: opacity 0.8s ease;
         }
 
         header {
             text-align: center;
-            padding: 45px 20px 15px;
+            padding: 50px 20px 15px;
         }
 
         header h1 {
@@ -164,31 +171,33 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 12px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         header p {
             color: var(--text-muted);
             font-size: clamp(0.9rem, 3.2vw, 1.05rem);
             line-height: 1.5;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
         }
 
-        /* العداد الرقمي بتصميم متعدد الألوان المبهجة */
+        /* العداد الرقمي الملون */
         .countdown-container {
-            background: rgba(20, 16, 33, 0.7);
+            background: rgba(15, 12, 25, 0.75);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             max-width: 480px;
             margin: 15px auto 35px;
             padding: 20px 15px;
             border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             width: 90%;
         }
 
         .countdown-title {
             font-size: 0.95rem;
-            color: #cbd5e0;
+            color: #edf2f7;
             margin-bottom: 15px;
             font-weight: 500;
             text-align: center;
@@ -204,10 +213,10 @@
             padding: 12px 2px;
             border-radius: 16px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        /* تدرجات لونية مختلفة ومستقلة لكل مربع من مربعات العداد */
+        /* التدرجات اللونية للمربعات */
         .box-days { background: linear-gradient(135deg, #ff4d6d, #c9184a); }
         .box-hours { background: linear-gradient(135deg, #9d4edd, #5a189a); }
         .box-minutes { background: linear-gradient(135deg, #00b4d8, #0077b6); }
@@ -222,12 +231,12 @@
 
         .counter-label {
             font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.9);
             margin-top: 2px;
             display: block;
         }
 
-        /* خط زمني منسق للموبايل */
+        /* الخط الزمني */
         .timeline-container {
             max-width: 550px;
             margin: 0 auto;
@@ -257,24 +266,24 @@
             height: 20px;
             background: var(--bg-dark);
             border-radius: 50%;
-            z-index: 2;
+            z-index: 3;
         }
 
-        /* كروت بألوان مختلفة لكسر رتابة اللون الواحد */
+        /* كروت زجاجية شفافة ملونة وفخمة */
         .card-pink {
-            background: rgba(40, 20, 35, 0.6);
-            border: 1px solid rgba(255, 77, 109, 0.2);
-            box-shadow: 0 15px 30px rgba(255, 77, 109, 0.05);
+            background: rgba(35, 15, 25, 0.75);
+            border: 1px solid rgba(255, 77, 109, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
-        .card-pink .memory-icon-dot { border: 2px solid var(--clr-pink); box-shadow: 0 0 8px var(--clr-pink); }
+        .card-pink .memory-icon-dot { border: 2px solid var(--clr-pink); box-shadow: 0 0 10px var(--clr-pink); }
         .card-pink .memory-date { color: var(--clr-pink); }
 
         .card-purple {
-            background: rgba(25, 20, 45, 0.6);
-            border: 1px solid rgba(157, 78, 221, 0.2);
-            box-shadow: 0 15px 30px rgba(157, 78, 221, 0.05);
+            background: rgba(20, 15, 35, 0.75);
+            border: 1px solid rgba(157, 78, 221, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
-        .card-purple .memory-icon-dot { border: 2px solid var(--clr-purple); box-shadow: 0 0 8px var(--clr-purple); }
+        .card-purple .memory-icon-dot { border: 2px solid var(--clr-purple); box-shadow: 0 0 10px var(--clr-purple); }
         .card-purple .memory-date { color: var(--clr-purple); }
 
         .memory-card {
@@ -283,7 +292,6 @@
             margin-right: 50px;
             padding: 22px;
             border-radius: 22px;
-            transition: transform 0.3s ease;
         }
 
         .memory-card h3 {
@@ -299,19 +307,18 @@
             line-height: 1.6;
         }
 
-        /* إطار صور شفاف فخم */
         .photo-frame {
             width: 100%;
             height: 210px;
             margin-top: 15px;
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.04);
             border-radius: 14px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: var(--text-muted);
-            border: 1px dashed rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
             font-size: 0.85rem;
         }
 
@@ -325,17 +332,18 @@
             50% { transform: scale(1.05); opacity: 0.9; }
         }
 
+        /* حركية الطيران لأعلى السريعة والمكثفة */
         @keyframes floatNeonHeart {
             0% { transform: translateY(105vh) scale(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
-            100% { transform: translateY(-10vh) scale(1.1) rotate(360deg); opacity: 0; }
+            15% { opacity: 0.7; }
+            85% { opacity: 0.7; }
+            100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. شاشة القفل بكلمة سر Rahma -->
+    <!-- 1. شاشة القفل بكلمة سر Rahma والخلفية الليلية -->
     <div id="lock-screen">
         <div class="login-box">
             <div class="icon">💖</div>
@@ -349,7 +357,7 @@
         </div>
     </div>
 
-    <!-- 2. المحتوى الرئيسي المتنوع الألوان -->
+    <!-- 2. المحتوى الرئيسي فوق خلفية القمر والماء -->
     <div id="main-content">
         <div id="hearts-container"></div>
 
@@ -358,7 +366,7 @@
             <p>كل ثانية معكِ هي عمر كامل من الأمان، وهنا نكتب أولى سطور قصتنا الأبدية</p>
         </header>
 
-        <!-- العداد الملون -->
+        <!-- العداد الملون الفاخر -->
         <div class="countdown-container">
             <div class="countdown-title">الوقت الذي عشته غارقاً في حبكِ وعشقكِ 🥰</div>
             <div class="counter-grid">
@@ -372,7 +380,7 @@
         <div class="timeline-container">
             <div class="timeline-line"></div>
 
-            <!-- ذكرى 1 طابع وردي -->
+            <!-- ذكرى 1 طابع وردي متوهج -->
             <div class="memory-item card-pink">
                 <div class="memory-icon memory-icon-dot"></div>
                 <div class="memory-card">
@@ -385,13 +393,13 @@
                 </div>
             </div>
 
-            <!-- ذكرى 2 طابع بنفسجي ولافندر -->
+            <!-- ذكرى 2 طابع بنفسجي ساحر -->
             <div class="memory-item card-purple">
                 <div class="memory-icon memory-icon-dot"></div>
                 <div class="memory-card">
                     <span class="memory-date">١ مايو ٢٠٢٥</span>
                     <h3>يوم مميز لا يغيب عن خاطري وعيني 🥰</h3>
-                    <p>كل تفصيل صغير في هذا اليوم محفورة في وجداني، كلامكِ العذب ونظرات عيناكِ التي أرى فيها مستقبلي وجنتي كلها.</p>
+                    <p>كل تفصيل صغير في هذا اليوم محفور في وجداني، كلامكِ العذب ونظرات عيناكِ التي أرى فيها مستقبلي وجنتي كلها.</p>
                     <div class="photo-frame">
                         <span>📸</span> هنا سنضع لقطة من ذكريات هذا اليوم السعيد
                     </div>
@@ -401,7 +409,7 @@
     </div>
 
     <script>
-        // 🔒 كلمة السر المحدثة (تأكد من كتابة حرف R كبير عند إدخالها)
+        // 🔒 كلمة السر الحالية المطلوبة
         const CORRECT_PASSWORD = "Rahma";
 
         function checkPassword() {
@@ -419,7 +427,8 @@
                     lockScreen.remove();
                     mainContent.style.opacity = '1';
                     setInterval(updateCounter, 1000);
-                    setInterval(createNeonHeart, 700);
+                    // تكثيف تساقط القلوب وصعودها (كل 300 مللي ثانية تظهر عناصر جديدة)
+                    setInterval(createNeonHeart, 300);
                 }, 600);
             } else {
                 errorMsg.style.display = 'block';
@@ -452,25 +461,28 @@
         }
         updateCounter();
 
-        // قلوب ملونة تتساقط بشكل عشوائي ومبهج
+        // زيادة كثافة وتنوع العناصر الطائرة لفوق (قلوب، نجوم، لمعان ملون)
         const container = document.getElementById('hearts-container');
-        const colorHearts = ['❤️', '💖', '💙', '💜', '✨'];
+        const colorHearts = ['❤️', '💖', '💙', '💜', '✨', '🌸', '🌟', '💕'];
         
         function createNeonHeart() {
-            if (container.children.length > 15) return; 
+            // رفع الحد الأقصى المسموح به على الشاشة معاً لتبدو ممتلئة ومبهجة دون التأثير على الأداء
+            if (container.children.length > 40) return; 
 
             const heart = document.createElement('div');
             heart.innerText = colorHearts[Math.floor(Math.random() * colorHearts.length)];
             heart.style.position = 'absolute';
             heart.style.left = Math.random() * 95 + 'vw';
-            heart.style.fontSize = Math.random() * 12 + 10 + 'px';
-            heart.style.animation = `floatNeonHeart ${Math.random() * 4 + 4}s linear forwards`;
+            heart.style.fontSize = Math.random() * 15 + 12 + 'px';
+            // إضافة توهج نيون خلف كل قلب طائر ليتماشى مع ضوء القمر
+            heart.style.filter = 'drop-shadow(0 0 6px rgba(255,77,109,0.6))';
+            heart.style.animation = `floatNeonHeart ${Math.random() * 3 + 3}s linear forwards`;
             
             container.appendChild(heart);
             
             setTimeout(() => {
                 heart.remove();
-            }, 7500);
+            }, 6000);
         }
     </script>
 </body>
