@@ -7,11 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-overlay: linear-gradient(to bottom, rgba(15, 5, 26, 0.5) 0%, rgba(5, 1, 10, 0.85) 100%);
+            --bg-overlay: linear-gradient(to bottom, rgba(15, 5, 26, 0.65) 0%, rgba(5, 1, 10, 0.9) 100%);
             --panel-bg: rgba(255, 255, 255, 0.04);
             --panel-border: rgba(255, 255, 255, 0.09);
             --neon-pink: #ff2a5f;
             --neon-purple: #a12cff;
+            --neon-cyan: #00f5ff;
             --text-primary: #ffffff;
             --text-secondary: #e2e2ee;
         }
@@ -30,7 +31,7 @@
             color: var(--text-primary);
             overflow-x: hidden;
             min-height: 100vh;
-            padding-bottom: 60px;
+            padding-bottom: 80px;
             position: relative;
         }
 
@@ -55,7 +56,6 @@
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* كارت إدخال الباسورد الرئيسي */
         .login-card {
             background: rgba(14, 5, 28, 0.45);
             backdrop-filter: blur(25px);
@@ -70,10 +70,7 @@
             transition: all 0.4s ease;
         }
 
-        .shake-effect {
-            animation: shakeCard 0.4s ease-in-out;
-        }
-
+        .shake-effect { animation: shakeCard 0.4s ease-in-out; }
         @keyframes shakeCard {
             0%, 100% { transform: translateX(0); }
             20%, 60% { transform: translateX(-10px); }
@@ -81,124 +78,47 @@
         }
 
         .lock-icon {
-            font-size: 3.8rem;
-            margin-bottom: 25px;
-            display: inline-block;
-            animation: pulseGlow 2s infinite ease-in-out;
-            filter: drop-shadow(0 0 15px var(--neon-pink));
+            font-size: 3.8rem; margin-bottom: 25px; display: inline-block;
+            animation: pulseGlow 2s infinite ease-in-out; filter: drop-shadow(0 0 15px var(--neon-pink));
         }
 
         .login-card h2 {
-            font-size: 1.5rem;
-            font-weight: 900;
-            margin-bottom: 15px;
+            font-size: 1.5rem; font-weight: 900; margin-bottom: 15px;
             background: linear-gradient(135deg, #fff 30%, #ff8da1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .login-card p {
-            color: #e2e2f0;
-            font-size: 0.92rem;
-            line-height: 1.7;
-            margin-bottom: 35px;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-        }
+        .login-card p { color: #e2e2f0; font-size: 0.92rem; line-height: 1.7; margin-bottom: 35px; }
 
         .login-card input {
-            width: 100%;
-            padding: 18px;
-            background: rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            color: #fff;
-            font-size: 1.2rem;
-            text-align: center;
-            outline: none;
-            transition: all 0.4s;
+            width: 100%; padding: 18px; background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 20px;
+            color: #fff; font-size: 1.2rem; text-align: center; outline: none; transition: all 0.4s;
         }
+        .login-card input:focus { border-color: var(--neon-pink); background: rgba(0, 0, 0, 0.5); box-shadow: 0 0 25px rgba(255, 42, 95, 0.4); }
 
-        .login-card input:focus {
-            border-color: var(--neon-pink);
-            background: rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 25px rgba(255, 42, 95, 0.4);
-        }
-
-        .login-card button, .hint-popup button {
-            width: 100%;
-            padding: 18px;
-            margin-top: 20px;
+        .login-card button, .hint-popup button, .action-btn {
+            width: 100%; padding: 18px; margin-top: 20px;
             background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-pink) 100%);
-            border: none;
-            border-radius: 20px;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 42, 95, 0.4);
-            transition: all 0.3s ease;
+            border: none; border-radius: 20px; color: white; font-size: 1.1rem; font-weight: 700;
+            cursor: pointer; box-shadow: 0 10px 30px rgba(255, 42, 95, 0.4); transition: all 0.3s ease;
         }
+        .login-card button:hover, .hint-popup button:hover, .action-btn:hover { transform: translateY(-2px); box-shadow: 0 15px 35px rgba(255, 42, 95, 0.5); }
 
-        .login-card button:hover, .hint-popup button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(255, 42, 95, 0.5);
-        }
-
-        /* نافذة الملاحظات المنبثقة الجديدة في منتصف الشاشة */
+        /* نافذة الملاحظات المنبثقة */
         .hint-popup {
-            position: absolute;
-            background: rgba(20, 6, 36, 0.6);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 2px solid var(--neon-pink);
-            padding: 40px 25px;
-            border-radius: 30px;
-            width: 88%;
-            max-width: 380px;
-            text-align: center;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 30px rgba(255, 42, 95, 0.3);
-            display: none; /* مخفية افتراضياً */
-            z-index: 10000;
-            animation: scaleUpEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            position: absolute; background: rgba(20, 6, 36, 0.7); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            border: 2px solid var(--neon-pink); padding: 40px 25px; border-radius: 30px; width: 88%; max-width: 380px;
+            text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 30px rgba(255, 42, 95, 0.3);
+            display: none; z-index: 10000; animation: scaleUpEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
-
-        @keyframes scaleUpEntrance {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .hint-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            display: inline-block;
-            animation: pulseGlow 1.5s infinite ease-in-out;
-        }
-
-        .hint-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #ff8da1;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-        }
-
-        .hint-text {
-            color: #ffffff;
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 15px;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-        }
+        @keyframes scaleUpEntrance { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .hint-icon { font-size: 3rem; margin-bottom: 15px; display: inline-block; animation: pulseGlow 1.5s infinite ease-in-out; }
+        .hint-title { font-size: 1.3rem; font-weight: 800; color: #ff8da1; margin-bottom: 15px; }
+        .hint-text { color: #ffffff; font-size: 1rem; line-height: 1.7; margin-bottom: 15px; }
 
         /* الواجهة الرئيسية */
-        #main-content {
-            opacity: 0;
-            position: relative;
-            z-index: 2;
-            transition: opacity 1.2s ease;
-        }
-
+        #main-content { opacity: 0; position: relative; z-index: 2; transition: opacity 1.2s ease; }
         header { text-align: center; padding: 70px 20px 30px; }
         .floating-heart { font-size: 2.5rem; animation: pulseGlow 1.5s infinite ease-in-out; display: inline-block; margin-bottom: 15px; }
         header h1 {
@@ -208,9 +128,10 @@
         }
         header p { color: #f1f1f6; font-size: clamp(0.95rem, 3.5vw, 1.15rem); line-height: 1.8; max-width: 550px; margin: 0 auto; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
 
+        /* حاويات التصميم الموحدة */
         .glass-panel {
             background: var(--panel-bg); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
-            border: 1px solid var(--panel-border); border-radius: 30px; box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.15);
+            border: 1px solid var(--panel-border); border-radius: 30px; box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
         }
 
         .countdown-wrapper { max-width: 480px; margin: 15px auto 50px; padding: 30px 22px; width: 90%; text-align: center; }
@@ -218,41 +139,91 @@
         .grid-timer { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
         .time-node { background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.08); padding: 18px 2px; border-radius: 22px; position: relative; overflow: hidden; }
         .time-node::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; }
-        .node-d::before { background: var(--neon-pink); box-shadow: 0 2px 10px var(--neon-pink); }
-        .node-h::before { background: var(--neon-purple); box-shadow: 0 2px 10px var(--neon-purple); }
-        .node-m::before { background: #00f5ff; box-shadow: 0 2px 10px #00f5ff; }
-        .node-s::before { background: #ffcf00; box-shadow: 0 2px 10px #ffcf00; }
-
+        .node-d::before { background: var(--neon-pink); }
+        .node-h::before { background: var(--neon-purple); }
+        .node-m::before { background: var(--neon-cyan); }
+        .node-s::before { background: #ffcf00; }
         .time-number { font-size: clamp(1.3rem, 5.5vw, 1.9rem); font-weight: 900; color: #fff; display: block; }
         .time-label { font-size: 0.8rem; color: #d1d1e0; margin-top: 6px; display: block; }
 
+        /* عناوين الأقسام الكبيرة الجديدة */
+        .section-title {
+            text-align: center; font-size: 1.6rem; font-weight: 800; margin: 60px 0 25px;
+            background: linear-gradient(135deg, #fff 30%, var(--neon-pink) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* خط الزمن القصصي */
         .timeline-box { max-width: 560px; margin: 0 auto; padding: 0 25px; position: relative; }
         .timeline-axis { position: absolute; top: 10px; bottom: 0; right: 35px; width: 2px; background: linear-gradient(to bottom, var(--neon-pink) 0%, var(--neon-purple) 60%, transparent 100%); }
         .story-card { position: relative; margin-bottom: 50px; }
         .story-pointer { position: absolute; right: 26px; top: 26px; width: 20px; height: 20px; background: #090314; border-radius: 50%; z-index: 3; }
         .card-pink .story-pointer { border: 3px solid var(--neon-pink); box-shadow: 0 0 15px var(--neon-pink); }
         .card-purple .story-pointer { border: 3px solid var(--neon-purple); box-shadow: 0 0 15px var(--neon-purple); }
-
-        .story-content { margin-right: 55px; padding: 28px; background: rgba(15, 6, 28, 0.55); transition: all 0.4s ease; }
-        .story-content h3 { font-size: 1.22rem; font-weight: 800; margin-bottom: 12px; color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.3); }
-        .story-content p { font-size: 0.98rem; color: #f8fafc; line-height: 1.8; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
-
+        .story-content { margin-right: 55px; padding: 28px; background: rgba(15, 6, 28, 0.55); }
+        .story-content h3 { font-size: 1.22rem; font-weight: 800; margin-bottom: 12px; color: #fff; }
+        .story-content p { font-size: 0.98rem; color: #f8fafc; line-height: 1.8; }
         .romantic-quote {
             margin-top: 20px; padding: 15px 18px;
             background: linear-gradient(135deg, rgba(255, 42, 95, 0.07) 0%, rgba(161, 44, 255, 0.07) 100%);
             border-right: 3px solid var(--neon-pink); border-left: 3px solid var(--neon-purple); border-radius: 12px; font-style: italic;
         }
-        .romantic-quote p { font-size: 0.93rem !important; color: #ffd0dc !important; line-height: 1.7 !important; text-align: center; }
+        .romantic-quote p { font-size: 0.93rem !important; color: #ffd0dc !important; text-align: center; }
 
+        /* [قسم جديد 1] لوحة وعودنا الأبدية */
+        .promises-grid {
+            display: grid; grid-template-columns: 1fr; gap: 20px;
+            max-width: 500px; margin: 0 auto; width: 90%;
+        }
+        .promise-card {
+            padding: 25px 20px; text-align: center; border-left: 4px solid var(--neon-cyan);
+            background: rgba(255, 255, 255, 0.02); transition: all 0.3s;
+        }
+        .promise-card:hover { transform: translateY(-3px); background: rgba(0, 245, 255, 0.04); }
+        .promise-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+        .promise-card h4 { font-size: 1.1rem; color: #fff; margin-bottom: 8px; font-weight: 700; }
+        .promise-card p { font-size: 0.9rem; color: #d1d1e0; line-height: 1.6; }
+
+        /* [قسم جديد 2] أزرار تفاعلية: لماذا أنتِ بالذات؟ */
+        .interactive-reasons {
+            max-width: 500px; margin: 0 auto; width: 90%; text-align: center;
+        }
+        .reasons-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--panel-border);
+            color: #fff; padding: 12px 20px; border-radius: 50px; cursor: pointer;
+            font-size: 0.9rem; font-weight: 600; transition: all 0.3s;
+        }
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            border-color: transparent; box-shadow: 0 0 15px rgba(255, 42, 95, 0.4);
+        }
+        .reason-display-panel {
+            padding: 30px 20px; min-height: 120px; display: flex; align-items: center; justify-content: center;
+            background: rgba(10, 3, 20, 0.5); text-align: center;
+        }
+        .reason-text { font-size: 1.05rem; color: #ffe5ec; line-height: 1.8; animation: fadeInHint 0.5s ease; }
+
+        /* [قسم جديد 3] صندوق رسالة في زجاجة لتكتب لك رد */
+        .message-box-container {
+            max-width: 500px; margin: 0 auto 40px; width: 90%; padding: 30px 25px; text-align: center;
+        }
+        .message-box-container textarea {
+            width: 100%; height: 100px; background: rgba(0,0,0,0.3); border: 1px solid var(--panel-border);
+            border-radius: 15px; padding: 15px; color: #fff; font-size: 0.95rem; outline: none;
+            resize: none; margin-top: 15px; transition: all 0.3s;
+        }
+        .message-box-container textarea:focus { border-color: var(--neon-pink); box-shadow: 0 0 15px rgba(255, 42, 95, 0.2); }
+        .action-btn { margin-top: 15px; padding: 14px; font-size: 1rem; }
+
+        /* أنيميشن */
         @keyframes pulseGlow {
             0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px var(--neon-pink)); }
             50% { transform: scale(1.1); filter: drop-shadow(0 0 20px var(--neon-pink)); }
         }
-
         @keyframes floatEffect {
             0% { transform: translateY(105vh) scale(0) rotate(0deg); opacity: 0; }
-            20% { opacity: 0.7; }
-            85% { opacity: 0.7; }
+            20% { opacity: 0.7; } 85% { opacity: 0.7; }
             100% { transform: translateY(-10vh) scale(1.3) rotate(100deg); opacity: 0; }
         }
     </style>
@@ -262,7 +233,7 @@
     <!-- شاشة الحماية والتحكم بالنوافذ التفاعلية -->
     <div id="lock-screen">
         
-        <!-- 1. كارت إدخال الباسورد الرئيسي -->
+        <!-- كارت إدخال الباسورد الرئيسي -->
         <div class="login-card" id="card-container">
             <div class="lock-icon">🔒</div>
             <h2>عالمنا السرّي الخاص</h2>
@@ -273,7 +244,7 @@
             <button onclick="verifyKey()">دخول إلى قلبكِ ✨</button>
         </div>
 
-        <!-- 2. نافذة الملاحظات المنبثقة المضافة في منتصف الشاشة تماماً -->
+        <!-- نافذة الملاحظات المنبثقة التفاعلية -->
         <div class="hint-popup" id="hint-container">
             <div class="hint-icon">💡</div>
             <div class="hint-title">تلميح من حبيبكِ مخصص لكِ</div>
@@ -283,7 +254,7 @@
 
     </div>
 
-    <!-- الواجهة الرئيسية للموقع -->
+    <!-- الواجهة الرئيسية الكبيرة والمطورة للموقع -->
     <div id="main-content">
         <div id="ambient-particles"></div>
 
@@ -293,6 +264,7 @@
             <p>كل ثانية معكِ هي عمر كامل من الأمان، وهنا نكتب أولى سطور قصتنا الأبدية</p>
         </header>
 
+        <!-- عداد الوقت الرقمي -->
         <div class="glass-panel countdown-wrapper">
             <div class="countdown-title">الوقت الذي عشته غارقاً في حبكِ وعشقكِ 🥰</div>
             <div class="grid-timer">
@@ -303,6 +275,8 @@
             </div>
         </div>
 
+        <!-- القسم الأول: خط الزمن وقصتنا -->
+        <div class="section-title">✦ محطات حُبّنا الجميلة ✦</div>
         <div class="timeline-box">
             <div class="timeline-axis"></div>
 
@@ -328,6 +302,52 @@
                 </div>
             </div>
         </div>
+
+        <!-- القسم الثاني الجديد: لوحة الوعود الأبدية -->
+        <div class="section-title">✦ وعودي الأبدية لكِ ✦</div>
+        <div class="promises-grid">
+            <div class="glass-panel promise-card">
+                <span class="promise-icon">🤝</span>
+                <h4>الأمان والسند</h4>
+                <p>أعدكِ أن أكون لكِ جيشاً كاملاً وملجأً دافئاً عندما تضيق بكِ الدنيا، وأن أحمي ضحكتكِ بكل ما أوتيت من قوة.</p>
+            </div>
+            <div class="glass-panel promise-card" style="border-left-color: var(--neon-pink);">
+                <span class="promise-icon">👁️‍🗨️</span>
+                <h4>الاهتمام بالتفاصيل</h4>
+                <p>أعدكِ أن أظل هائماً بتفاصيلكِ الصغيرة، بكلماتكِ العفوية، بنبرة صوتكِ، وأن تظلي دائماً أولويتي الأولى والوحيدة.</p>
+            </div>
+            <div class="glass-panel promise-card" style="border-left-color: var(--neon-purple);">
+                <span class="promise-icon">🌱</span>
+                <h4>مستقبلنا معاً</h4>
+                <p>أعدكِ أن نبني معاً بيتاً مليئاً بالحب والطمأنينة، يملأه طهر قلبكِ ونعيش فيه أياماً تشبه روعة عينيكِ.</p>
+            </div>
+        </div>
+
+        <!-- القسم الثالث الجديد: تفاعلي (لماذا أنتِ بالذات؟) -->
+        <div class="section-title">✦ لماذا أنتِ بالذات؟ ✦</div>
+        <div class="interactive-reasons">
+            <p style="font-size: 0.9rem; color: #bfaecf; margin-bottom: 15px;">(اضغطي على الأسرار لتكتشفي الجواب)</p>
+            <div class="reasons-tabs">
+                <button class="tab-btn active" onclick="revealReason(0, this)">السر الأول 🔒</button>
+                <button class="tab-btn" onclick="revealReason(1, this)">السر الثاني 🔒</button>
+                <button class="tab-btn" onclick="revealReason(2, this)">السر الثالث 🔒</button>
+            </div>
+            <div class="glass-panel reason-display-panel">
+                <div class="reason-text" id="reason-box">
+                    لأنكِ الوحيدة التي ملكتِ مفاتيح قلبي، وفي وجودكِ ينتهي العالم ويبدأ سلامي الداخلي وطمأنينتي الغائبة.
+                </div>
+            </div>
+        </div>
+
+        <!-- القسم الرابع الجديد: صندوق تفاعلي لتكتب لك رد -->
+        <div class="section-title">✦ رسالة في زجاجة ✦</div>
+        <div class="glass-panel message-box-container">
+            <span style="font-size: 2.2rem; display: block; animation: floatEffect 3s infinite alternate;">✉️</span>
+            <p style="font-size: 1rem; color: #fff; font-weight: 700; margin-top: 10px;">اكتبي لحبيبكِ كلمة من قلبكِ هنا..</p>
+            <textarea id="partner-message" placeholder="اكتبي ما تشعرين به الآن.. سأقرأه بنبضات قلبي 💬"></textarea>
+            <button class="action-btn" onclick="sendLoveMessage()">إرسال حبّي لقلبه 💖</button>
+        </div>
+
     </div>
 
     <script>
@@ -339,7 +359,14 @@
             "اممم.. بداية متعثرة! ركزي يا عمري، الباسورد هو اسمك الغالي مع سنة مميزة 😉💕",
             "لسه غلط! غاششّك المحاولة دي: أول حرف كابيتال R وباقي الاسم سمول.. هانت 🌸",
             "تؤ تؤ.. شكلك نسيتي الأرقام! فكري في سنة حلوة اتولدتي فيها أو سنة مميزة لقلبنا 2000.. جربي تاني يا كسلانة 🥰🌟",
-            "خلاص مش قادر أغششك أكتر من كده! الباسورد يبدأ بـ R وينتهي بـ 2000.. لو لسه مش عارفاها اطلبي المساعدة من حبيبك فوراً 🫣❤️"
+            "خلاص مش قادر أغشك أكتر من كده! الباسورد يبدأ بـ R وينتهي بـ 2000.. لو لسه مش عارفاها اطلبي المساعدة من حبيبك فوراً 🫣❤️"
+        ];
+
+        // مصفوفة الأسباب التفاعلية لقسم (لماذا أنتِ)
+        const reasonTexts = [
+            "لأنكِ الوحيدة التي ملكتِ مفاتيح قلبي، وفي وجودكِ ينتهي العالم ويبدأ سلامي الداخلي وطمأنينتي الغائبة. ❤️",
+            "لأن ضحكتكِ تختصر كل أفراح الأرض في عيني، ولأن نقاء روحكِ يجعلني أرى الحياة بلون وردي جميل لم أعهده من قبلكِ. ✨",
+            "لأنكِ لستِ مجرد عابرة في حياتي، بل أنتِ تلك الدعوة المستجابة التي تمنيتها من الله طويلاً ليمطر الرضا والبركة على عمري كله. 💖"
         ];
 
         function verifyKey() {
@@ -362,15 +389,12 @@
                     setInterval(spawnRomanceParticle, 220);
                 }, 600);
             } else {
-                // تفعيل أنيميشن الاهتزاز للكارت الرئيسي
                 cardContainer.classList.remove('shake-effect');
                 void cardContainer.offsetWidth; 
                 cardContainer.classList.add('shake-effect');
 
-                // اختيار نص التلميح
                 let hintText = wrongAttempts >= hints.length ? hints[hints.length - 1] : hints[wrongAttempts];
                 
-                // إخفاء كارت الباسورد مؤقتاً وإظهار نافذة التلميح الكبيرة في منتصف الشاشة
                 setTimeout(() => {
                     cardContainer.style.display = 'none';
                     hintTextElement.innerText = hintText;
@@ -381,15 +405,36 @@
             }
         }
 
-        // دالة إغلاق التلميح والعودة لكتابة الباسورد مجدداً عند الضغط على زر OK
         function closeHintAndRetry() {
             document.getElementById('hint-container').style.display = 'none';
             const cardContainer = document.getElementById('card-container');
             cardContainer.style.display = 'block';
             
             const inputField = document.getElementById('password-input');
-            inputField.value = ""; // تفريغ الخانة
-            inputField.focus(); // تفعيل مؤشر الكتابة تلقائياً للتسهيل عليها
+            inputField.value = "";
+            inputField.focus();
+        }
+
+        // دالة تغيير التلميحات والأسرار التفاعلية
+        function revealReason(index, button) {
+            document.getElementById('reason-box').innerHTML = reasonTexts[index];
+            
+            // تحديث تصميم الأزرار النشطة
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        }
+
+        // دالة إرسال الرسالة التفاعلية
+        function sendLoveMessage() {
+            const text = document.getElementById('partner-message').value.trim();
+            if(text === "") {
+                alert("اكتبي شيئاً أولاً يا عمري! 🥰");
+                return;
+            }
+            // إظهار نافذة منبثقة رومانسية جداً تعبيراً عن التفاعل
+            alert("✨ طيران إلى قلبه! ✨\n\nرسالتكِ الجميلة غادرت شاشة هاتفكِ الآن وانتقلت لتستقر في نبضات قلبه مباشرة.. أحبكِ جداً! ❤️");
+            document.getElementById('partner-message').value = "";
         }
 
         document.getElementById('password-input').addEventListener('keypress', function(e) {
