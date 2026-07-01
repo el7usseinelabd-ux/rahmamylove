@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>إلى من ملكت قلبي وعمري كله ❤️</title>
-    <!-- خط تاجويل الفاخر -->
+    <!-- خط تاجويل الفاخر بأوزان مختلفة -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #020208;
-            --text-light: #ffffff;
-            --text-muted: #cbd5e0;
+            --bg-dark: #060212;
+            --glass-bg: rgba(18, 10, 36, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.08);
             --clr-pink: #ff4d6d;
-            --clr-purple: #7b2cbf;
-            --clr-blue: #00b4d8;
+            --clr-magenta: #ff758f;
+            --clr-purple: #9d4edd;
+            --glow-shadow: 0 0 20px rgba(255, 77, 109, 0.2);
         }
 
         * {
@@ -26,16 +27,16 @@
 
         body {
             background-color: var(--bg-dark);
-            /* رابط خلفية ليلية مستقرة تماماً وبجودة عالية لقمر ينعكس على الماء */
+            /* خلفية ليلية رومانسية عميقة ومستقرة جداً لقمر ينعكس على بحر هادئ */
             background-image: 
-                linear-gradient(to bottom, rgba(2, 2, 8, 0.6) 0%, rgba(2, 2, 8, 0.85) 100%),
-                url('https://images.unsplash.com/photo-1505506838355-8b9592236ee5?auto=format&fit=crop&w=1200&q=80');
+                linear-gradient(to bottom, rgba(6, 2, 18, 0.5) 0%, rgba(6, 2, 18, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1505506838355-8b9592236ee5?auto=format&fit=crop&w=1400&q=85');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: var(--text-light);
+            color: #ffffff;
             overflow-x: hidden;
-            padding-bottom: 80px;
+            padding-bottom: 60px;
         }
 
         #hearts-container {
@@ -48,7 +49,7 @@
             pointer-events: none;
         }
 
-        /* شاشة القفل بكلمة سر Rahma */
+        /* شاشة القفل بأسلوب زجاجي فخم */
         #lock-screen {
             position: fixed;
             top: 0;
@@ -56,7 +57,7 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(to bottom, rgba(2, 2, 8, 0.75) 0%, rgba(2, 2, 8, 0.9) 100%),
+                linear-gradient(to bottom, rgba(6, 2, 18, 0.7) 0%, rgba(6, 2, 18, 0.9) 100%),
                 url('https://images.unsplash.com/photo-1505506838355-8b9592236ee5?auto=format&fit=crop&w=800&q=80');
             background-size: cover;
             background-position: center;
@@ -64,187 +65,212 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .login-box {
-            background: rgba(10, 8, 20, 0.8);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 40px 25px;
-            border-radius: 28px;
-            width: 88%;
-            max-width: 380px;
+            background: rgba(12, 5, 28, 0.75);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 45px 30px;
+            border-radius: 32px;
+            width: 90%;
+            max-width: 390px;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.8), 0 0 40px rgba(0, 180, 216, 0.15);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 50px rgba(255, 77, 109, 0.15);
         }
 
         .login-box .icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
             filter: drop-shadow(0 0 15px var(--clr-pink));
-            animation: pulse 2.5s infinite ease-in-out;
+            animation: pulseHeart 2s infinite ease-in-out;
         }
 
         .login-box h2 {
-            font-size: 1.35rem;
+            font-size: 1.45rem;
             margin-bottom: 12px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #fff 50%, #ff758f 100%);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 40%, var(--clr-magenta) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .login-box p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-            line-height: 1.6;
+            color: #cbd5e1;
+            font-size: 0.92rem;
+            margin-bottom: 30px;
+            line-height: 1.7;
         }
 
         .login-box input {
             width: 100%;
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
             color: #fff;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             text-align: center;
             outline: none;
             transition: all 0.3s ease;
         }
 
         .login-box input:focus {
-            border-color: var(--clr-blue);
+            border-color: var(--clr-pink);
             background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 15px rgba(0, 180, 216, 0.25);
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.3);
         }
 
         .login-box button {
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             background: linear-gradient(135deg, var(--clr-purple) 0%, var(--clr-pink) 100%);
             border: none;
-            border-radius: 16px;
+            border-radius: 18px;
             color: white;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 1.05rem;
+            font-weight: 700;
             cursor: pointer;
-            margin-top: 15px;
-            box-shadow: 0 5px 20px rgba(255, 77, 109, 0.25);
+            margin-top: 18px;
+            box-shadow: 0 8px 25px rgba(255, 77, 109, 0.3);
             transition: all 0.3s ease;
+        }
+
+        .login-box button:active {
+            transform: scale(0.98);
         }
 
         .error-msg {
             color: var(--clr-pink);
-            font-size: 0.85rem;
-            margin-top: 12px;
+            font-size: 0.88rem;
+            margin-top: 15px;
             display: none;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         #main-content {
             opacity: 0;
             position: relative;
             z-index: 2;
-            transition: opacity 0.8s ease;
+            transition: opacity 1s ease;
         }
 
         header {
             text-align: center;
-            padding: 60px 20px 20px;
+            padding: 55px 20px 25px;
+        }
+
+        header .main-heart {
+            font-size: 2.2rem;
+            color: var(--clr-pink);
+            margin-bottom: 10px;
+            display: inline-block;
+            filter: drop-shadow(0 0 10px var(--clr-pink));
+            animation: pulseHeart 1.8s infinite ease-in-out;
         }
 
         header h1 {
-            font-size: clamp(1.6rem, 6vw, 2.5rem);
+            font-size: clamp(1.7rem, 6.5vw, 2.6rem);
             font-weight: 800;
-            background: linear-gradient(135deg, #fff 30%, var(--clr-pink) 80%, var(--clr-blue) 100%);
+            background: linear-gradient(135deg, #ffffff 30%, var(--clr-magenta) 75%, #b76edd 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 12px;
+            letter-spacing: -0.5px;
         }
 
         header p {
-            color: var(--text-muted);
-            font-size: clamp(0.85rem, 3vw, 1rem);
-            line-height: 1.6;
+            color: #94a3b8;
+            font-size: clamp(0.88rem, 3.2vw, 1.05rem);
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
+        /* حاوية العداد الزجاجية الأنيقة جداً */
         .countdown-container {
-            background: rgba(10, 8, 20, 0.7);
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            max-width: 480px;
-            margin: 15px auto 40px;
-            padding: 22px 15px;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--glass-border);
+            max-width: 460px;
+            margin: 10px auto 45px;
+            padding: 24px 20px;
+            border-radius: 28px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45), inset 0 0 15px rgba(255,255,255,0.02);
             width: 90%;
+            text-align: center;
         }
 
         .countdown-title {
-            font-size: 0.9rem;
-            color: #edf2f7;
-            margin-bottom: 18px;
-            font-weight: 500;
-            text-align: center;
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
         }
 
         .counter-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+            gap: 10px;
         }
 
+        /* كروت العداد الفاخرة بالتدرج الرومانسى المتناسق */
         .counter-box {
-            padding: 14px 2px;
-            border-radius: 16px;
+            padding: 16px 2px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s ease;
         }
 
-        .box-days { background: linear-gradient(135deg, rgba(255, 77, 109, 0.85), rgba(201, 24, 74, 0.85)); }
-        .box-hours { background: linear-gradient(135deg, rgba(123, 44, 191, 0.85), rgba(90, 24, 154, 0.85)); }
-        .box-minutes { background: linear-gradient(135deg, rgba(0, 180, 216, 0.85), rgba(0, 119, 182, 0.85)); }
-        .box-seconds { background: linear-gradient(135deg, rgba(255, 117, 143, 0.85), rgba(255, 133, 161, 0.85)); }
+        .box-days { background: linear-gradient(135deg, rgba(255, 77, 109, 0.35), rgba(169, 5, 41, 0.45)); border-color: rgba(255, 77, 109, 0.3); }
+        .box-hours { background: linear-gradient(135deg, rgba(157, 78, 221, 0.35), rgba(90, 24, 154, 0.45)); border-color: rgba(157, 78, 221, 0.3); }
+        .box-minutes { background: linear-gradient(135deg, rgba(0, 180, 216, 0.35), rgba(0, 119, 182, 0.45)); border-color: rgba(0, 180, 216, 0.3); }
+        .box-seconds { background: linear-gradient(135deg, rgba(255, 117, 143, 0.4), rgba(201, 24, 74, 0.4)); border-color: rgba(255, 117, 143, 0.3); }
 
         .counter-number {
-            font-size: clamp(1.1rem, 4.5vw, 1.5rem);
-            font-weight: 700;
-            color: #fff;
+            font-size: clamp(1.2rem, 5vw, 1.7rem);
+            font-weight: 800;
+            color: #ffffff;
             display: block;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .counter-label {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.85);
-            margin-top: 3px;
+            font-size: 0.78rem;
+            color: #e2e8f0;
+            margin-top: 5px;
             display: block;
+            font-weight: 500;
         }
 
         .timeline-container {
-            max-width: 550px;
+            max-width: 540px;
             margin: 0 auto;
             padding: 0 20px;
             position: relative;
         }
 
+        /* خط التايم لاين المضيء بالكامل */
         .timeline-line {
             position: absolute;
-            top: 0;
+            top: 5px;
             bottom: 0;
             right: 30px;
             width: 2px;
-            background: linear-gradient(to bottom, var(--clr-pink), var(--clr-purple), transparent);
+            background: linear-gradient(to bottom, var(--clr-pink) 0%, var(--clr-purple) 50%, transparent 100%);
+            box-shadow: 0 0 8px var(--clr-pink);
         }
 
         .memory-item {
             position: relative;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
         }
 
         .memory-icon {
@@ -256,52 +282,60 @@
             background: var(--bg-dark);
             border-radius: 50%;
             z-index: 3;
+            transition: all 0.3s ease;
         }
 
+        /* بطاقات الذكريات بأسلوب زجاجي شفاف فاخر */
         .memory-card {
-            background: rgba(15, 12, 28, 0.65);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(15, 8, 32, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             margin-right: 50px;
-            padding: 24px;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            padding: 26px;
+            border-radius: 26px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        .card-pink .memory-icon { border: 2px solid var(--clr-pink); box-shadow: 0 0 10px var(--clr-pink); }
-        .card-pink .memory-date { color: var(--clr-pink); }
+        .card-pink .memory-icon { border: 3px solid var(--clr-pink); box-shadow: 0 0 12px var(--clr-pink); }
+        .card-pink .memory-date { color: var(--clr-magenta); }
+        .card-pink .memory-card:hover { border-color: rgba(255, 77, 109, 0.4); }
 
-        .card-purple .memory-icon { border: 2px solid var(--clr-purple); box-shadow: 0 0 10px var(--clr-purple); }
-        .card-purple .memory-date { color: var(--clr-purple); }
+        .card-purple .memory-icon { border: 3px solid var(--clr-purple); box-shadow: 0 0 12px var(--clr-purple); }
+        .card-purple .memory-date { color: #b76edd; }
+        .card-purple .memory-card:hover { border-color: rgba(157, 78, 221, 0.4); }
 
         .memory-date {
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             font-weight: 700;
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
         }
 
         .memory-card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 10px;
-            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: #ffffff;
             font-weight: 700;
         }
 
         .memory-card p {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: #e2e8f0;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
+        /* إطار الصورة المطور ومضمون العرض بالكامل */
         .photo-frame {
             width: 100%;
-            margin-top: 15px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 16px;
+            margin-top: 20px;
+            background: #000000;
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
         }
 
         .photo-frame img {
@@ -311,21 +345,23 @@
             object-fit: cover;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.9; }
+        /* حركات الأنميشن الرومانسية */
+        @keyframes pulseHeart {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px var(--clr-pink)); }
+            50% { transform: scale(1.06); filter: drop-shadow(0 0 18px var(--clr-pink)); }
         }
 
-        @keyframes floatNeonHeart {
+        @keyframes floatRomance {
             0% { transform: translateY(105vh) scale(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(-10vh) scale(1.1) rotate(180deg); opacity: 0; }
+            15% { opacity: 0.65; }
+            85% { opacity: 0.65; }
+            100% { transform: translateY(-10vh) scale(1.2) rotate(120deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
+    <!-- شاشة قفل زجاجية سرية لـ رحمة -->
     <div id="lock-screen">
         <div class="login-box">
             <div class="icon">💖</div>
@@ -339,14 +375,17 @@
         </div>
     </div>
 
+    <!-- المحتوى الرئيسي الفاخر -->
     <div id="main-content">
         <div id="hearts-container"></div>
 
         <header>
-            <h1>إلى من جعلت حياتي أجمل ❤️</h1>
+            <div class="main-heart">❤️</div>
+            <h1>إلى من جعلت حياتي أجمل</h1>
             <p>كل ثانية معكِ هي عمر كامل من الأمان، وهنا نكتب أولى سطور قصتنا الأبدية</p>
         </header>
 
+        <!-- عداد الوقت الزجاجي الفخم -->
         <div class="countdown-container">
             <div class="countdown-title">الوقت الذي عشته غارقاً في حبكِ وعشقكِ 🥰</div>
             <div class="counter-grid">
@@ -357,9 +396,11 @@
             </div>
         </div>
 
+        <!-- التايم لاين والقصص -->
         <div class="timeline-container">
             <div class="timeline-line"></div>
 
+            <!-- ذكرى اللقاء الأول -->
             <div class="memory-item card-pink">
                 <div class="memory-icon"></div>
                 <div class="memory-card">
@@ -367,12 +408,13 @@
                     <h3>أول لقاء جمعنا.. اللحظة التي ولدتُ فيها مجدداً ✨</h3>
                     <p>هنا كانت نبضة قلبي الأولى الحقيقية، ضحكتكِ العفوية غيرت مجرى حياتي بالكامل، وتمنيت حينها لو أن عقارب الساعة تتوقف للأبد.</p>
                     <div class="photo-frame">
-                        <!-- رابط مباشر ومستقر ومفتوح تماماً ليعمل بدون أي حظر مستقبلي -->
+                        <!-- رابط مباشر ومستقر ومفتوح تماماً ومجرب للـ GIF شلبي وبو بدون أي حظر -->
                         <img src="https://i.postimg.co/N0M7vskx/sulley-boo.gif" alt="شلبي وبو اللطيفة">
                     </div>
                 </div>
             </div>
 
+            <!-- ذكرى أخرى مميزة -->
             <div class="memory-item card-purple">
                 <div class="memory-icon"></div>
                 <div class="memory-card">
@@ -395,13 +437,13 @@
 
             if (input === CORRECT_PASSWORD) {
                 lockScreen.style.opacity = '0';
-                lockScreen.style.transform = 'scale(1.05)';
+                lockScreen.style.transform = 'scale(1.03)';
                 
                 setTimeout(() => {
                     lockScreen.remove();
                     mainContent.style.opacity = '1';
                     setInterval(updateCounter, 1000);
-                    setInterval(createNeonHeart, 250);
+                    setInterval(createRomanceElement, 260);
                 }, 600);
             } else {
                 errorMsg.style.display = 'block';
@@ -415,6 +457,7 @@
             }
         });
 
+        // تاريخ البداية الفعلي
         const startDate = new Date(2025, 1, 14, 0, 0, 0); 
 
         function updateCounter() {
@@ -434,23 +477,23 @@
         updateCounter();
 
         const container = document.getElementById('hearts-container');
-        const colorHearts = ['❤️', '💖', '✨', '💜', '🌟', '💕', '🌸', '💎'];
+        const romanceIcons = ['❤️', '💖', '✨', '💜', '💕', '🌸', '🌟', '💎'];
         
-        function createNeonHeart() {
-            if (container.children.length > 50) return; 
+        function createRomanceElement() {
+            if (container.children.length > 45) return; 
 
-            const heart = document.createElement('div');
-            heart.innerText = colorHearts[Math.floor(Math.random() * colorHearts.length)];
-            heart.style.position = 'absolute';
-            heart.style.left = Math.random() * 95 + 'vw';
-            heart.style.fontSize = Math.random() * 14 + 12 + 'px';
-            heart.style.filter = 'drop-shadow(0 0 5px rgba(0, 180, 216, 0.5))';
-            heart.style.animation = `floatNeonHeart ${Math.random() * 4 + 4}s linear forwards`;
+            const item = document.createElement('div');
+            item.innerText = romanceIcons[Math.floor(Math.random() * romanceIcons.length)];
+            item.style.position = 'absolute';
+            item.style.left = Math.random() * 95 + 'vw';
+            item.style.fontSize = Math.random() * 15 + 12 + 'px';
+            item.style.filter = 'drop-shadow(0 0 5px rgba(255, 77, 109, 0.4))';
+            item.style.animation = `floatRomance ${Math.random() * 4 + 4}s linear forwards`;
             
-            container.appendChild(heart);
+            container.appendChild(item);
             
             setTimeout(() => {
-                heart.remove();
+                item.remove();
             }, 8000);
         }
     </script>
