@@ -41,7 +41,7 @@
             pointer-events: none;
         }
 
-        /* شاشة القفل بالخلفية الفخمة */
+        /* شاشة القفل */
         #lock-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -55,6 +55,7 @@
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
+        /* كارت إدخال الباسورد الرئيسي */
         .login-card {
             background: rgba(14, 5, 28, 0.45);
             backdrop-filter: blur(25px);
@@ -66,10 +67,9 @@
             max-width: 400px;
             text-align: center;
             box-shadow: 0 40px 100px rgba(0,0,0,0.9), 0 0 40px rgba(161, 44, 255, 0.2);
-            position: relative;
+            transition: all 0.4s ease;
         }
 
-        /* أنيميشن الاهتزاز عند كتابة الباسورد غلط */
         .shake-effect {
             animation: shakeCard 0.4s ease-in-out;
         }
@@ -125,7 +125,7 @@
             box-shadow: 0 0 25px rgba(255, 42, 95, 0.4);
         }
 
-        .login-card button {
+        .login-card button, .hint-popup button {
             width: 100%;
             padding: 18px;
             margin-top: 20px;
@@ -140,31 +140,55 @@
             transition: all 0.3s ease;
         }
 
-        .login-card button:hover {
+        .login-card button:hover, .hint-popup button:hover {
             transform: translateY(-2px);
             box-shadow: 0 15px 35px rgba(255, 42, 95, 0.5);
         }
 
-        /* صندوق التلميحات والملاحظات الذكي */
-        .error-hint {
-            color: #fff;
-            font-size: 0.9rem;
-            margin-top: 20px;
-            padding: 12px;
-            background: rgba(255, 42, 95, 0.15);
-            border: 1px solid rgba(255, 42, 95, 0.3);
-            border-radius: 15px;
-            display: none;
-            font-weight: 500;
-            line-height: 1.6;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-            box-shadow: inset 0 0 10px rgba(255, 42, 95, 0.2);
-            animation: fadeInHint 0.3s ease-out;
+        /* نافذة الملاحظات المنبثقة الجديدة في منتصف الشاشة */
+        .hint-popup {
+            position: absolute;
+            background: rgba(20, 6, 36, 0.6);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 2px solid var(--neon-pink);
+            padding: 40px 25px;
+            border-radius: 30px;
+            width: 88%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 30px rgba(255, 42, 95, 0.3);
+            display: none; /* مخفية افتراضياً */
+            z-index: 10000;
+            animation: scaleUpEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
-        @keyframes fadeInHint {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes scaleUpEntrance {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .hint-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: pulseGlow 1.5s infinite ease-in-out;
+        }
+
+        .hint-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #ff8da1;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .hint-text {
+            color: #ffffff;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
         }
 
         /* الواجهة الرئيسية */
@@ -175,77 +199,24 @@
             transition: opacity 1.2s ease;
         }
 
-        header {
-            text-align: center;
-            padding: 70px 20px 30px;
-        }
-
-        .floating-heart {
-            font-size: 2.5rem;
-            animation: pulseGlow 1.5s infinite ease-in-out;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
+        header { text-align: center; padding: 70px 20px 30px; }
+        .floating-heart { font-size: 2.5rem; animation: pulseGlow 1.5s infinite ease-in-out; display: inline-block; margin-bottom: 15px; }
         header h1 {
-            font-size: clamp(1.8rem, 7vw, 2.8rem);
-            font-weight: 900;
+            font-size: clamp(1.8rem, 7vw, 2.8rem); font-weight: 900;
             background: linear-gradient(135deg, #ffffff 40%, #ff8da1 75%, #dfb3ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; text-shadow: 0 2px 20px rgba(0,0,0,0.5);
         }
-
-        header p {
-            color: #f1f1f6;
-            font-size: clamp(0.95rem, 3.5vw, 1.15rem);
-            line-height: 1.8;
-            max-width: 550px;
-            margin: 0 auto;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-        }
+        header p { color: #f1f1f6; font-size: clamp(0.95rem, 3.5vw, 1.15rem); line-height: 1.8; max-width: 550px; margin: 0 auto; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
 
         .glass-panel {
-            background: var(--panel-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid var(--panel-border);
-            border-radius: 30px;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.15);
+            background: var(--panel-bg); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--panel-border); border-radius: 30px; box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.15);
         }
 
-        .countdown-wrapper {
-            max-width: 480px;
-            margin: 15px auto 50px;
-            padding: 30px 22px;
-            width: 90%;
-            text-align: center;
-        }
-
-        .countdown-title {
-            font-size: 1rem;
-            color: #ffffff;
-            margin-bottom: 25px;
-            font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-        }
-
-        .grid-timer {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-        }
-
-        .time-node {
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 18px 2px;
-            border-radius: 22px;
-            position: relative;
-            overflow: hidden;
-        }
-
+        .countdown-wrapper { max-width: 480px; margin: 15px auto 50px; padding: 30px 22px; width: 90%; text-align: center; }
+        .countdown-title { font-size: 1rem; color: #ffffff; margin-bottom: 25px; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+        .grid-timer { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .time-node { background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.08); padding: 18px 2px; border-radius: 22px; position: relative; overflow: hidden; }
         .time-node::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; }
         .node-d::before { background: var(--neon-pink); box-shadow: 0 2px 10px var(--neon-pink); }
         .node-h::before { background: var(--neon-purple); box-shadow: 0 2px 10px var(--neon-purple); }
@@ -255,18 +226,10 @@
         .time-number { font-size: clamp(1.3rem, 5.5vw, 1.9rem); font-weight: 900; color: #fff; display: block; }
         .time-label { font-size: 0.8rem; color: #d1d1e0; margin-top: 6px; display: block; }
 
-        /* خط الزمن القصصي */
         .timeline-box { max-width: 560px; margin: 0 auto; padding: 0 25px; position: relative; }
-        .timeline-axis {
-            position: absolute; top: 10px; bottom: 0; right: 35px; width: 2px;
-            background: linear-gradient(to bottom, var(--neon-pink) 0%, var(--neon-purple) 60%, transparent 100%);
-        }
-
+        .timeline-axis { position: absolute; top: 10px; bottom: 0; right: 35px; width: 2px; background: linear-gradient(to bottom, var(--neon-pink) 0%, var(--neon-purple) 60%, transparent 100%); }
         .story-card { position: relative; margin-bottom: 50px; }
-        .story-pointer {
-            position: absolute; right: 26px; top: 26px; width: 20px; height: 20px;
-            background: #090314; border-radius: 50%; z-index: 3;
-        }
+        .story-pointer { position: absolute; right: 26px; top: 26px; width: 20px; height: 20px; background: #090314; border-radius: 50%; z-index: 3; }
         .card-pink .story-pointer { border: 3px solid var(--neon-pink); box-shadow: 0 0 15px var(--neon-pink); }
         .card-purple .story-pointer { border: 3px solid var(--neon-purple); box-shadow: 0 0 15px var(--neon-purple); }
 
@@ -296,8 +259,10 @@
 </head>
 <body>
 
-    <!-- شاشة الحماية بالخلفية الفخمة ونظام الملاحظات التفاعلي الممتع -->
+    <!-- شاشة الحماية والتحكم بالنوافذ التفاعلية -->
     <div id="lock-screen">
+        
+        <!-- 1. كارت إدخال الباسورد الرئيسي -->
         <div class="login-card" id="card-container">
             <div class="lock-icon">🔒</div>
             <h2>عالمنا السرّي الخاص</h2>
@@ -306,12 +271,19 @@
                 <input type="password" id="password-input" placeholder="اكتبِ كلمة السر هنا.." autocomplete="off">
             </div>
             <button onclick="verifyKey()">دخول إلى قلبكِ ✨</button>
-            <!-- مساحة عرض الملاحظات المتغيرة -->
-            <div id="error-hint" class="error-hint"></div>
         </div>
+
+        <!-- 2. نافذة الملاحظات المنبثقة المضافة في منتصف الشاشة تماماً -->
+        <div class="hint-popup" id="hint-container">
+            <div class="hint-icon">💡</div>
+            <div class="hint-title">تلميح من حبيبكِ مخصص لكِ</div>
+            <div class="hint-text" id="hint-content-text">هنا يظهر نص الملاحظة..</div>
+            <button onclick="closeHintAndRetry()">موافق، جربي مجدداً 💖</button>
+        </div>
+
     </div>
 
-    <!-- الواجهة الرئيسية -->
+    <!-- الواجهة الرئيسية للموقع -->
     <div id="main-content">
         <div id="ambient-particles"></div>
 
@@ -360,9 +332,9 @@
 
     <script>
         const ACCESS_KEY = "RahmA2000";
-        let wrongAttempts = 0; // عداد المحاولات الخاطئة
+        let wrongAttempts = 0;
 
-        // مصفوفة الملاحظات التلميحية اللطيفة المخصصة خطوة بخطوة
+        // مصفوفة التلميحات الرومانسية المتغيرة
         const hints = [
             "اممم.. بداية متعثرة! ركزي يا عمري، الباسورد هو اسمك الغالي مع سنة مميزة 😉💕",
             "لسه غلط! غاششّك المحاولة دي: أول حرف كابيتال R وباقي الاسم سمول.. هانت 🌸",
@@ -374,8 +346,10 @@
             const secretInput = document.getElementById('password-input').value;
             const gateway = document.getElementById('lock-screen');
             const coreApp = document.getElementById('main-content');
-            const alertMsg = document.getElementById('error-hint');
+            
             const cardContainer = document.getElementById('card-container');
+            const hintContainer = document.getElementById('hint-container');
+            const hintTextElement = document.getElementById('hint-content-text');
 
             if (secretInput === ACCESS_KEY) {
                 gateway.style.opacity = '0';
@@ -388,20 +362,34 @@
                     setInterval(spawnRomanceParticle, 220);
                 }, 600);
             } else {
-                // تفعيل أنيميشن الاهتزاز عند الخطأ
+                // تفعيل أنيميشن الاهتزاز للكارت الرئيسي
                 cardContainer.classList.remove('shake-effect');
-                void cardContainer.offsetWidth; // إعادة تهيئة الأنيميشن في المتصفح
+                void cardContainer.offsetWidth; 
                 cardContainer.classList.add('shake-effect');
 
-                // اختيار الملاحظة المناسبة بناءً على عدد مرات الخطأ
+                // اختيار نص التلميح
                 let hintText = wrongAttempts >= hints.length ? hints[hints.length - 1] : hints[wrongAttempts];
                 
-                alertMsg.innerText = hintText;
-                alertMsg.style.display = 'block';
-                
-                wrongAttempts++; // زيادة العداد للمحاولة القادمة
-                document.getElementById('password-input').value = ""; // تفريغ الخانة لجلب محاولة جديدة
+                // إخفاء كارت الباسورد مؤقتاً وإظهار نافذة التلميح الكبيرة في منتصف الشاشة
+                setTimeout(() => {
+                    cardContainer.style.display = 'none';
+                    hintTextElement.innerText = hintText;
+                    hintContainer.style.display = 'block';
+                }, 400);
+
+                wrongAttempts++;
             }
+        }
+
+        // دالة إغلاق التلميح والعودة لكتابة الباسورد مجدداً عند الضغط على زر OK
+        function closeHintAndRetry() {
+            document.getElementById('hint-container').style.display = 'none';
+            const cardContainer = document.getElementById('card-container');
+            cardContainer.style.display = 'block';
+            
+            const inputField = document.getElementById('password-input');
+            inputField.value = ""; // تفريغ الخانة
+            inputField.focus(); // تفعيل مؤشر الكتابة تلقائياً للتسهيل عليها
         }
 
         document.getElementById('password-input').addEventListener('keypress', function(e) {
