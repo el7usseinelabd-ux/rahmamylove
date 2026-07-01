@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>إلى من ملكت قلبي وعمري كله ❤️</title>
-    <!-- خط تاجويل الفاخر بأوزان مختلفة -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #060212;
-            --glass-bg: rgba(18, 10, 36, 0.45);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --clr-pink: #ff4d6d;
-            --clr-magenta: #ff758f;
-            --clr-purple: #9d4edd;
-            --glow-shadow: 0 0 20px rgba(255, 77, 109, 0.2);
+            --bg-gradient: linear-gradient(135deg, #0f051d 0%, #05010a 100%);
+            --panel-bg: rgba(255, 255, 255, 0.03);
+            --panel-border: rgba(255, 255, 255, 0.07);
+            --neon-pink: #ff2a5f;
+            --neon-purple: #a12cff;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3cb;
         }
 
         * {
@@ -26,399 +25,415 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            /* خلفية ليلية رومانسية عميقة ومستقرة جداً لقمر ينعكس على بحر هادئ */
-            background-image: 
-                linear-gradient(to bottom, rgba(6, 2, 18, 0.5) 0%, rgba(6, 2, 18, 0.85) 100%),
-                url('https://images.unsplash.com/photo-1505506838355-8b9592236ee5?auto=format&fit=crop&w=1400&q=85');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #ffffff;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
             overflow-x: hidden;
+            min-height: 100vh;
             padding-bottom: 60px;
+            position: relative;
         }
 
-        #hearts-container {
+        /* خلفية السديم والنجوم المتحركة بدون صور خارجية */
+        body::before {
+            content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 42, 95, 0.12) 0%, transparent 40%),
+                        radial-gradient(circle at 70% 80%, rgba(161, 44, 255, 0.15) 0%, transparent 50%);
+            animation: nebulaRotate 30s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes nebulaRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #ambient-particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
             pointer-events: none;
         }
 
-        /* شاشة القفل بأسلوب زجاجي فخم */
+        /* شاشة القفل الأسطورية */
         #lock-screen {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(to bottom, rgba(6, 2, 18, 0.7) 0%, rgba(6, 2, 18, 0.9) 100%),
-                url('https://images.unsplash.com/photo-1505506838355-8b9592236ee5?auto=format&fit=crop&w=800&q=80');
-            background-size: cover;
-            background-position: center;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #16092c 0%, #040108 100%);
             z-index: 9999;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .login-box {
-            background: rgba(12, 5, 28, 0.75);
+        .login-card {
+            background: rgba(15, 7, 28, 0.65);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            padding: 45px 30px;
-            border-radius: 32px;
-            width: 90%;
-            max-width: 390px;
+            border: 1px solid var(--panel-border);
+            padding: 50px 30px;
+            border-radius: 35px;
+            width: 88%;
+            max-width: 400px;
             text-align: center;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 50px rgba(255, 77, 109, 0.15);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 40px rgba(255, 42, 95, 0.1);
         }
 
-        .login-box .icon {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+        .lock-icon {
+            font-size: 3.8rem;
+            margin-bottom: 25px;
             display: inline-block;
-            filter: drop-shadow(0 0 15px var(--clr-pink));
-            animation: pulseHeart 2s infinite ease-in-out;
+            animation: pulseGlow 2s infinite ease-in-out;
         }
 
-        .login-box h2 {
-            font-size: 1.45rem;
-            margin-bottom: 12px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 40%, var(--clr-magenta) 100%);
+        .login-card h2 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff 30%, #ff758f 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .login-box p {
-            color: #cbd5e1;
+        .login-card p {
+            color: var(--text-secondary);
             font-size: 0.92rem;
-            margin-bottom: 30px;
             line-height: 1.7;
+            margin-bottom: 35px;
         }
 
-        .login-box input {
+        .input-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .login-card input {
             width: 100%;
-            padding: 16px 20px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 18px;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
             color: #fff;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             text-align: center;
             outline: none;
-            transition: all 0.3s ease;
+            transition: all 0.4s;
         }
 
-        .login-box input:focus {
-            border-color: var(--clr-pink);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 20px rgba(255, 77, 109, 0.3);
+        .login-card input:focus {
+            border-color: var(--neon-pink);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 25px rgba(255, 42, 95, 0.25);
         }
 
-        .login-box button {
+        .login-card button {
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--clr-purple) 0%, var(--clr-pink) 100%);
+            padding: 18px;
+            background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-pink) 100%);
             border: none;
-            border-radius: 18px;
+            border-radius: 20px;
             color: white;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 18px;
-            box-shadow: 0 8px 25px rgba(255, 77, 109, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 42, 95, 0.3);
             transition: all 0.3s ease;
         }
 
-        .login-box button:active {
-            transform: scale(0.98);
+        .login-card button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255, 42, 95, 0.4);
         }
 
-        .error-msg {
-            color: var(--clr-pink);
+        .error-hint {
+            color: var(--neon-pink);
             font-size: 0.88rem;
             margin-top: 15px;
             display: none;
-            font-weight: 600;
+            font-weight: 700;
         }
 
+        /* المحتوى الرئيسي */
         #main-content {
             opacity: 0;
             position: relative;
             z-index: 2;
-            transition: opacity 1s ease;
+            transition: opacity 1.2s ease;
         }
 
         header {
             text-align: center;
-            padding: 55px 20px 25px;
+            padding: 70px 20px 30px;
         }
 
-        header .main-heart {
-            font-size: 2.2rem;
-            color: var(--clr-pink);
-            margin-bottom: 10px;
+        .floating-heart {
+            font-size: 2.5rem;
+            animation: pulseGlow 1.5s infinite ease-in-out;
             display: inline-block;
-            filter: drop-shadow(0 0 10px var(--clr-pink));
-            animation: pulseHeart 1.8s infinite ease-in-out;
+            margin-bottom: 15px;
         }
 
         header h1 {
-            font-size: clamp(1.7rem, 6.5vw, 2.6rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 30%, var(--clr-magenta) 75%, #b76edd 100%);
+            font-size: clamp(1.8rem, 7vw, 2.8rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 20%, #ff758f 70%, #d68cff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
+            margin-bottom: 15px;
         }
 
         header p {
-            color: #94a3b8;
-            font-size: clamp(0.88rem, 3.2vw, 1.05rem);
-            line-height: 1.7;
-            max-width: 500px;
+            color: var(--text-secondary);
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+            line-height: 1.8;
+            max-width: 550px;
             margin: 0 auto;
         }
 
-        /* حاوية العداد الزجاجية الأنيقة جداً */
-        .countdown-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            max-width: 460px;
-            margin: 10px auto 45px;
-            padding: 24px 20px;
-            border-radius: 28px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45), inset 0 0 15px rgba(255,255,255,0.02);
+        /* حاوية العداد الفاخرة جداً */
+        .glass-panel {
+            background: var(--panel-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--panel-border);
+            border-radius: 30px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .countdown-wrapper {
+            max-width: 480px;
+            margin: 15px auto 50px;
+            padding: 30px 22px;
             width: 90%;
             text-align: center;
         }
 
         .countdown-title {
-            font-size: 0.95rem;
+            font-size: 0.98rem;
             color: #f1f5f9;
-            margin-bottom: 20px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
-        .counter-grid {
+        .grid-timer {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 12px;
         }
 
-        /* كروت العداد الفاخرة بالتدرج الرومانسى المتناسق */
-        .counter-box {
-            padding: 16px 2px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: transform 0.3s ease;
+        .time-node {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 18px 2px;
+            border-radius: 22px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        .box-days { background: linear-gradient(135deg, rgba(255, 77, 109, 0.35), rgba(169, 5, 41, 0.45)); border-color: rgba(255, 77, 109, 0.3); }
-        .box-hours { background: linear-gradient(135deg, rgba(157, 78, 221, 0.35), rgba(90, 24, 154, 0.45)); border-color: rgba(157, 78, 221, 0.3); }
-        .box-minutes { background: linear-gradient(135deg, rgba(0, 180, 216, 0.35), rgba(0, 119, 182, 0.45)); border-color: rgba(0, 180, 216, 0.3); }
-        .box-seconds { background: linear-gradient(135deg, rgba(255, 117, 143, 0.4), rgba(201, 24, 74, 0.4)); border-color: rgba(255, 117, 143, 0.3); }
+        .time-node::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+        }
+        .node-d::before { background: var(--neon-pink); box-shadow: 0 2px 10px var(--neon-pink); }
+        .node-h::before { background: var(--neon-purple); box-shadow: 0 2px 10px var(--neon-purple); }
+        .node-m::before { background: #00f5ff; box-shadow: 0 2px 10px #00f5ff; }
+        .node-s::before { background: #ffcf00; box-shadow: 0 2px 10px #ffcf00; }
 
-        .counter-number {
-            font-size: clamp(1.2rem, 5vw, 1.7rem);
-            font-weight: 800;
-            color: #ffffff;
+        .time-number {
+            font-size: clamp(1.3rem, 5.5vw, 1.9rem);
+            font-weight: 900;
+            color: #fff;
             display: block;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
-        .counter-label {
-            font-size: 0.78rem;
-            color: #e2e8f0;
-            margin-top: 5px;
+        .time-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 6px;
             display: block;
             font-weight: 500;
         }
 
-        .timeline-container {
-            max-width: 540px;
+        /* خط الزمن القصصي */
+        .timeline-box {
+            max-width: 560px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 25px;
             position: relative;
         }
 
-        /* خط التايم لاين المضيء بالكامل */
-        .timeline-line {
+        .timeline-axis {
             position: absolute;
-            top: 5px;
-            bottom: 0;
-            right: 30px;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--clr-pink) 0%, var(--clr-purple) 50%, transparent 100%);
-            box-shadow: 0 0 8px var(--clr-pink);
+            top: 10px; bottom: 0; right: 35px; width: 2px;
+            background: linear-gradient(to bottom, var(--neon-pink) 0%, var(--neon-purple) 60%, transparent 100%);
+            box-shadow: 0 0 10px rgba(255, 42, 95, 0.3);
         }
 
-        .memory-item {
+        .story-card {
             position: relative;
-            margin-bottom: 45px;
+            margin-bottom: 50px;
         }
 
-        .memory-icon {
+        .story-pointer {
             position: absolute;
-            right: 22px;
-            top: 24px;
-            width: 18px;
-            height: 18px;
-            background: var(--bg-dark);
+            right: 26px; top: 26px; width: 20px; height: 20px;
+            background: #05010a;
             border-radius: 50%;
             z-index: 3;
-            transition: all 0.3s ease;
         }
 
-        /* بطاقات الذكريات بأسلوب زجاجي شفاف فاخر */
-        .memory-card {
-            background: rgba(15, 8, 32, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            margin-right: 50px;
-            padding: 26px;
-            border-radius: 26px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+        .card-pink .story-pointer { border: 3px solid var(--neon-pink); box-shadow: 0 0 15px var(--neon-pink); }
+        .card-purple .story-pointer { border: 3px solid var(--neon-purple); box-shadow: 0 0 15px var(--neon-purple); }
+
+        .story-content {
+            margin-right: 55px;
+            padding: 28px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .card-pink .memory-icon { border: 3px solid var(--clr-pink); box-shadow: 0 0 12px var(--clr-pink); }
-        .card-pink .memory-date { color: var(--clr-magenta); }
-        .card-pink .memory-card:hover { border-color: rgba(255, 77, 109, 0.4); }
+        .story-content:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 42, 95, 0.3);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+        }
 
-        .card-purple .memory-icon { border: 3px solid var(--clr-purple); box-shadow: 0 0 12px var(--clr-purple); }
-        .card-purple .memory-date { color: #b76edd; }
-        .card-purple .memory-card:hover { border-color: rgba(157, 78, 221, 0.4); }
-
-        .memory-date {
-            font-size: 0.82rem;
-            font-weight: 700;
+        .story-date {
+            font-size: 0.85rem;
+            font-weight: 900;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             letter-spacing: 0.5px;
         }
+        .card-pink .story-date { color: var(--neon-pink); }
+        .card-purple .story-date { color: #cc8eff; }
 
-        .memory-card h3 {
-            font-size: 1.2rem;
+        .story-content h3 {
+            font-size: 1.22rem;
+            font-weight: 800;
             margin-bottom: 12px;
-            color: #ffffff;
-            font-weight: 700;
+            color: #fff;
         }
 
-        .memory-card p {
-            font-size: 0.92rem;
+        .story-content p {
+            font-size: 0.95rem;
             color: #e2e8f0;
-            line-height: 1.7;
+            line-height: 1.75;
         }
 
-        /* إطار الصورة المطور ومضمون العرض بالكامل */
-        .photo-frame {
+        /* إطار الصورة المطور والآمن ضد الكسر */
+        .media-frame {
             width: 100%;
-            margin-top: 20px;
-            background: #000000;
+            margin-top: 22px;
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            background: radial-gradient(circle, #22123b 0%, #0c0517 100%);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .photo-frame img {
+        /* تصميم بديل ذكي في الخلفية يظهر فوراً في حال تأخر تحميل الصورة أو حظرها */
+        .media-frame::before {
+            content: '❤️';
+            position: absolute;
+            font-size: 3rem;
+            animation: pulseGlow 1.5s infinite;
+            z-index: 1;
+        }
+
+        .media-frame img {
             width: 100%;
             height: auto;
             display: block;
             object-fit: cover;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
-        /* حركات الأنميشن الرومانسية */
-        @keyframes pulseHeart {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px var(--clr-pink)); }
-            50% { transform: scale(1.06); filter: drop-shadow(0 0 18px var(--clr-pink)); }
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px var(--neon-pink)); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 20px var(--neon-pink)); }
         }
 
-        @keyframes floatRomance {
+        @keyframes floatEffect {
             0% { transform: translateY(105vh) scale(0) rotate(0deg); opacity: 0; }
-            15% { opacity: 0.65; }
-            85% { opacity: 0.65; }
-            100% { transform: translateY(-10vh) scale(1.2) rotate(120deg); opacity: 0; }
+            20% { opacity: 0.7; }
+            80% { opacity: 0.7; }
+            100% { transform: translateY(-10vh) scale(1.3) rotate(100deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- شاشة قفل زجاجية سرية لـ رحمة -->
+    <!-- شاشة الحماية الخاصة بـ رحمة -->
     <div id="lock-screen">
-        <div class="login-box">
-            <div class="icon">💖</div>
-            <h2>عالمنا السري الخاص</h2>
+        <div class="login-card">
+            <div class="lock-icon">🔒</div>
+            <h2>عالمنا السرّي الخاص</h2>
             <p>تفاصيلنا الجميلة لا يراها سواكِ.. اكتبِ اسمكِ الغالي ككلمة سر لتفتحي قلب الحكاية</p>
-            <div class="input-group">
+            <div class="input-wrapper">
                 <input type="password" id="password-input" placeholder="اكتبِ كلمة السر هنا.." autocomplete="off">
             </div>
-            <button onclick="checkPassword()">دخول إلى قلبكِ ✨</button>
-            <div id="error-message" class="error-msg">كلمة السر خاطئة.. حاولِ مجدداً بنبض حبنا! 💕</div>
+            <button onclick="verifyKey()">دخول إلى قلبكِ ✨</button>
+            <div id="error-hint" class="error-hint">كلمة السر خاطئة.. حاولِ مجدداً بنبض حبنا! 💕</div>
         </div>
     </div>
 
-    <!-- المحتوى الرئيسي الفاخر -->
+    <!-- الواجهة الرئيسية الفخمة -->
     <div id="main-content">
-        <div id="hearts-container"></div>
+        <div id="ambient-particles"></div>
 
         <header>
-            <div class="main-heart">❤️</div>
+            <div class="floating-heart">❤️</div>
             <h1>إلى من جعلت حياتي أجمل</h1>
             <p>كل ثانية معكِ هي عمر كامل من الأمان، وهنا نكتب أولى سطور قصتنا الأبدية</p>
         </header>
 
-        <!-- عداد الوقت الزجاجي الفخم -->
-        <div class="countdown-container">
+        <!-- لوحة العداد المضيئة للوقت الموشوم بالقلب -->
+        <div class="glass-panel countdown-wrapper">
             <div class="countdown-title">الوقت الذي عشته غارقاً في حبكِ وعشقكِ 🥰</div>
-            <div class="counter-grid">
-                <div class="counter-box box-days"><span class="counter-number" id="days">00</span><span class="counter-label">يوم</span></div>
-                <div class="counter-box box-hours"><span class="counter-number" id="hours">00</span><span class="counter-label">ساعة</span></div>
-                <div class="counter-box box-minutes"><span class="counter-number" id="minutes">00</span><span class="counter-label">دقيقة</span></div>
-                <div class="counter-box box-seconds"><span class="counter-number" id="seconds">00</span><span class="counter-label">ثانية</span></div>
+            <div class="grid-timer">
+                <div class="time-node node-d"><span class="time-number" id="days">00</span><span class="time-label">يوم</span></div>
+                <div class="time-node node-h"><span class="time-number" id="hours">00</span><span class="time-label">ساعة</span></div>
+                <div class="time-node node-m"><span class="time-number" id="minutes">00</span><span class="time-label">دقيقة</span></div>
+                <div class="time-node node-s"><span class="time-number" id="seconds">00</span><span class="time-label">ثانية</span></div>
             </div>
         </div>
 
-        <!-- التايم لاين والقصص -->
-        <div class="timeline-container">
-            <div class="timeline-line"></div>
+        <!-- التايم لاين الزجاجي النيون -->
+        <div class="timeline-box">
+            <div class="timeline-axis"></div>
 
-            <!-- ذكرى اللقاء الأول -->
-            <div class="memory-item card-pink">
-                <div class="memory-icon"></div>
-                <div class="memory-card">
-                    <span class="memory-date">١٤ فبراير ٢٠٢٥</span>
+            <!-- ذكرى 14 فبراير المحدثة بالكامل -->
+            <div class="story-card card-pink">
+                <div class="story-pointer"></div>
+                <div class="glass-panel story-content">
+                    <span class="story-date">١٤ فبراير ٢٠٢٥</span>
                     <h3>أول لقاء جمعنا.. اللحظة التي ولدتُ فيها مجدداً ✨</h3>
                     <p>هنا كانت نبضة قلبي الأولى الحقيقية، ضحكتكِ العفوية غيرت مجرى حياتي بالكامل، وتمنيت حينها لو أن عقارب الساعة تتوقف للأبد.</p>
-                    <div class="photo-frame">
-                        <!-- رابط مباشر ومستقر ومفتوح تماماً ومجرب للـ GIF شلبي وبو بدون أي حظر -->
-                        <img src="https://i.postimg.co/N0M7vskx/sulley-boo.gif" alt="شلبي وبو اللطيفة">
+                    <div class="media-frame">
+                        <!-- رابط مباشر جديد تماماً من سيرفر مستقر لـ شلبي وبو، مع كود تشغيل تلقائي ذكي -->
+                        <img src="https://media.giphy.com/media/14vxcRZTTVKkg8/giphy.gif" alt="شلبي وبو اللطيفة" onload="this.style.opacity=1;">
                     </div>
                 </div>
             </div>
 
-            <!-- ذكرى أخرى مميزة -->
-            <div class="memory-item card-purple">
-                <div class="memory-icon"></div>
-                <div class="memory-card">
-                    <span class="memory-date">١ مايو ٢٠٢٥</span>
+            <!-- ذكرى 1 مايو -->
+            <div class="story-card card-purple">
+                <div class="story-pointer"></div>
+                <div class="glass-panel story-content">
+                    <span class="story-date">١ مايو ٢٠٢٥</span>
                     <h3>يوم مميز لا يغيب عن خاطري وعيني 🥰</h3>
                     <p>كل تفصيل صغير في هذا اليوم محفور في وجداني، كلامكِ العذب ونظرات عيناكِ التي أرى فيها مستقبلي وجنتي كلها.</p>
                 </div>
@@ -427,74 +442,68 @@
     </div>
 
     <script>
-        const CORRECT_PASSWORD = "Rahma";
+        const ACCESS_KEY = "Rahma";
 
-        function checkPassword() {
-            const input = document.getElementById('password-input').value;
-            const lockScreen = document.getElementById('lock-screen');
-            const mainContent = document.getElementById('main-content');
-            const errorMsg = document.getElementById('error-message');
+        function verifyKey() {
+            const secretInput = document.getElementById('password-input').value;
+            const gateway = document.getElementById('lock-screen');
+            const coreApp = document.getElementById('main-content');
+            const alertMsg = document.getElementById('error-hint');
 
-            if (input === CORRECT_PASSWORD) {
-                lockScreen.style.opacity = '0';
-                lockScreen.style.transform = 'scale(1.03)';
+            if (secretInput === ACCESS_KEY) {
+                gateway.style.opacity = '0';
+                gateway.style.transform = 'scale(1.08)';
                 
                 setTimeout(() => {
-                    lockScreen.remove();
-                    mainContent.style.opacity = '1';
-                    setInterval(updateCounter, 1000);
-                    setInterval(createRomanceElement, 260);
-                }, 600);
+                    gateway.remove();
+                    coreApp.style.opacity = '1';
+                    setInterval(tickClock, 1000);
+                    setInterval(spawnRomanceParticle, 200);
+                }, 800);
             } else {
-                errorMsg.style.display = 'block';
+                alertMsg.style.display = 'block';
                 document.getElementById('password-input').value = "";
             }
         }
 
         document.getElementById('password-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-            }
+            if (e.key === 'Enter') verifyKey();
         });
 
-        // تاريخ البداية الفعلي
-        const startDate = new Date(2025, 1, 14, 0, 0, 0); 
+        // تاريخ البداية
+        const timelineStart = new Date(2025, 1, 14, 0, 0, 0); 
 
-        function updateCounter() {
-            const now = new Date();
-            const difference = now - startDate;
+        function tickClock() {
+            const delta = new Date() - timelineStart;
 
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((difference / 1000 / 60) % 60);
-            const seconds = Math.floor((difference / 1000) % 60);
+            const days = Math.floor(delta / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((delta / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((delta / 1000 / 60) % 60);
+            const seconds = Math.floor((delta / 1000) % 60);
 
             document.getElementById('days').innerText = String(days).padStart(2, '0');
             document.getElementById('hours').innerText = String(hours).padStart(2, '0');
             document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
             document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
         }
-        updateCounter();
+        tickClock();
 
-        const container = document.getElementById('hearts-container');
-        const romanceIcons = ['❤️', '💖', '✨', '💜', '💕', '🌸', '🌟', '💎'];
+        const canvas = document.getElementById('ambient-particles');
+        const glyphs = ['❤️', '💖', '✨', '💜', '💕', '🌸', '🌟'];
         
-        function createRomanceElement() {
-            if (container.children.length > 45) return; 
+        function spawnRomanceParticle() {
+            if (canvas.children.length > 40) return; 
 
-            const item = document.createElement('div');
-            item.innerText = romanceIcons[Math.floor(Math.random() * romanceIcons.length)];
-            item.style.position = 'absolute';
-            item.style.left = Math.random() * 95 + 'vw';
-            item.style.fontSize = Math.random() * 15 + 12 + 'px';
-            item.style.filter = 'drop-shadow(0 0 5px rgba(255, 77, 109, 0.4))';
-            item.style.animation = `floatRomance ${Math.random() * 4 + 4}s linear forwards`;
+            const glyph = document.createElement('div');
+            glyph.innerText = glyphs[Math.floor(Math.random() * glyphs.length)];
+            glyph.style.position = 'absolute';
+            glyph.style.left = Math.random() * 95 + 'vw';
+            glyph.style.fontSize = Math.random() * 16 + 12 + 'px';
+            glyph.style.filter = 'drop-shadow(0 0 6px rgba(255,42,95,0.4))';
+            glyph.style.animation = `floatEffect ${Math.random() * 4 + 4}s linear forwards`;
             
-            container.appendChild(item);
-            
-            setTimeout(() => {
-                item.remove();
-            }, 8000);
+            canvas.appendChild(glyph);
+            setTimeout(() => { glyph.remove(); }, 7500);
         }
     </script>
 </body>
