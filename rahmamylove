@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>موقعنا الخاص</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background-color: #fff0f5; padding-top: 100px; }
+        h1 { color: #ff1493; }
+    </style>
+</head>
+<body>
+    <h1>أهلاً بكِ في موقعنا الخاص المرفوع على جيت هاب! ❤️</h1>
+</body>
+</html>
