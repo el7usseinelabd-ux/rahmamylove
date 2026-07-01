@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #0f051d 0%, #05010a 100%);
+            --bg-gradient: linear-gradient(135deg, #0e051c 0%, #040109 100%);
             --panel-bg: rgba(255, 255, 255, 0.03);
             --panel-border: rgba(255, 255, 255, 0.07);
             --neon-pink: #ff2a5f;
@@ -33,7 +33,6 @@
             position: relative;
         }
 
-        /* خلفية السديم والنجوم المتحركة بدون صور خارجية */
         body::before {
             content: '';
             position: fixed;
@@ -57,7 +56,7 @@
             pointer-events: none;
         }
 
-        /* شاشة القفل الأسطورية */
+        /* شاشة القفل */
         #lock-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -105,11 +104,6 @@
             margin-bottom: 35px;
         }
 
-        .input-wrapper {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
         .login-card input {
             width: 100%;
             padding: 18px;
@@ -143,11 +137,6 @@
             transition: all 0.3s ease;
         }
 
-        .login-card button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(255, 42, 95, 0.4);
-        }
-
         .error-hint {
             color: var(--neon-pink);
             font-size: 0.88rem;
@@ -156,7 +145,7 @@
             font-weight: 700;
         }
 
-        /* المحتوى الرئيسي */
+        /* الواجهة الرئيسية */
         #main-content {
             opacity: 0;
             position: relative;
@@ -193,7 +182,6 @@
             margin: 0 auto;
         }
 
-        /* حاوية العداد الفاخرة جداً */
         .glass-panel {
             background: var(--panel-bg);
             backdrop-filter: blur(25px);
@@ -216,7 +204,6 @@
             color: #f1f5f9;
             margin-bottom: 25px;
             font-weight: 700;
-            letter-spacing: 0.5px;
         }
 
         .grid-timer {
@@ -232,7 +219,6 @@
             border-radius: 22px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .time-node::before {
@@ -248,7 +234,6 @@
             font-weight: 900;
             color: #fff;
             display: block;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
         .time-label {
@@ -256,7 +241,6 @@
             color: var(--text-secondary);
             margin-top: 6px;
             display: block;
-            font-weight: 500;
         }
 
         /* خط الزمن القصصي */
@@ -271,7 +255,6 @@
             position: absolute;
             top: 10px; bottom: 0; right: 35px; width: 2px;
             background: linear-gradient(to bottom, var(--neon-pink) 0%, var(--neon-purple) 60%, transparent 100%);
-            box-shadow: 0 0 10px rgba(255, 42, 95, 0.3);
         }
 
         .story-card {
@@ -293,13 +276,7 @@
         .story-content {
             margin-right: 55px;
             padding: 28px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .story-content:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 42, 95, 0.3);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            transition: all 0.4s ease;
         }
 
         .story-date {
@@ -307,7 +284,6 @@
             font-weight: 900;
             display: block;
             margin-bottom: 10px;
-            letter-spacing: 0.5px;
         }
         .card-pink .story-date { color: var(--neon-pink); }
         .card-purple .story-date { color: #cc8eff; }
@@ -325,58 +301,62 @@
             line-height: 1.75;
         }
 
-        /* إطار الصورة المطور والآمن ضد الكسر */
+        /* إطار الصورة المطور والمحمي بالكامل ضد الانهيار والانكماش */
         .media-frame {
             width: 100%;
             margin-top: 22px;
             border-radius: 20px;
-            overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            background: radial-gradient(circle, #22123b 0%, #0c0517 100%);
+            background: rgba(10, 4, 22, 0.6);
             box-shadow: 0 15px 35px rgba(0,0,0,0.7);
             position: relative;
-            min-height: 200px;
+            
+            /* تثبيت الأبعاد المربّعة الأنيقة لمنع الانكماش نهائياً */
+            aspect-ratio: 16 / 11; 
+            width: 100%;
+            
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
-        /* تصميم بديل ذكي في الخلفية يظهر فوراً في حال تأخر تحميل الصورة أو حظرها */
+        /* قلب نيون دائم ينبض في خلفية الإطار، يظهر فوراً لو اختفت الصورة */
         .media-frame::before {
-            content: '❤️';
+            content: '💖';
             position: absolute;
-            font-size: 3rem;
-            animation: pulseGlow 1.5s infinite;
+            font-size: 2.8rem;
+            animation: pulseGlow 1.3s infinite ease-in-out;
             z-index: 1;
         }
 
         .media-frame img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
             object-fit: cover;
-            position: relative;
+            position: absolute;
+            top: 0; left: 0;
             z-index: 2;
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.4s ease-in-out;
         }
 
         @keyframes pulseGlow {
             0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px var(--neon-pink)); }
-            50% { transform: scale(1.08); filter: drop-shadow(0 0 20px var(--neon-pink)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 20px var(--neon-pink)); }
         }
 
         @keyframes floatEffect {
             0% { transform: translateY(105vh) scale(0) rotate(0deg); opacity: 0; }
             20% { opacity: 0.7; }
-            80% { opacity: 0.7; }
+            85% { opacity: 0.7; }
             100% { transform: translateY(-10vh) scale(1.3) rotate(100deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- شاشة الحماية الخاصة بـ رحمة -->
+    <!-- شاشة الحماية -->
     <div id="lock-screen">
         <div class="login-card">
             <div class="lock-icon">🔒</div>
@@ -390,7 +370,7 @@
         </div>
     </div>
 
-    <!-- الواجهة الرئيسية الفخمة -->
+    <!-- الواجهة الرئيسية -->
     <div id="main-content">
         <div id="ambient-particles"></div>
 
@@ -400,7 +380,6 @@
             <p>كل ثانية معكِ هي عمر كامل من الأمان، وهنا نكتب أولى سطور قصتنا الأبدية</p>
         </header>
 
-        <!-- لوحة العداد المضيئة للوقت الموشوم بالقلب -->
         <div class="glass-panel countdown-wrapper">
             <div class="countdown-title">الوقت الذي عشته غارقاً في حبكِ وعشقكِ 🥰</div>
             <div class="grid-timer">
@@ -411,11 +390,9 @@
             </div>
         </div>
 
-        <!-- التايم لاين الزجاجي النيون -->
         <div class="timeline-box">
             <div class="timeline-axis"></div>
 
-            <!-- ذكرى 14 فبراير المحدثة بالكامل -->
             <div class="story-card card-pink">
                 <div class="story-pointer"></div>
                 <div class="glass-panel story-content">
@@ -423,13 +400,12 @@
                     <h3>أول لقاء جمعنا.. اللحظة التي ولدتُ فيها مجدداً ✨</h3>
                     <p>هنا كانت نبضة قلبي الأولى الحقيقية، ضحكتكِ العفوية غيرت مجرى حياتي بالكامل، وتمنيت حينها لو أن عقارب الساعة تتوقف للأبد.</p>
                     <div class="media-frame">
-                        <!-- رابط مباشر جديد تماماً من سيرفر مستقر لـ شلبي وبو، مع كود تشغيل تلقائي ذكي -->
-                        <img src="https://media.giphy.com/media/14vxcRZTTVKkg8/giphy.gif" alt="شلبي وبو اللطيفة" onload="this.style.opacity=1;">
+                        <!-- تم التحديث لرابط تجاوز الحظر المباشر من سيرفرات جيفي الموثوقة مع كود أمان ذكي عند الخطأ -->
+                        <img src="https://i.giphy.com/14vxcRZTTVKkg8.gif" alt="شلبي وبو اللطيفة" onload="this.style.opacity=1;" onerror="this.style.display='none';">
                     </div>
                 </div>
             </div>
 
-            <!-- ذكرى 1 مايو -->
             <div class="story-card card-purple">
                 <div class="story-pointer"></div>
                 <div class="glass-panel story-content">
@@ -452,14 +428,14 @@
 
             if (secretInput === ACCESS_KEY) {
                 gateway.style.opacity = '0';
-                gateway.style.transform = 'scale(1.08)';
+                gateway.style.transform = 'scale(1.05)';
                 
                 setTimeout(() => {
                     gateway.remove();
                     coreApp.style.opacity = '1';
                     setInterval(tickClock, 1000);
-                    setInterval(spawnRomanceParticle, 200);
-                }, 800);
+                    setInterval(spawnRomanceParticle, 220);
+                }, 600);
             } else {
                 alertMsg.style.display = 'block';
                 document.getElementById('password-input').value = "";
@@ -470,12 +446,10 @@
             if (e.key === 'Enter') verifyKey();
         });
 
-        // تاريخ البداية
         const timelineStart = new Date(2025, 1, 14, 0, 0, 0); 
 
         function tickClock() {
             const delta = new Date() - timelineStart;
-
             const days = Math.floor(delta / (1000 * 60 * 60 * 24));
             const hours = Math.floor((delta / (1000 * 60 * 60)) % 24);
             const minutes = Math.floor((delta / 1000 / 60) % 60);
@@ -492,13 +466,13 @@
         const glyphs = ['❤️', '💖', '✨', '💜', '💕', '🌸', '🌟'];
         
         function spawnRomanceParticle() {
-            if (canvas.children.length > 40) return; 
+            if (canvas.children.length > 35) return; 
 
             const glyph = document.createElement('div');
             glyph.innerText = glyphs[Math.floor(Math.random() * glyphs.length)];
             glyph.style.position = 'absolute';
             glyph.style.left = Math.random() * 95 + 'vw';
-            glyph.style.fontSize = Math.random() * 16 + 12 + 'px';
+            glyph.style.fontSize = Math.random() * 15 + 12 + 'px';
             glyph.style.filter = 'drop-shadow(0 0 6px rgba(255,42,95,0.4))';
             glyph.style.animation = `floatEffect ${Math.random() * 4 + 4}s linear forwards`;
             
