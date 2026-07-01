@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* طبقة تظليل سينمائية تدمج ألوان الغروب الدافئة مع ألوان التصميم الفاخرة */
             --bg-overlay: linear-gradient(to bottom, rgba(15, 5, 26, 0.5) 0%, rgba(5, 1, 10, 0.85) 100%);
             --panel-bg: rgba(255, 255, 255, 0.04);
             --panel-border: rgba(255, 255, 255, 0.09);
@@ -26,7 +25,6 @@
         }
 
         body {
-            /* تعيين خلفية الغروب الرومانسية الثابتة بجودة عالية */
             background: var(--bg-overlay), url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-primary);
@@ -43,11 +41,14 @@
             pointer-events: none;
         }
 
-        /* شاشة القفل */
+        /* شاشة القفل الجديدة والمطورة بخلفية فائقة الجمال والرومانسية */
         #lock-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, #1a0b36 0%, #05010c 100%);
+            /* خلفية ساحرة لنجوم وشهب ليلية تحتضن فكرة العالم السري */
+            background: linear-gradient(to bottom, rgba(10, 4, 28, 0.45) 0%, rgba(3, 1, 8, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1532767154073-95722470a105?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+            background-size: cover;
             z-index: 9999;
             display: flex;
             align-items: center;
@@ -55,17 +56,24 @@
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
+        /* كارت شفاف فاخر يندمج مع خلفية النجوم المذهلة */
         .login-card {
-            background: rgba(15, 7, 28, 0.7);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid var(--panel-border);
+            background: rgba(14, 5, 28, 0.45);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 42, 95, 0.25);
             padding: 50px 30px;
             border-radius: 35px;
             width: 88%;
             max-width: 400px;
             text-align: center;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.85), 0 0 40px rgba(255, 42, 95, 0.15);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.9), 0 0 40px rgba(161, 44, 255, 0.2);
+            animation: cardGlowEntrance 1.5s ease-out forwards;
+        }
+
+        @keyframes cardGlowEntrance {
+            0% { transform: translateY(20px); opacity: 0; box-shadow: 0 0 0 rgba(0,0,0,0); }
+            100% { transform: translateY(0); opacity: 1; }
         }
 
         .lock-icon {
@@ -73,29 +81,32 @@
             margin-bottom: 25px;
             display: inline-block;
             animation: pulseGlow 2s infinite ease-in-out;
+            filter: drop-shadow(0 0 15px var(--neon-pink));
         }
 
         .login-card h2 {
             font-size: 1.5rem;
             font-weight: 900;
             margin-bottom: 15px;
-            background: linear-gradient(135deg, #fff 30%, #ff758f 100%);
+            background: linear-gradient(135deg, #fff 30%, #ff8da1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .login-card p {
-            color: #c7c7db;
+            color: #e2e2f0;
             font-size: 0.92rem;
             line-height: 1.7;
             margin-bottom: 35px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.6);
         }
 
         .login-card input {
             width: 100%;
             padding: 18px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 20px;
             color: #fff;
             font-size: 1.2rem;
@@ -106,8 +117,8 @@
 
         .login-card input:focus {
             border-color: var(--neon-pink);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 25px rgba(255, 42, 95, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 25px rgba(255, 42, 95, 0.4);
         }
 
         .login-card button {
@@ -120,8 +131,13 @@
             font-size: 1.1rem;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 42, 95, 0.35);
+            box-shadow: 0 10px 30px rgba(255, 42, 95, 0.4);
             transition: all 0.3s ease;
+        }
+
+        .login-card button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255, 42, 95, 0.5);
         }
 
         .error-hint {
@@ -130,6 +146,7 @@
             margin-top: 15px;
             display: none;
             font-weight: 700;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
         /* الواجهة الرئيسية */
@@ -266,7 +283,7 @@
         .story-content {
             margin-right: 55px;
             padding: 28px;
-            background: rgba(15, 6, 28, 0.45); /* تعميق الكروت قليلاً لثبات القراءة فوق صورة الخلفية */
+            background: rgba(15, 6, 28, 0.55);
             transition: all 0.4s ease;
         }
 
@@ -285,39 +302,21 @@
             text-shadow: 0 1px 4px rgba(0,0,0,0.4);
         }
 
-        /* إطار الصورة المطور والمحمي */
-        .media-frame {
-            width: 100%;
-            margin-top: 22px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(5, 2, 10, 0.8);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
-            position: relative;
-            aspect-ratio: 16 / 11; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+        .romantic-quote {
+            margin-top: 20px;
+            padding: 15px 18px;
+            background: linear-gradient(135deg, rgba(255, 42, 95, 0.07) 0%, rgba(161, 44, 255, 0.07) 100%);
+            border-right: 3px solid var(--neon-pink);
+            border-left: 3px solid var(--neon-purple);
+            border-radius: 12px;
+            font-style: italic;
         }
 
-        .media-frame::before {
-            content: '💖';
-            position: absolute;
-            font-size: 2.8rem;
-            animation: pulseGlow 1.3s infinite ease-in-out;
-            z-index: 1;
-        }
-
-        .media-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0; left: 0;
-            z-index: 2;
-            opacity: 0;
-            transition: opacity 0.4s ease-in-out;
+        .romantic-quote p {
+            font-size: 0.93rem !important;
+            color: #ffd0dc !important;
+            line-height: 1.7 !important;
+            text-align: center;
         }
 
         @keyframes pulseGlow {
@@ -335,7 +334,7 @@
 </head>
 <body>
 
-    <!-- شاشة الحماية بالباسورد الجديد -->
+    <!-- شاشة الحماية بالخلفية الفخمة الجديدة وباسورد RahmA2000 -->
     <div id="lock-screen">
         <div class="login-card">
             <div class="lock-icon">🔒</div>
@@ -349,7 +348,7 @@
         </div>
     </div>
 
-    <!-- الواجهة الرئيسية المحسنة بالكامل فوق خلفية الغروب -->
+    <!-- الواجهة الرئيسية بخلفية الغروب الرومانسية -->
     <div id="main-content">
         <div id="ambient-particles"></div>
 
@@ -372,31 +371,33 @@
         <div class="timeline-box">
             <div class="timeline-axis"></div>
 
-            <!-- الكرت الأول (بدون تاريخ) -->
             <div class="story-card card-pink">
                 <div class="story-pointer"></div>
                 <div class="glass-panel story-content">
                     <h3>أول لقاء جمعنا.. اللحظة التي ولدتُ فيها مجدداً ✨</h3>
                     <p>هنا كانت نبضة قلبي الأولى الحقيقية، ضحكتكِ العفوية غيرت مجرى حياتي بالكامل، وتمنيت حينها لو أن عقارب الساعة تتوقف للأبد.</p>
-                    <div class="media-frame">
-                        <img src="https://i.giphy.com/14vxcRZTTVKkg8.gif" alt="شلبي وبو اللطيفة" onload="this.style.opacity=1;" onerror="this.style.display='none';">
+                    
+                    <div class="romantic-quote">
+                        <p>«وإن سألوني يوماً أين تبتدئ حدود عُمرك.. سأشير إلى عينيكِ قائلاً: هنا موطني، وهنا اختصرتُ كل سنين حياتي المنتظرة في لقمة فرح واحدة جمعتني بكِ.»</p>
                     </div>
                 </div>
             </div>
 
-            <!-- الكرت الثاني (بدون تاريخ) -->
             <div class="story-card card-purple">
                 <div class="story-pointer"></div>
                 <div class="glass-panel story-content">
                     <h3>يوم مميز لا يغيب عن خاطري وعيني 🥰</h3>
                     <p>كل تفصيل صغير في هذا اليوم محفور في وجداني، كلامكِ العذب ونظرات عيناكِ التي أرى فيها مستقبلي وجنتي كلها.</p>
+                    
+                    <div class="romantic-quote">
+                        <p>«أنتِ لستِ مجرد صدفة مرت بعبورٍ عابر، بل أنتِ دُعاءٌ نقي استجاب الله له ليمطر الرضا على قلبي للأبد.»</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // الباسورد الجديد المطلوب تماماً
         const ACCESS_KEY = "RahmA2000";
 
         function verifyKey() {
@@ -425,7 +426,6 @@
             if (e.key === 'Enter') verifyKey();
         });
 
-        // تاريخ البداية المحسوب للعداد (14 فبراير 2025)
         const timelineStart = new Date(2025, 1, 14, 0, 0, 0); 
 
         function tickClock() {
