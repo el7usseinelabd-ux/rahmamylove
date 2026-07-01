@@ -46,7 +46,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* جعلها تظهر فوق الخلفية وتحت الكروت */
+            z-index: 1;
             pointer-events: none;
         }
 
@@ -155,7 +155,7 @@
         #main-content {
             opacity: 0;
             position: relative;
-            z-index: 2; /* لتكون فوق القلوب الطائرة */
+            z-index: 2;
             transition: opacity 0.8s ease;
         }
 
@@ -216,7 +216,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        /* التدرجات اللونية للمربعات */
         .box-days { background: linear-gradient(135deg, #ff4d6d, #c9184a); }
         .box-hours { background: linear-gradient(135deg, #9d4edd, #5a189a); }
         .box-minutes { background: linear-gradient(135deg, #00b4d8, #0077b6); }
@@ -269,7 +268,6 @@
             z-index: 3;
         }
 
-        /* كروت زجاجية شفافة ملونة وفخمة */
         .card-pink {
             background: rgba(35, 15, 25, 0.75);
             border: 1px solid rgba(255, 77, 109, 0.25);
@@ -307,24 +305,22 @@
             line-height: 1.6;
         }
 
+        /* إطار الصورة المطور ليعرض صورتك اللطيفة */
         .photo-frame {
             width: 100%;
-            height: 210px;
             margin-top: 15px;
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 14px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #e2e8f0;
-            border: 1px dashed rgba(255, 255, 255, 0.2);
-            font-size: 0.85rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
-        .photo-frame span {
-            font-size: 1.8rem;
-            margin-bottom: 4px;
+        .photo-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
         }
 
         @keyframes pulse {
@@ -332,7 +328,6 @@
             50% { transform: scale(1.05); opacity: 0.9; }
         }
 
-        /* حركية الطيران لأعلى السريعة والمكثفة */
         @keyframes floatNeonHeart {
             0% { transform: translateY(105vh) scale(0) rotate(0deg); opacity: 0; }
             15% { opacity: 0.7; }
@@ -343,7 +338,6 @@
 </head>
 <body>
 
-    <!-- 1. شاشة القفل بكلمة سر Rahma والخلفية الليلية -->
     <div id="lock-screen">
         <div class="login-box">
             <div class="icon">💖</div>
@@ -357,7 +351,6 @@
         </div>
     </div>
 
-    <!-- 2. المحتوى الرئيسي فوق خلفية القمر والماء -->
     <div id="main-content">
         <div id="hearts-container"></div>
 
@@ -366,7 +359,6 @@
             <p>كل ثانية معكِ هي عمر كامل من الأمان، وهنا نكتب أولى سطور قصتنا الأبدية</p>
         </header>
 
-        <!-- العداد الملون الفاخر -->
         <div class="countdown-container">
             <div class="countdown-title">الوقت الذي عشته غارقاً في حبكِ وعشقكِ 🥰</div>
             <div class="counter-grid">
@@ -380,7 +372,6 @@
         <div class="timeline-container">
             <div class="timeline-line"></div>
 
-            <!-- ذكرى 1 طابع وردي متوهج -->
             <div class="memory-item card-pink">
                 <div class="memory-icon memory-icon-dot"></div>
                 <div class="memory-card">
@@ -388,28 +379,23 @@
                     <h3>أول لقاء جمعنا.. اللحظة التي ولدتُ فيها مجدداً ✨</h3>
                     <p>هنا كانت نبضة قلبي الأولى الحقيقية، ضحكتكِ العفوية غيرت مجرى حياتي بالكامل، وتمنيت حينها لو أن عقارب الساعة تتوقف للأبد.</p>
                     <div class="photo-frame">
-                        <span>📸</span> هنا سنضع صورتنا المفضلة لتضيء المكان
+                        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3NpaXZyMW5mcm80Nmx5b2Q5MnRwZ3psM2YzdGdyOWV2NmY1bzhkdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/14rqB4gjTK3ygU/giphy.gif" alt="شلبي وبو اللطيفة">
                     </div>
                 </div>
             </div>
 
-            <!-- ذكرى 2 طابع بنفسجي ساحر -->
             <div class="memory-item card-purple">
                 <div class="memory-icon memory-icon-dot"></div>
                 <div class="memory-card">
                     <span class="memory-date">١ مايو ٢٠٢٥</span>
                     <h3>يوم مميز لا يغيب عن خاطري وعيني 🥰</h3>
                     <p>كل تفصيل صغير في هذا اليوم محفور في وجداني، كلامكِ العذب ونظرات عيناكِ التي أرى فيها مستقبلي وجنتي كلها.</p>
-                    <div class="photo-frame">
-                        <span>📸</span> هنا سنضع لقطة من ذكريات هذا اليوم السعيد
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // 🔒 كلمة السر الحالية المطلوبة
         const CORRECT_PASSWORD = "Rahma";
 
         function checkPassword() {
@@ -421,13 +407,11 @@
             if (input === CORRECT_PASSWORD) {
                 lockScreen.style.opacity = '0';
                 lockScreen.style.transform = 'scale(1.1)';
-                mainContent.style.display = 'block';
                 
                 setTimeout(() => {
                     lockScreen.remove();
                     mainContent.style.opacity = '1';
                     setInterval(updateCounter, 1000);
-                    // تكثيف تساقط القلوب وصعودها (كل 300 مللي ثانية تظهر عناصر جديدة)
                     setInterval(createNeonHeart, 300);
                 }, 600);
             } else {
@@ -442,7 +426,6 @@
             }
         });
 
-        // كود تشغيل العداد التلقائي
         const startDate = new Date(2025, 1, 14, 0, 0, 0); 
 
         function updateCounter() {
@@ -461,12 +444,10 @@
         }
         updateCounter();
 
-        // زيادة كثافة وتنوع العناصر الطائرة لفوق (قلوب، نجوم، لمعان ملون)
         const container = document.getElementById('hearts-container');
         const colorHearts = ['❤️', '💖', '💙', '💜', '✨', '🌸', '🌟', '💕'];
         
         function createNeonHeart() {
-            // رفع الحد الأقصى المسموح به على الشاشة معاً لتبدو ممتلئة ومبهجة دون التأثير على الأداء
             if (container.children.length > 40) return; 
 
             const heart = document.createElement('div');
@@ -474,7 +455,6 @@
             heart.style.position = 'absolute';
             heart.style.left = Math.random() * 95 + 'vw';
             heart.style.fontSize = Math.random() * 15 + 12 + 'px';
-            // إضافة توهج نيون خلف كل قلب طائر ليتماشى مع ضوء القمر
             heart.style.filter = 'drop-shadow(0 0 6px rgba(255,77,109,0.6))';
             heart.style.animation = `floatNeonHeart ${Math.random() * 3 + 3}s linear forwards`;
             
