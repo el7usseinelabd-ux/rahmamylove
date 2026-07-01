@@ -2,33 +2,146 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حكايتنا الجميلة ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>متحف ذكرياتنا الفاخر ✨</title>
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #ffb3c6 100%);
-            --card-bg: rgba(255, 255, 255, 0.75);
-            --primary: #ff4d6d;
-            --text-main: #2b2d42;
-            --text-muted: #595959;
+            --bg-dark: #0d0b14;
+            --card-glass: rgba(23, 18, 36, 0.7);
+            --border-glass: rgba(255, 77, 109, 0.15);
+            --accent-glow: #ff4d6d;
+            --accent-purple: #9d4edd;
+            --text-neon: #fff;
+            --text-muted: #a0aec0;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-gradient);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(157, 78, 221, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 77, 109, 0.15) 0%, transparent 40%);
             background-attachment: fixed;
-            color: var(--text-main);
+            color: var(--text-neon);
             overflow-x: hidden;
-            padding-bottom: 50px;
+            padding-bottom: 60px;
         }
 
-        /* حاوية الخلفية المتساقطة للقلوب */
+        /* حاوية شاشة القفل الاحترافية */
+        #lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at 50% 50%, rgba(255, 77, 109, 0.2) 0%, transparent 60%);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .login-box {
+            background: var(--card-glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--border-glass);
+            padding: 35px 25px;
+            border-radius: 28px;
+            width: 88%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(255, 77, 109, 0.1);
+        }
+
+        .login-box .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px var(--accent-glow));
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .login-box h2 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .login-box p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+        }
+
+        /* حقول الإدخال والأزرار للجيل الجديد */
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 14px 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            color: #fff;
+            font-size: 1rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+        }
+
+        .login-box input:focus {
+            border-color: var(--accent-glow);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 15px rgba(255, 77, 109, 0.2);
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-glow));
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .login-box button:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+
+        .error-msg {
+            color: #ff3333;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            display: none;
+            font-weight: 500;
+        }
+
+        /* إخفاء المحتوى الرئيسي حتى يتم فتح القفل */
+        #main-content {
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        /* باقي ستايلات الموقع الاحترافية */
         #hearts-container {
             position: fixed;
             top: 0;
@@ -39,67 +152,83 @@
             pointer-events: none;
         }
 
-        /* الهيدر العصري */
         header {
             text-align: center;
-            padding: 60px 20px 30px;
+            padding: 50px 20px 20px;
         }
 
         header h1 {
-            font-size: 3rem;
-            color: #ff2a55;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.05);
-            margin-bottom: 15px;
+            font-size: clamp(2rem, 7vw, 3.2rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 30%, #ff4d6d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
         }
 
-        /* العداد الرقمي الاحترافي */
+        header p {
+            color: var(--text-muted);
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+        }
+
         .countdown-container {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            max-width: 650px;
+            background: var(--card-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            max-width: 480px;
             margin: 20px auto 40px;
             padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.15);
-            text-align: center;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            width: 90%;
         }
 
         .countdown-title {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
             margin-bottom: 15px;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .counter-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 12px;
         }
 
         .counter-box {
-            background: linear-gradient(135deg, #ff758f, #ff4d6d);
-            color: white;
-            padding: 15px 5px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 12px 2px;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .counter-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-glow));
         }
 
         .counter-number {
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: block;
+            font-size: clamp(1.3rem, 4.5vw, 1.8rem);
+            font-weight: 700;
         }
 
         .counter-label {
-            font-size: 0.8rem;
-            opacity: 0.9;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            display: block;
         }
 
-        /* حاوية الذكريات */
         .timeline-container {
-            max-width: 800px;
+            max-width: 550px;
             margin: 0 auto;
             padding: 0 20px;
             position: relative;
@@ -109,166 +238,187 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            right: 40px;
-            width: 4px;
-            background: linear-gradient(to bottom, #ff758f, #ff4d6d);
-            border-radius: 2px;
+            right: 30px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-purple), var(--accent-glow), transparent);
         }
 
         .memory-item {
             position: relative;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
         .memory-icon {
             position: absolute;
-            right: 28px;
-            top: 20px;
-            width: 28px;
-            height: 28px;
-            background: white;
-            border: 2px solid var(--primary);
+            right: 21px;
+            top: 22px;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent-glow);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             z-index: 2;
-            font-size: 14px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        /* كروت الزجاج الاحترافية */
         .memory-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            margin-right: 65px;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-        }
-
-        .memory-card:hover {
-            transform: scale(1.02) translateY(-5px);
-            box-shadow: 0 20px 40px rgba(255, 77, 109, 0.15);
-        }
-
-        .memory-date {
-            color: var(--primary);
-            font-size: 0.9rem;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 8px;
+            background: var(--card-glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--border-glass);
+            margin-right: 50px;
+            padding: 22px;
+            border-radius: 22px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .memory-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: #1a1a1a;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
 
         .memory-card p {
-            font-size: 1rem;
-            color: #4a4a4a;
-            line-height: 1.7;
+            font-size: 0.95rem;
+            color: #cbd5e0;
+            line-height: 1.6;
         }
 
-        /* مساحة عصرية ومجهزة للصور القادمة */
         .photo-frame {
             width: 100%;
-            height: 280px;
+            height: 220px;
             margin-top: 15px;
-            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 14px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #888;
-            border: 2px dashed rgba(255, 77, 109, 0.3);
-            font-size: 0.95rem;
-            font-style: italic;
+            color: var(--text-muted);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
         }
 
         .photo-frame span {
-            font-size: 2rem;
-            margin-bottom: 5px;
+            font-size: 1.8rem;
+            margin-bottom: 6px;
         }
 
-        /* تأثيرات حركة قلوب الخلفية */
-        @keyframes floatHeart {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
-            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.08); opacity: 0.8; }
         }
 
-        @media (max-width: 600px) {
-            header h1 { font-size: 2.2rem; }
-            .counter-number { font-size: 1.4rem; }
-            .memory-card { margin-right: 50px; padding: 20px; }
-            .timeline-line { right: 25px; }
-            .memory-icon { right: 13px; }
+        @keyframes floatNeonHeart {
+            0% { transform: translateY(105vh) scale(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(-10vh) scale(1) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- حاوية القلوب الطائرة -->
-    <div id="hearts-container"></div>
-
-    <header>
-        <h1>متحف ذكرياتنا الجميلة ❤️</h1>
-    </header>
-
-    <!-- العداد الديناميكي -->
-    <div class="countdown-container">
-        <div class="countdown-title">الوقت الذي عشناه معاً بحب وسعادة 🥰</div>
-        <div class="counter-grid">
-            <div class="counter-box"><span class="counter-number" id="days">00</span><span class="counter-label">يوم</span></div>
-            <div class="counter-box"><span class="counter-number" id="hours">00</span><span class="counter-label">ساعة</span></div>
-            <div class="counter-box"><span class="counter-number" id="minutes">00</span><span class="counter-label">دقيقة</span></div>
-            <div class="counter-box"><span class="counter-number" id="seconds">00</span><span class="counter-label">ثانية</span></div>
+    <!-- 1. شاشة القفل الزجاجية الفاخرة -->
+    <div id="lock-screen">
+        <div class="login-box">
+            <div class="icon">🔒</div>
+            <h2>متحف الذكريات الخاص</h2>
+            <p>الرجاء إدخال كلمة السر السرية للمتابعة</p>
+            <div class="input-group">
+                <input type="password" id="password-input" placeholder="••••••••" autocomplete="off">
+            </div>
+            <button onclick="checkPassword()">دخول المعرض ✨</button>
+            <div id="error-message" class="error-msg">كلمة السر خاطئة، حاول مجدداً بنبض قلبك! 💔</div>
         </div>
     </div>
 
-    <!-- خط الذكريات الزمني الاحترافي -->
-    <div class="timeline-container">
-        <div class="timeline-line"></div>
+    <!-- 2. المحتوى الرئيسي (مخفي في البداية) -->
+    <div id="main-content">
+        <div id="hearts-container"></div>
 
-        <!-- ذكرى 1 -->
-        <div class="memory-item">
-            <div class="memory-icon">❤️</div>
-            <div class="memory-card">
-                <span class="memory-date">١٤ فبراير ٢٠٢٥</span>
-                <h3>أول لقاء بيننا.. البداية التي غيّرت كل شيء ✨</h3>
-                <p>هنا كانت نبضة قلبنا الأولى والمكان الذي شهد على ضحكاتنا وعفويتنا وتمنيت وقتها أن يتوقف الزمن عند تلك اللحظة.</p>
-                <div class="photo-frame">
-                    <span>📸</span> جاهزة لاستقبال صورتنا الأولى معاً
-                </div>
+        <header>
+            <h1>متحف ذكرياتنا الفاخر ✨</h1>
+            <p>توثيق حي لأجمل اللحظات والقصص المشتركة</p>
+        </header>
+
+        <div class="countdown-container">
+            <div class="countdown-title">الوقت الذي عِشناه معاً بحب وسعادة 🕒</div>
+            <div class="counter-grid">
+                <div class="counter-box"><span class="counter-number" id="days">00</span><span class="counter-label">يوم</span></div>
+                <div class="counter-box"><span class="counter-number" id="hours">00</span><span class="counter-label">ساعة</span></div>
+                <div class="counter-box"><span class="counter-number" id="minutes">00</span><span class="counter-label">دقيقة</span></div>
+                <div class="counter-box"><span class="counter-number" id="seconds">00</span><span class="counter-label">ثانية</span></div>
             </div>
         </div>
 
-        <!-- ذكرى 2 -->
-        <div class="memory-item">
-            <div class="memory-icon">❤️</div>
-            <div class="memory-card">
-                <span class="memory-date">١ مايو ٢٠٢٥</span>
-                <h3>يوم مميز لا يغيب عن البال 🥰</h3>
-                <p>كل تفصيلة صغيرة في هذا اليوم محفورة في ذاكرتي، حديثكِ المشوق الذي لا يُمل وعيناكِ التي أرى فيها مستقبلي كله.</p>
-                <div class="photo-frame">
-                    <span>📸</span> جاهزة لاستقبال صورة هذا اليوم السعيد
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <div class="memory-item">
+                <div class="memory-icon"></div>
+                <div class="memory-card">
+                    <span style="color: var(--accent-glow); font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 8px;">١٤ فبراير ٢٠٢٥</span>
+                    <h3>أول لقاء بيننا.. البداية التي غيّرت كل شيء ✨</h3>
+                    <p>هنا كانت نبضة قلبنا الأولى والمكان الذي شهد على ضحكاتنا وعفويتنا وتمنيت وقتها أن يتوقف الزمن عند تلك اللحظة.</p>
+                    <div class="photo-frame">
+                        <span>📸</span> إطار مجهز ومضاء لاستقبال الصورة الأولى
+                    </div>
+                </div>
+            </div>
+
+            <div class="memory-item">
+                <div class="memory-icon"></div>
+                <div class="memory-card">
+                    <span style="color: var(--accent-glow); font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 8px;">١ مايو ٢٠٢٥</span>
+                    <h3>يوم مميز لا يغيب عن البال 🥰</h3>
+                    <p>كل تفصيلة صغيرة في هذا اليوم محفورة في ذاكرتي، حديثكِ المشوق الذي لا يُمل وعيناكِ التي أرى فيها مستقبلي كله.</p>
+                    <div class="photo-frame">
+                        <span>📸</span> إطار مجهز ومضاء لاستقبال صورة اليوم السعيد
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <script>
-        // 1. كود تشغيل العداد التلقائي (احسب الوقت من تاريخ معين)
-        // قم بتعديل هذا التاريخ ليطابق تاريخ بداية علاقتكم (السنة، ثم الشهر - 1، ثم اليوم)
-        const startDate = new Date(2025, 1, 14, 0, 0, 0); // مثال: 14 فبراير 2025
+        // 🔒 كلمة السر الافتراضية هي 1234 (يمكنك تغييرها من السطر الأسفل لأي كلمة أو تاريخ)
+        const CORRECT_PASSWORD = "1234";
+
+        function checkPassword() {
+            const input = document.getElementById('password-input').value;
+            const lockScreen = document.getElementById('lock-screen');
+            const mainContent = document.getElementById('main-content');
+            const errorMsg = document.getElementById('error-message');
+
+            if (input === CORRECT_PASSWORD) {
+                // تأثير خروج شاشة القفل ودخول المحتوى بنعومة
+                lockScreen.style.opacity = '0';
+                lockScreen.style.transform = 'scale(1.1)';
+                mainContent.style.display = 'block';
+                
+                setTimeout(() => {
+                    lockScreen.remove();
+                    mainContent.style.opacity = '1';
+                    // بدء تشغيل الأنيميشن والعداد فقط بعد فتح القفل لتوفير الأداء
+                    setInterval(updateCounter, 1000);
+                    setInterval(createNeonHeart, 800);
+                }, 600);
+            } else {
+                errorMsg.style.display = 'block';
+                document.getElementById('password-input').value = "";
+            }
+        }
+
+        // إضافة إمكانية الضغط على زر Enter من لوحة المفاتيح للدخول مباشرة
+        document.getElementById('password-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // كود تشغيل العداد التلقائي
+        const startDate = new Date(2025, 1, 14, 0, 0, 0); 
 
         function updateCounter() {
             const now = new Date();
@@ -284,20 +434,22 @@
             document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
             document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
         }
-        setInterval(updateCounter, 1000);
         updateCounter();
 
-        // 2. كود توليد تأثير تساقط قلوب عشوائية في الخلفية بشكل احترافي وبدون ثقل
+        // قلوب خافتة ومضيئة تليق بالثيم المظلم
         const container = document.getElementById('hearts-container');
-        const heartIcons = ['❤️', '💖', '💕', '💗'];
+        const neonHearts = ['❤️', '✨', '🌸', '💖'];
         
-        function createHeart() {
+        function createNeonHeart() {
+            if (container.children.length > 12) return; 
+
             const heart = document.createElement('div');
-            heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+            heart.innerText = neonHearts[Math.floor(Math.random() * neonHearts.length)];
             heart.style.position = 'absolute';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.fontSize = Math.random() * 15 + 12 + 'px';
-            heart.style.animation = `floatHeart ${Math.random() * 4 + 4}s linear forwards`;
+            heart.style.left = Math.random() * 95 + 'vw';
+            heart.style.fontSize = Math.random() * 10 + 10 + 'px';
+            heart.style.filter = 'drop-shadow(0 0 5px var(--accent-glow))';
+            heart.style.animation = `floatNeonHeart ${Math.random() * 4 + 5}s linear forwards`;
             
             container.appendChild(heart);
             
@@ -305,7 +457,6 @@
                 heart.remove();
             }, 8000);
         }
-        setInterval(createHeart, 400);
     </script>
 </body>
 </html>
