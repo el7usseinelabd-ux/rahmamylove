@@ -42,12 +42,12 @@
             pointer-events: none;
         }
 
-        /* شاشة القفل */
+        /* شاشة القفل الرومانسية المطورة */
         #lock-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(10, 4, 28, 0.45) 0%, rgba(3, 1, 8, 0.85) 100%), 
-                        url('https://images.unsplash.com/photo-1532767154073-95722470a105?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+            background: linear-gradient(to bottom, rgba(20, 4, 25, 0.5) 0%, rgba(8, 2, 12, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
             background-size: cover;
             z-index: 9999;
             display: flex;
@@ -57,10 +57,10 @@
         }
 
         .login-card {
-            background: rgba(14, 5, 28, 0.45);
+            background: rgba(22, 6, 35, 0.45);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 42, 95, 0.25);
+            border: 1px solid rgba(255, 42, 95, 0.3);
             padding: 50px 30px;
             border-radius: 35px;
             width: 88%;
@@ -105,9 +105,9 @@
         }
         .login-card button:hover, .hint-popup button:hover, .action-btn:hover { transform: translateY(-2px); box-shadow: 0 15px 35px rgba(255, 42, 95, 0.5); }
 
-        /* نافذة الملاحظات المنبثقة */
+        /* نافذة الملاحظات المنبثقة المعدلة */
         .hint-popup {
-            position: absolute; background: rgba(20, 6, 36, 0.7); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            position: absolute; background: rgba(20, 6, 36, 0.75); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
             border: 2px solid var(--neon-pink); padding: 40px 25px; border-radius: 30px; width: 88%; max-width: 380px;
             text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 30px rgba(255, 42, 95, 0.3);
             display: none; z-index: 10000; animation: scaleUpEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
@@ -119,14 +119,31 @@
 
         /* الواجهة الرئيسية */
         #main-content { opacity: 0; position: relative; z-index: 2; transition: opacity 1.2s ease; }
-        header { text-align: center; padding: 70px 20px 30px; }
-        .floating-heart { font-size: 2.5rem; animation: pulseGlow 1.5s infinite ease-in-out; display: inline-block; margin-bottom: 15px; }
+        header { text-align: center; padding: 60px 20px 20px; }
+        .floating-heart { font-size: 2.5rem; animation: pulseGlow 1.5s infinite ease-in-out; display: inline-block; margin-bottom: 10px; }
+        
         header h1 {
-            font-size: clamp(1.8rem, 7vw, 2.8rem); font-weight: 900;
+            font-size: clamp(1.6rem, 6vw, 2.4rem); font-weight: 900;
             background: linear-gradient(135deg, #ffffff 40%, #ff8da1 75%, #dfb3ff 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; text-shadow: 0 2px 20px rgba(0,0,0,0.5);
         }
-        header p { color: #f1f1f6; font-size: clamp(0.95rem, 3.5vw, 1.15rem); line-height: 1.8; max-width: 550px; margin: 0 auto; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
+
+        /* تصميم اسم رحمة الاحترافي والمزخرف */
+        .name-highlight-box {
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+            margin: 15px auto 25px; padding: 10px 35px; background: rgba(255, 42, 95, 0.08);
+            border: 1px dashed rgba(255, 42, 95, 0.4); border-radius: 50px;
+            box-shadow: inset 0 0 15px rgba(255, 42, 95, 0.1);
+        }
+        .name-ar {
+            font-size: clamp(2.2rem, 9vw, 3.5rem); font-weight: 900; font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #ffffff 20%, #ff527b 60%, #ff2a5f 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(255, 42, 95, 0.6)); letter-spacing: 1px;
+        }
+        .heart-icon-wing { font-size: 1.8rem; animation: pulseGlow 1.2s infinite ease-in-out; }
+
+        header p { color: #f1f1f6; font-size: clamp(0.92rem, 3.5vw, 1.1rem); line-height: 1.8; max-width: 550px; margin: 0 auto; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
 
         /* حاويات التصميم الموحدة */
         .glass-panel {
@@ -146,7 +163,7 @@
         .time-number { font-size: clamp(1.3rem, 5.5vw, 1.9rem); font-weight: 900; color: #fff; display: block; }
         .time-label { font-size: 0.8rem; color: #d1d1e0; margin-top: 6px; display: block; }
 
-        /* عناوين الأقسام الكبيرة الجديدة */
+        /* عناوين الأقسام الكبيرة */
         .section-title {
             text-align: center; font-size: 1.6rem; font-weight: 800; margin: 60px 0 25px;
             background: linear-gradient(135deg, #fff 30%, var(--neon-pink) 100%);
@@ -170,7 +187,17 @@
         }
         .romantic-quote p { font-size: 0.93rem !important; color: #ffd0dc !important; text-align: center; }
 
-        /* [قسم جديد 1] لوحة وعودنا الأبدية */
+        /* لوحة تفاصيلكِ الصغيرة (جديد ورومانسي جداً) */
+        .details-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;
+            max-width: 500px; margin: 0 auto; width: 90%;
+        }
+        .detail-card { padding: 20px 15px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255, 255, 255, 0.01); }
+        .detail-card span { font-size: 1.8rem; display: block; margin-bottom: 10px; }
+        .detail-card h5 { font-size: 1rem; color: #ff8da1; margin-bottom: 5px; }
+        .detail-card p { font-size: 0.85rem; color: #e2e2ee; line-height: 1.5; }
+
+        /* لوحة وعودنا الأبدية */
         .promises-grid {
             display: grid; grid-template-columns: 1fr; gap: 20px;
             max-width: 500px; margin: 0 auto; width: 90%;
@@ -184,7 +211,7 @@
         .promise-card h4 { font-size: 1.1rem; color: #fff; margin-bottom: 8px; font-weight: 700; }
         .promise-card p { font-size: 0.9rem; color: #d1d1e0; line-height: 1.6; }
 
-        /* [قسم جديد 2] أزرار تفاعلية: لماذا أنتِ بالذات؟ */
+        /* لماذا أنتِ بالذات؟ */
         .interactive-reasons {
             max-width: 500px; margin: 0 auto; width: 90%; text-align: center;
         }
@@ -204,7 +231,7 @@
         }
         .reason-text { font-size: 1.05rem; color: #ffe5ec; line-height: 1.8; animation: fadeInHint 0.5s ease; }
 
-        /* [قسم جديد 3] صندوق رسالة في زجاجة لتكتب لك رد */
+        /* صندوق رسالة في زجاجة */
         .message-box-container {
             max-width: 500px; margin: 0 auto 40px; width: 90%; padding: 30px 25px; text-align: center;
         }
@@ -235,7 +262,7 @@
         
         <!-- كارت إدخال الباسورد الرئيسي -->
         <div class="login-card" id="card-container">
-            <div class="lock-icon">🔒</div>
+            <div class="lock-icon">💖</div>
             <h2>عالمنا السرّي الخاص</h2>
             <p>تفاصيلنا الجميلة لا يراها سواكِ.. اكتبِ اسمكِ الغالي ككلمة سر لتفتحي قلب الحكاية</p>
             <div class="input-wrapper">
@@ -244,23 +271,31 @@
             <button onclick="verifyKey()">دخول إلى قلبكِ ✨</button>
         </div>
 
-        <!-- نافذة الملاحظات المنبثقة التفاعلية -->
+        <!-- نافذة الملاحظات الرومانسية (تعديل المحاولة الأخيرة) -->
         <div class="hint-popup" id="hint-container">
-            <div class="hint-icon">💡</div>
-            <div class="hint-title">تلميح من حبيبكِ مخصص لكِ</div>
+            <div class="hint-icon">🌸</div>
+            <div class="hint-title">رسالة رقيقة لقلبكِ</div>
             <div class="hint-text" id="hint-content-text">هنا يظهر نص الملاحظة..</div>
-            <button onclick="closeHintAndRetry()">موافق، جربي مجدداً 💖</button>
+            <button onclick="closeHintAndRetry()">حاولي مجدداً يا عمري 💖</button>
         </div>
 
     </div>
 
-    <!-- الواجهة الرئيسية الكبيرة والمطورة للموقع -->
+    <!-- الواجهة الرئيسية الكبيرة للموقع -->
     <div id="main-content">
         <div id="ambient-particles"></div>
 
         <header>
             <div class="floating-heart">❤️</div>
             <h1>إلى من جعلت حياتي أجمل</h1>
+            
+            <!-- إضافة اسم رحمة بتصميم عربي مميز ومحاط بحركات وقلوب رومانسية -->
+            <div class="name-highlight-box">
+                <span class="heart-icon-wing">✨❤️</span>
+                <span class="name-ar">رحمة</span>
+                <span class="heart-icon-wing">❤️✨</span>
+            </div>
+
             <p>كل ثانية معكِ هي عمر كامل من الأمان، وهنا نكتب أولى سطور قصتنا الأبدية</p>
         </header>
 
@@ -272,6 +307,21 @@
                 <div class="time-node node-h"><span class="time-number" id="hours">00</span><span class="time-label">ساعة</span></div>
                 <div class="time-node node-m"><span class="time-number" id="minutes">00</span><span class="time-label">دقيقة</span></div>
                 <div class="time-node node-s"><span class="time-number" id="seconds">00</span><span class="time-label">ثانية</span></div>
+            </div>
+        </div>
+
+        <!-- قسم جديد مضاف: مملكة تفاصيلكِ الصغيرة -->
+        <div class="section-title">✦ مملكة تفاصيلكِ الصغيرة ✦</div>
+        <div class="details-grid">
+            <div class="glass-panel detail-card">
+                <span>✨</span>
+                <h5>ضحكتكِ الغالية</h5>
+                <p>تُعيد ترتيب روحي وتُشعل في قلبي ألف شمعة من الفرح والرضا.</p>
+            </div>
+            <div class="glass-panel detail-card">
+                <span>👁️</span>
+                <h5>عيناكِ وموطني</h5>
+                <p>في نظراتكِ أرى سلامي وأماني ومستقبلي الذي تمنيته طويلاً.</p>
             </div>
         </div>
 
@@ -303,7 +353,7 @@
             </div>
         </div>
 
-        <!-- القسم الثاني الجديد: لوحة الوعود الأبدية -->
+        <!-- القسم الثاني: لوحة الوعود الأبدية -->
         <div class="section-title">✦ وعودي الأبدية لكِ ✦</div>
         <div class="promises-grid">
             <div class="glass-panel promise-card">
@@ -312,7 +362,7 @@
                 <p>أعدكِ أن أكون لكِ جيشاً كاملاً وملجأً دافئاً عندما تضيق بكِ الدنيا، وأن أحمي ضحكتكِ بكل ما أوتيت من قوة.</p>
             </div>
             <div class="glass-panel promise-card" style="border-left-color: var(--neon-pink);">
-                <span class="promise-icon">👁️‍🗨️</span>
+                <span class="promise-icon">👁️‍عون</span>
                 <h4>الاهتمام بالتفاصيل</h4>
                 <p>أعدكِ أن أظل هائماً بتفاصيلكِ الصغيرة، بكلماتكِ العفوية، بنبرة صوتكِ، وأن تظلي دائماً أولويتي الأولى والوحيدة.</p>
             </div>
@@ -323,7 +373,7 @@
             </div>
         </div>
 
-        <!-- القسم الثالث الجديد: تفاعلي (لماذا أنتِ بالذات؟) -->
+        <!-- القسم الثالث: تفاعلي (لماذا أنتِ بالذات؟) -->
         <div class="section-title">✦ لماذا أنتِ بالذات؟ ✦</div>
         <div class="interactive-reasons">
             <p style="font-size: 0.9rem; color: #bfaecf; margin-bottom: 15px;">(اضغطي على الأسرار لتكتشفي الجواب)</p>
@@ -339,7 +389,7 @@
             </div>
         </div>
 
-        <!-- القسم الرابع الجديد: صندوق تفاعلي لتكتب لك رد -->
+        <!-- القسم الرابع: صندوق تفاعلي لتكتب لك رد -->
         <div class="section-title">✦ رسالة في زجاجة ✦</div>
         <div class="glass-panel message-box-container">
             <span style="font-size: 2.2rem; display: block; animation: floatEffect 3s infinite alternate;">✉️</span>
@@ -354,15 +404,14 @@
         const ACCESS_KEY = "RahmA2000";
         let wrongAttempts = 0;
 
-        // مصفوفة التلميحات الرومانسية المتغيرة
+        // مصفوفة الملاحظات الرومانسية - تم تعديل المحاولة الأخيرة بناء على طلبك بدقة
         const hints = [
             "اممم.. بداية متعثرة! ركزي يا عمري، الباسورد هو اسمك الغالي مع سنة مميزة 😉💕",
-            "لسه غلط! غاششّك المحاولة دي: أول حرف كابيتال R وباقي الاسم سمول.. هانت 🌸",
-            "تؤ تؤ.. شكلك نسيتي الأرقام! فكري في سنة حلوة اتولدتي فيها أو سنة مميزة لقلبنا 2000.. جربي تاني يا كسلانة 🥰🌟",
-            "خلاص مش قادر أغشك أكتر من كده! الباسورد يبدأ بـ R وينتهي بـ 2000.. لو لسه مش عارفاها اطلبي المساعدة من حبيبك فوراً 🫣❤️"
+            "خطأ بسيط! سأساعدكِ في هذه المحاولة: أول حرف كابيتال R وباقي الاسم سمول.. هانت 🌸",
+            "تؤ تؤ.. شكلكِ نسيتي الأرقام! فكري في سنة حلوة ولدتِ فيها أو سنة مميزة لقلبنا.. جربي مجدداً يا كسلانة 🥰🌟",
+            "خلاص مش قادر أخفي عنكِ أكثر! الباسورد يبدأ بـ R وينتهي بـ A وسنة ميلادكِ الجميل.. لو لسه مش عارفاها اسأليني فوراً وبدون تردد 🫣❤️"
         ];
 
-        // مصفوفة الأسباب التفاعلية لقسم (لماذا أنتِ)
         const reasonTexts = [
             "لأنكِ الوحيدة التي ملكتِ مفاتيح قلبي، وفي وجودكِ ينتهي العالم ويبدأ سلامي الداخلي وطمأنينتي الغائبة. ❤️",
             "لأن ضحكتكِ تختصر كل أفراح الأرض في عيني، ولأن نقاء روحكِ يجعلني أرى الحياة بلون وردي جميل لم أعهده من قبلكِ. ✨",
@@ -415,24 +464,19 @@
             inputField.focus();
         }
 
-        // دالة تغيير التلميحات والأسرار التفاعلية
         function revealReason(index, button) {
             document.getElementById('reason-box').innerHTML = reasonTexts[index];
-            
-            // تحديث تصميم الأزرار النشطة
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
         }
 
-        // دالة إرسال الرسالة التفاعلية
         function sendLoveMessage() {
             const text = document.getElementById('partner-message').value.trim();
             if(text === "") {
                 alert("اكتبي شيئاً أولاً يا عمري! 🥰");
                 return;
             }
-            // إظهار نافذة منبثقة رومانسية جداً تعبيراً عن التفاعل
             alert("✨ طيران إلى قلبه! ✨\n\nرسالتكِ الجميلة غادرت شاشة هاتفكِ الآن وانتقلت لتستقر في نبضات قلبه مباشرة.. أحبكِ جداً! ❤️");
             document.getElementById('partner-message').value = "";
         }
