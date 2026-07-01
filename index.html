@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>إلى من ملكت قلبي وعمري كله ❤️</title>
-    <!-- استدعاء خط الرقعة الفخم لاسم رحمة وخط التاجوال للموقع -->
     <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* تدرج عميق ممتزج بالكون والنجوم */
             --bg-overlay: linear-gradient(to bottom, rgba(22, 10, 38, 0.5) 0%, rgba(8, 2, 15, 0.9) 100%);
             --panel-bg: rgba(255, 255, 255, 0.04);
             --panel-border: rgba(255, 255, 255, 0.08);
@@ -27,7 +25,6 @@
         }
 
         body {
-            /* تغيير الخلفية إلى سديم كوني رومانسي وساحر جداً */
             background: var(--bg-overlay), url('https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-primary);
@@ -112,7 +109,7 @@
             box-shadow: 0 0 25px rgba(255, 42, 95, 0.25);
         }
 
-        .login-card button, .action-btn {
+        .login-card button {
             width: 100%;
             padding: 18px;
             background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-pink) 100%);
@@ -135,7 +132,7 @@
             font-weight: 700;
         }
 
-        /* الواجهة الرئيسية الكبيرة */
+        /* الواجهة الرئيسية */
         #main-content {
             opacity: 0;
             position: relative;
@@ -159,14 +156,6 @@
             margin-bottom: 5px;
         }
 
-        header h1 {
-            font-size: clamp(1.4rem, 5vw, 2.2rem);
-            font-weight: 400;
-            color: #f3f3f3;
-            margin-bottom: 5px;
-        }
-
-        /* تعديل اسم رحمة ليكون بخط الرقعة الفخم والمذهل */
         .name-ar {
             font-family: 'Aref Ruqaa', serif;
             font-size: clamp(4.5rem, 18vw, 7.5rem);
@@ -190,7 +179,6 @@
             margin: 0 auto;
         }
 
-        /* لوحات التصميم الموحدة الزجاجية */
         .glass-panel {
             background: var(--panel-bg);
             backdrop-filter: blur(30px);
@@ -225,7 +213,6 @@
         .time-number { font-size: clamp(1.3rem, 5.5vw, 1.9rem); font-weight: 900; color: #fff; display: block; }
         .time-label { font-size: 0.8rem; color: #d1d1e0; margin-top: 6px; display: block; }
 
-        /* عناوين الأقسام */
         .section-title {
             text-align: center;
             font-size: 1.4rem;
@@ -236,33 +223,44 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* قسم جديد: حركات تفاعلية لنبض القلب البصري */
-        .heart-waves-box {
-            max-width: 480px; margin: 0 auto 30px; width: 90%; padding: 25px; text-align: center;
-        }
-        .waves-flex {
-            display: flex; justify-content: center; align-items: center; gap: 6px; height: 40px; margin-top: 15px;
-        }
-        .wave-bar {
-            width: 4px; height: 10px; background: var(--neon-pink); border-radius: 10px;
-            animation: bounceWave 1s infinite ease-in-out alternate;
-        }
+        /* شريط النبض */
+        .heart-waves-box { max-width: 480px; margin: 0 auto 30px; width: 90%; padding: 25px; text-align: center; }
+        .waves-flex { display: flex; justify-content: center; align-items: center; gap: 6px; height: 40px; margin-top: 15px; }
+        .wave-bar { width: 4px; height: 10px; background: var(--neon-pink); border-radius: 10px; animation: bounceWave 1s infinite ease-in-out alternate; }
         .wave-bar:nth-child(2) { animation-delay: 0.15s; height: 25px; background: var(--neon-purple); }
         .wave-bar:nth-child(3) { animation-delay: 0.3s; height: 40px; }
         .wave-bar:nth-child(4) { animation-delay: 0.45s; height: 20px; background: var(--neon-purple); }
         .wave-bar:nth-child(5) { animation-delay: 0.6s; height: 12px; }
 
-        /* قسم جديد: بطاقات الأسرار السحرية المكتوبة بماء الذهب */
-        .secrets-container {
-            display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 480px; margin: 0 auto 30px; width: 90%;
-        }
-        .secret-card {
-            padding: 20px; cursor: pointer; text-align: right; position: relative; transition: all 0.3s ease;
-        }
+        /* الأسرار المخبأة */
+        .secrets-container { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 480px; margin: 0 auto 30px; width: 90%; }
+        .secret-card { padding: 20px; cursor: pointer; text-align: right; position: relative; transition: all 0.3s ease; }
         .secret-card h5 { color: var(--neon-gold); font-size: 1.1rem; margin-bottom: 5px; display: flex; align-items: center; gap: 8px;}
         .secret-card p { font-size: 0.92rem; color: #e2e2ee; line-height: 1.6; display: none; margin-top: 8px; animation: fadeInHint 0.4s ease forwards; }
 
-        /* خط الزمن والمحطات القصصية */
+        /* التحكم في مشغل الصوت (مخفي ومصمم بشكل ناعم بالزاوية) */
+        .audio-control-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(15, 6, 28, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--panel-border);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        /* خط الزمن */
         .timeline-box { max-width: 560px; margin: 0 auto 40px; padding: 0 25px; position: relative; }
         .timeline-axis { position: absolute; top: 10px; bottom: 0; right: 35px; width: 2px; background: linear-gradient(to bottom, var(--neon-pink) 0%, var(--neon-purple) 60%, transparent 100%); }
         .story-card { position: relative; margin-bottom: 35px; }
@@ -271,7 +269,6 @@
         .story-content h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
         .story-content p { font-size: 0.95rem; color: #f8fafc; line-height: 1.8; }
 
-        /* الفوتر المستقر تماماً بدون تداخل */
         footer {
             width: 100%;
             padding: 30px 15px;
@@ -282,75 +279,50 @@
             z-index: 5;
         }
 
-        .footer-text {
-            color: #d1d1e0;
-            font-size: 0.95rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
+        .footer-text { color: #d1d1e0; font-size: 0.95rem; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+        .infinity-symbol { color: var(--neon-pink); font-size: 1.5rem; font-weight: bold; display: inline-block; animation: pulseGlow 1.2s infinite ease-in-out; }
 
-        .infinity-symbol {
-            color: var(--neon-pink);
-            font-size: 1.5rem;
-            font-weight: bold;
-            display: inline-block;
-            animation: pulseGlow 1.2s infinite ease-in-out;
-        }
-
-        /* تأثيرات الحركة (أنيميشن) */
-        @keyframes pulseGlow {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px var(--neon-pink)); }
-            50% { transform: scale(1.08); filter: drop-shadow(0 0 20px var(--neon-pink)); }
-        }
-        @keyframes breathEffect {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255,42,95,0.6)); }
-            50% { transform: scale(1.03); filter: drop-shadow(0 0 35px rgba(255,42,95,0.9)); }
-        }
-        @keyframes bounceWave {
-            from { transform: scaleY(1); } to { transform: scaleY(2.2); }
-        }
-        @keyframes floatEffect {
-            0% { transform: translateY(105vh) scale(0) rotate(0deg); opacity: 0; }
-            20% { opacity: 0.6; } 85% { opacity: 0.6; }
-            100% { transform: translateY(-10vh) scale(1.3) rotate(100deg); opacity: 0; }
-        }
+        @keyframes pulseGlow { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px var(--neon-pink)); } 50% { transform: scale(1.08); filter: drop-shadow(0 0 20px var(--neon-pink)); } }
+        @keyframes breathEffect { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255,42,95,0.6)); } 50% { transform: scale(1.03); filter: drop-shadow(0 0 35px rgba(255,42,95,0.9)); } }
+        @keyframes bounceWave { from { transform: scaleY(1); } to { transform: scaleY(2.2); } }
+        @keyframes floatEffect { 0% { transform: translateY(105vh) scale(0) rotate(0deg); opacity: 0; } 20% { opacity: 0.6; } 85% { opacity: 0.6; } 100% { transform: translateY(-10vh) scale(1.3) rotate(100deg); opacity: 0; } }
         @keyframes fadeInHint { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-    <!-- شاشة الحماية بكلمة السر والكونية المحدثة -->
+    <!-- إضافة وسم الصوت (غير مسار ملف الصوت src بالرابط الذي تريده) -->
+    <!-- يمكنك وضع نغمة بصيغة mp3 في مجلد موقعك وتسميتها music.mp3 -->
+    <audio id="bg-music" src="music.mp3" loop></audio>
+
+    <!-- زر التحكم بالصوت (كتم/تشغيل) يظهر بالأسفل بعد الدخول -->
+    <div id="audio-toggle" class="audio-control-btn" style="display: none;" onclick="toggleAudio()">🎵</div>
+
+    <!-- شاشة الحماية بكلمة السر -->
     <div id="lock-screen">
         <div class="login-card">
             <div class="lock-icon">💖</div>
             <h2>مملكة رحمة السرية</h2>
-            <p>اكتبِ اسمكِ الغالي ككلمة سر لتفتحي بوابة حُبنا اللانهائي..</p>
+            <p>اكتبِ اسمكِ الغالي ككلمة سر لتفتحي بوابة حُبنا اللانهائي وترتيل ألحاننا..</p>
             <div class="input-wrapper">
                 <input type="password" id="password-input" placeholder="اكتبِ كلمة السر هنا.." autocomplete="off">
             </div>
-            <button onclick="verifyKey()">افتخي قلب الحكاية ✨</button>
+            <button onclick="verifyKey()">افتحي قلب الحكاية ✨</button>
             <div id="error-hint" class="error-hint">كلمة السر خاطئة.. جربي مجدداً يا روحي! 💕</div>
         </div>
     </div>
 
-    <!-- الواجهة الرئيسية للموقع -->
+    <!-- الواجهة الرئيسية -->
     <div id="main-content">
         <div id="ambient-particles"></div>
 
         <header>
             <div class="floating-heart">❤️</div>
             <h1>إلى من جعلت حياتي أجمل</h1>
-            
-            <!-- خط الرقعة الملكي المطور لاسم رحمة -->
             <span class="name-ar">رحمة</span>
-
             <p>كل ثانية معكِ هي عمر كامل من الأمان والسلام الروحي العالي</p>
         </header>
 
-        <!-- عداد الوقت الرقمي لعمر حبهما -->
         <div class="glass-panel countdown-wrapper">
             <div class="countdown-title">الوقت الذي عشته غارقاً في تفاصيلكِ وعشقكِ 🥰</div>
             <div class="grid-timer">
@@ -361,7 +333,6 @@
             </div>
         </div>
 
-        <!-- حركة جديدة: قسم نبضات القلب التفاعلي البصري -->
         <div class="section-title">✦ موجات نبضات قلبي معكِ ✦</div>
         <div class="glass-panel heart-waves-box">
             <p style="font-size: 0.9rem; color: #e2e2ee;">هذا الشريط يحاكي سرعة ضربات قلبي كلما تذكرت ضحكتكِ الصافية العذبة</p>
@@ -374,7 +345,6 @@
             </div>
         </div>
 
-        <!-- حركات جديدة: رسائل سرية غامضة مكتوبة بماء الذهب تفتح عند الضغط -->
         <div class="section-title">✦ رسائل مخبأة لروحكِ الجميلة ✦</div>
         <div class="secrets-container">
             <div class="glass-panel secret-card" onclick="toggleSecret(this)">
@@ -383,15 +353,13 @@
             </div>
             <div class="glass-panel secret-card" onclick="toggleSecret(this)">
                 <h5>🔒 الرسالة الثانية: عهد الهوى الأبدي</h5>
-                <p>أعدكِ أمام الله وأمام نفسي أن أظل هائماً بتفاصيلكِ الصغيرة، محباً لعيوبكِ قبل محاسنكِ، وأن تظلي دائماً وأبداً في مقدمة أولوياتي وقمة قلبي. 🌹</p>
+                <p>أعدكِ أمام الله وأمام نفسي أن أظل هائماً بتفاصيلكِ الصغيرة، محباً لعيوبكِ قبل محاسنكِ، وأن تظلي دائماً وأبعد في مقدمة أولوياتي وقمة قلبي. 🌹</p>
             </div>
         </div>
 
-        <!-- خط الزمن والمحطات القصصية -->
         <div class="section-title">✦ محطات حُبّنا الخالدة ✦</div>
         <div class="timeline-box">
             <div class="timeline-axis"></div>
-
             <div class="story-card">
                 <div class="story-pointer"></div>
                 <div class="glass-panel story-content">
@@ -399,7 +367,6 @@
                     <p>هنا كانت نبضة قلبي الأولى الحقيقية، ضحكتكِ العفوية غيرت مجرى حياتي بالكامل، وتمنيت حينها لو أن عقارب الساعة تتوقف للأبد.</p>
                 </div>
             </div>
-
             <div class="story-card">
                 <div class="story-pointer"></div>
                 <div class="glass-panel story-content">
@@ -409,7 +376,6 @@
             </div>
         </div>
 
-        <!-- الفوتر المستقر والمحمي بعد حل مشكلة التداخل والتغطية بالكامل -->
         <footer>
             <div class="footer-text">
                 جميع الحقوق محفوظة لرحمة في قلبي إلى مالا نهاية <span class="infinity-symbol">∞</span>
@@ -419,6 +385,8 @@
 
     <script>
         const ACCESS_KEY = "RahmA2000";
+        const audioFile = document.getElementById('bg-music');
+        const audioBtn = document.getElementById('audio-toggle');
 
         function verifyKey() {
             const secretInput = document.getElementById('password-input').value;
@@ -430,15 +398,34 @@
                 gateway.style.opacity = '0';
                 gateway.style.transform = 'scale(1.05)';
                 
+                // تشغيل الموسيقى فوراً بمجرد الضغط الصحيح على زر الدخول وبدء التفاعل
+                audioFile.play().then(() => {
+                    audioBtn.innerText = "🎵";
+                }).catch(err => console.log("تحتاج لتفاعل صريح بالمتصفح أولاً"));
+
                 setTimeout(() => {
                     gateway.remove();
                     coreApp.style.opacity = '1';
+                    audioBtn.style.display = 'flex'; // إظهار زر التحكم بالصوت
                     setInterval(tickClock, 1000);
-                    setInterval(spawnRomanceParticle, 200); // زيادة كثافة القلوب الطائرة
+                    setInterval(spawnRomanceParticle, 200);
                 }, 600);
             } else {
                 alertMsg.style.display = 'block';
                 document.getElementById('password-input').value = "";
+            }
+        }
+
+        // تشغيل وإيقاف الصوت يدويًا عن طريق الأيقونة بالأسفل
+        function toggleAudio() {
+            if (audioFile.paused) {
+                audioFile.play();
+                audioBtn.innerText = "🎵";
+                audioBtn.style.animation = "pulseGlow 1.5s infinite";
+            } else {
+                audioFile.pause();
+                audioBtn.innerText = "🔇";
+                audioBtn.style.animation = "none";
             }
         }
 
