@@ -26,7 +26,6 @@
     min-height:100vh;
   }
 
-  /* ambient hearts - subtle, few */
   .heart-fall{
     position:fixed; top:-30px; color:var(--primary);
     font-size:14px; opacity:.55; animation:fall linear forwards;
@@ -34,7 +33,6 @@
   }
   @keyframes fall{ to{ transform:translateY(105vh) rotate(20deg); opacity:0; } }
 
-  /* lock screen */
   #lock-screen{
     position:fixed; inset:0; display:flex; justify-content:center; align-items:center;
     background:radial-gradient(circle at 50% 40%,#241019 0%,#0b0710 70%);
@@ -71,7 +69,6 @@
   }
   button.enter-btn:active{ transform:scale(.97); }
 
-  /* kiss unlock transition */
   #kiss-overlay{
     position:fixed; inset:0; z-index:10000; pointer-events:none;
     display:flex; justify-content:center; align-items:center; opacity:0;
@@ -94,13 +91,11 @@
   }
   @keyframes ringGrow{ 0%{opacity:.7; transform:scale(.3);} 100%{opacity:0; transform:scale(5.5);} }
 
-  /* main content */
   .content{ display:none; position:relative; z-index:2; padding:32px 20px 60px; }
   .content.show{ display:block; animation:fadeUp .8s ease; }
   @keyframes fadeUp{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
   .wrap{ max-width:440px; margin:0 auto; }
 
-  /* name card */
   .name-wrap{ text-align:center; margin-bottom:36px; }
   .eyebrow{
     display:inline-block; font-size:.68rem; letter-spacing:.15em;
@@ -155,7 +150,6 @@
     margin:40px 0 18px; opacity:.85; font-weight:700;
   }
 
-  /* love notes - calmer cards */
   .love-notes{ display:flex; flex-direction:column; gap:12px; margin:16px 0 30px; }
   .love-note{
     background:rgba(255,255,255,0.02);
@@ -164,7 +158,6 @@
     font-size:.94rem; line-height:1.85; color:var(--text-soft);
   }
 
-  /* timeline - refined */
   .timeline{ margin:18px 0 30px; position:relative; padding-inline-start:24px; }
   .timeline::before{
     content:''; position:absolute; top:4px; bottom:4px; right:5px;
@@ -179,7 +172,6 @@
   .t-item h4{ margin:0 0 5px; color:#fff; font-size:.9rem; font-weight:700; }
   .t-item p{ margin:0; color:var(--text-soft); font-size:.83rem; opacity:.8; line-height:1.75; }
 
-  /* gallery - cleaner grid */
   .gallery{ display:flex; flex-direction:column; gap:18px; margin:30px 0; }
   .frame{
     background:var(--dark-2); padding:8px; border-radius:14px;
@@ -330,57 +322,67 @@
 
 <button id="music-toggle" title="تشغيل / إيقاف الموسيقى">🎵</button>
 
-<!--
-  ملاحظة عن الموسيقى:
-  لو الصوت لسه مش شغال بعد التعديل، غالبًا رابط bensound بيرفض الروابط المباشرة.
-  الحل الأضمن: ارفعي ملف mp3 بتاعك على نفس الـ GitHub repo اللي فيه الصور،
-  وحطي رابطه هنا بنفس طريقة روابط الصور (raw.githubusercontent.com/.../song.mp3)
--->
 <audio id="music" loop preload="auto">
   <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
 </audio>
 
 <script>
   function createHeart(){
-    const heart = document.createElement("div");
-    heart.innerHTML = "❤";
-    heart.className = "heart-fall";
-    heart.style.left = Math.random()*100 + "vw";
-    heart.style.animationDuration = (Math.random()*3+4) + "s";
-    heart.style.fontSize = (Math.random()*8+10) + "px";
-    document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(), 7500);
+    try{
+      const heart = document.createElement("div");
+      heart.innerHTML = "❤";
+      heart.className = "heart-fall";
+      heart.style.left = Math.random()*100 + "vw";
+      heart.style.animationDuration = (Math.random()*3+4) + "s";
+      heart.style.fontSize = (Math.random()*8+10) + "px";
+      document.body.appendChild(heart);
+      setTimeout(()=>heart.remove(), 7500);
+    }catch(e){}
   }
 
   function playKissEffect(callback){
-    const overlay = document.getElementById("kiss-overlay");
-    overlay.innerHTML = "";
-    const positions = [
-      {top:"42%", left:"50%"},
-      {top:"38%", left:"40%"},
-      {top:"38%", left:"60%"}
-    ];
-    positions.forEach((p,i)=>{
-      const span = document.createElement("div");
-      span.className = "kiss-emoji";
-      span.textContent = "💋";
-      span.style.top = p.top;
-      span.style.left = p.left;
-      span.style.animationDelay = (i*0.12) + "s";
-      overlay.appendChild(span);
-    });
-    const ring = document.createElement("div");
-    ring.className = "kiss-ring";
-    ring.style.top = "40%";
-    ring.style.left = "50%";
-    overlay.appendChild(ring);
-
-    overlay.classList.add("play");
-    setTimeout(()=>{
-      overlay.classList.remove("play");
+    try{
+      const overlay = document.getElementById("kiss-overlay");
       overlay.innerHTML = "";
+      const positions = [
+        {top:"42%", left:"50%"},
+        {top:"38%", left:"40%"},
+        {top:"38%", left:"60%"}
+      ];
+      positions.forEach((p,i)=>{
+        const span = document.createElement("div");
+        span.className = "kiss-emoji";
+        span.textContent = "💋";
+        span.style.top = p.top;
+        span.style.left = p.left;
+        span.style.animationDelay = (i*0.12) + "s";
+        overlay.appendChild(span);
+      });
+      const ring = document.createElement("div");
+      ring.className = "kiss-ring";
+      ring.style.top = "40%";
+      ring.style.left = "50%";
+      overlay.appendChild(ring);
+
+      overlay.classList.add("play");
+      setTimeout(()=>{
+        overlay.classList.remove("play");
+        overlay.innerHTML = "";
+        if (callback) callback();
+      }, 1300);
+    }catch(e){
+      // حتى لو تأثير القبلة فشل لأي سبب، لازم الصفحة تفتح برضه
       if (callback) callback();
-    }, 1300);
+    }
+  }
+
+  function unlockPage(){
+    document.getElementById("lock-screen").style.opacity = "0";
+    setTimeout(()=>{
+      document.getElementById("lock-screen").style.display = "none";
+      document.getElementById("main-content").classList.add("show");
+      setInterval(createHeart, 1000);
+    }, 300);
   }
 
   const musicEl = document.getElementById("music");
@@ -388,10 +390,42 @@
 
   function checkPass(){
     const input = document.getElementById("pass");
-    if (input.value.toLowerCase() === "love"){
+    if (!input) return;
 
-      // الصوت لازم يتنادى فورًا جوه حدث الضغطة نفسه عشان المتصفح يسمح بالتشغيل التلقائي
-      musicEl.volume = 0.6;
-      const playPromise = musicEl.play();
-      if (playPromise !== undefined){
-        playPromise.catch(()=>{
+    if (input.value.toLowerCase() === "love"){
+      // محاولة تشغيل الموسيقى، لكن أي فشل هنا ميوقفش فتح الصفحة
+      try{
+        musicEl.volume = 0.6;
+        const playPromise = musicEl.play();
+        if (playPromise !== undefined){
+          playPromise.catch(()=>{ musicBtn.classList.add("paused"); });
+        }
+      }catch(e){
+        musicBtn.classList.add("paused");
+      }
+
+      playKissEffect(unlockPage);
+    } else {
+      input.classList.add("shake");
+      setTimeout(()=>input.classList.remove("shake"), 400);
+      alert("حاولي مرة أخرى يا أميرتي.. السر كلمة love ❤️");
+    }
+  }
+
+  document.getElementById("pass").addEventListener("keydown", function(e){
+    if (e.key === "Enter") checkPass();
+  });
+
+  musicBtn.addEventListener("click", function(){
+    if (musicEl.paused){
+      musicEl.play().catch(()=>{});
+      musicBtn.classList.remove("paused");
+    } else {
+      musicEl.pause();
+      musicBtn.classList.add("paused");
+    }
+  });
+</script>
+
+</body>
+</html>
