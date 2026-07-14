@@ -3,243 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>مملكة رحمة الأبدية ❤️</title>
+<title>رحمة ❤️</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Amiri:ital@1&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --primary:#ff2a6d;
-    --primary-soft:#ff6f9c;
-    --dark:#0a0414;
-    --dark-2:#170a24;
-    --pink-glass:rgba(255,42,109,0.12);
-    --gold:#ffd0a8;
-    --text-soft:#ffd7e2;
+    --primary:#e63e6d;
+    --primary-soft:#ffb4c6;
+    --dark:#0b0710;
+    --dark-2:#160c1e;
+    --gold:#d9b98c;
+    --text-soft:#e8d6dc;
+    --line:rgba(255,255,255,0.08);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    background:radial-gradient(ellipse at top,#241030 0%,var(--dark) 55%,#050208 100%);
+    background:radial-gradient(ellipse at top,#1c0f22 0%,var(--dark) 60%,#050208 100%);
     color:#fff;
     font-family:'Almarai','Tajawal',sans-serif;
     overflow-x:hidden;
     min-height:100vh;
   }
 
+  /* ambient hearts - subtle, few */
   .heart-fall{
     position:fixed; top:-30px; color:var(--primary);
-    font-size:18px; animation:fall linear forwards;
-    z-index:2; pointer-events:none; filter:drop-shadow(0 0 6px rgba(255,42,109,.6));
+    font-size:14px; opacity:.55; animation:fall linear forwards;
+    z-index:2; pointer-events:none;
   }
-  @keyframes fall{ to{ transform:translateY(105vh) rotate(25deg); opacity:0; } }
+  @keyframes fall{ to{ transform:translateY(105vh) rotate(20deg); opacity:0; } }
 
+  /* lock screen */
   #lock-screen{
     position:fixed; inset:0; display:flex; justify-content:center; align-items:center;
-    background:radial-gradient(circle at 50% 40%,#2d0b1a 0%,#0a0414 70%);
-    z-index:9999; padding:24px; transition:opacity .8s ease, visibility .8s ease;
+    background:radial-gradient(circle at 50% 40%,#241019 0%,#0b0710 70%);
+    z-index:9999; padding:24px; transition:opacity .7s ease;
   }
   .login-box{
-    background:rgba(255,255,255,0.04);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-    padding:42px 28px;
-    border-radius:28px;
-    border:1px solid rgba(255,42,109,0.5);
-    text-align:center;
-    width:100%;
-    max-width:320px;
-    box-shadow:0 0 40px rgba(255,42,109,0.15), inset 0 0 30px rgba(255,42,109,0.05);
+    background:rgba(255,255,255,0.03);
+    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    padding:40px 26px; border-radius:24px;
+    border:1px solid rgba(230,62,109,0.35);
+    text-align:center; width:100%; max-width:310px;
+    box-shadow:0 0 40px rgba(230,62,109,0.12);
   }
-  .login-box .lock-icon{ font-size:2.4rem; margin-bottom:6px; display:block; }
-  .login-box h2{ margin:0 0 6px; color:#fff; font-size:1.35rem; font-weight:800; }
-  .login-box p.hint{ color:var(--text-soft); font-size:.82rem; margin:0 0 22px; opacity:.75; }
+  .login-box .lock-icon{ font-size:2.1rem; margin-bottom:8px; display:block; opacity:.9; }
+  .login-box h2{ margin:0 0 6px; color:#fff; font-size:1.25rem; font-weight:700; }
+  .login-box p.hint{ color:var(--text-soft); font-size:.8rem; margin:0 0 22px; opacity:.65; }
   input{
-    padding:13px 16px; border-radius:16px; border:1px solid rgba(255,42,109,0.6);
-    width:100%; text-align:center; background:rgba(255,255,255,0.03); color:#fff;
-    margin-bottom:18px; font-size:1rem; font-family:inherit; outline:none;
+    padding:12px 16px; border-radius:14px; border:1px solid rgba(230,62,109,0.45);
+    width:100%; text-align:center; background:rgba(255,255,255,0.02); color:#fff;
+    margin-bottom:16px; font-size:1rem; font-family:inherit; outline:none;
     transition:border-color .2s, box-shadow .2s;
   }
-  input:focus{ border-color:var(--primary); box-shadow:0 0 0 3px rgba(255,42,109,0.2); }
+  input:focus{ border-color:var(--primary); box-shadow:0 0 0 3px rgba(230,62,109,0.15); }
   input.shake{ animation:shake .4s; border-color:#ff5252; }
   @keyframes shake{
-    0%,100%{transform:translateX(0);} 20%{transform:translateX(-8px);}
-    40%{transform:translateX(8px);} 60%{transform:translateX(-6px);} 80%{transform:translateX(6px);}
+    0%,100%{transform:translateX(0);} 20%{transform:translateX(-7px);}
+    40%{transform:translateX(7px);} 60%{transform:translateX(-5px);} 80%{transform:translateX(5px);}
   }
   button.enter-btn{
-    background:linear-gradient(135deg,var(--primary),#c2185b);
-    color:#fff; border:none; padding:12px 36px; border-radius:18px;
-    cursor:pointer; font-size:1rem; font-weight:700; font-family:inherit;
-    box-shadow:0 6px 18px rgba(255,42,109,0.35);
-    transition:transform .15s ease, box-shadow .15s ease;
+    background:linear-gradient(135deg,var(--primary),#a52753);
+    color:#fff; border:none; padding:11px 34px; border-radius:16px;
+    cursor:pointer; font-size:.95rem; font-weight:700; font-family:inherit;
+    box-shadow:0 6px 16px rgba(230,62,109,0.3);
   }
-  button.enter-btn:active{ transform:scale(.96); }
+  button.enter-btn:active{ transform:scale(.97); }
 
+  /* kiss unlock transition */
   #kiss-overlay{
     position:fixed; inset:0; z-index:10000; pointer-events:none;
-    display:flex; justify-content:center; align-items:center;
-    opacity:0;
+    display:flex; justify-content:center; align-items:center; opacity:0;
   }
-  #kiss-overlay.play{ animation:kissFade 1.6s ease forwards; }
-  @keyframes kissFade{
-    0%{ opacity:0; } 15%{ opacity:1; } 75%{ opacity:1; } 100%{ opacity:0; }
-  }
+  #kiss-overlay.play{ animation:kissFade 1.4s ease forwards; }
+  @keyframes kissFade{ 0%{opacity:0;} 15%{opacity:1;} 75%{opacity:1;} 100%{opacity:0;} }
   .kiss-emoji{
-    position:absolute; font-size:3rem; opacity:0;
-    animation:kissPop 1.6s ease forwards;
-    filter:drop-shadow(0 0 10px rgba(255,42,109,.7));
+    position:absolute; font-size:2.6rem; opacity:0;
+    animation:kissPop 1.4s ease forwards;
   }
   @keyframes kissPop{
-    0%{ opacity:0; transform:translateY(20px) scale(.4) rotate(-8deg); }
-    25%{ opacity:1; transform:translateY(0) scale(1.15) rotate(4deg); }
-    45%{ transform:translateY(-6px) scale(1) rotate(-2deg); }
-    100%{ opacity:0; transform:translateY(-70px) scale(.6) rotate(6deg); }
+    0%{ opacity:0; transform:translateY(15px) scale(.5); }
+    30%{ opacity:1; transform:translateY(0) scale(1.05); }
+    100%{ opacity:0; transform:translateY(-55px) scale(.6); }
   }
   .kiss-ring{
-    position:absolute; width:40px; height:40px; border-radius:50%;
-    border:2px solid var(--primary); opacity:0;
-    animation:ringGrow 1.6s ease forwards;
+    position:absolute; width:36px; height:36px; border-radius:50%;
+    border:1.5px solid var(--primary); opacity:0;
+    animation:ringGrow 1.4s ease forwards;
   }
-  @keyframes ringGrow{
-    0%{ opacity:.9; transform:scale(0.3); } 70%{ opacity:.25; } 100%{ opacity:0; transform:scale(6); }
+  @keyframes ringGrow{ 0%{opacity:.7; transform:scale(.3);} 100%{opacity:0; transform:scale(5.5);} }
+
+  /* main content */
+  .content{ display:none; position:relative; z-index:2; padding:32px 20px 60px; }
+  .content.show{ display:block; animation:fadeUp .8s ease; }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+  .wrap{ max-width:440px; margin:0 auto; }
+
+  /* name card */
+  .name-wrap{ text-align:center; margin-bottom:36px; }
+  .eyebrow{
+    display:inline-block; font-size:.68rem; letter-spacing:.15em;
+    color:var(--gold); opacity:.8; margin-bottom:16px; text-transform:uppercase;
   }
-
-  .content{ display:none; position:relative; z-index:2; padding:28px 18px 60px; }
-  .content.show{ display:block; animation:fadeUp .9s ease; }
-  @keyframes fadeUp{ from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:translateY(0);} }
-
-  .wrap{ max-width:460px; margin:0 auto; }
-
-  .name-banner{ text-align:center; padding:28px 20px 22px; margin-bottom:8px; position:relative; }
-  .name-banner .eyebrow{
-    display:inline-block; font-size:.72rem; letter-spacing:.12em;
-    color:var(--primary-soft); border:1px solid rgba(255,42,109,.4);
-    padding:4px 14px; border-radius:999px; margin-bottom:14px; opacity:.85;
+  .name-card{
+    display:inline-flex; align-items:center; gap:14px;
+    background:linear-gradient(160deg, rgba(230,62,109,0.08), rgba(255,255,255,0.02));
+    border:1px solid rgba(230,62,109,0.3);
+    border-radius:20px; padding:16px 30px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.35);
   }
-  .name-banner h1{
-    margin:0; font-size:2.6rem; font-weight:800;
-    background:linear-gradient(135deg,#fff, var(--primary-soft) 60%, var(--gold));
+  .name-card .heart-icon{
+    font-size:1.4rem; color:var(--primary);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{ transform:scale(1); opacity:.85; } 50%{ transform:scale(1.15); opacity:1; } }
+  .name-card h1{
+    margin:0; font-size:2.1rem; font-weight:800;
+    background:linear-gradient(135deg,#fff, var(--primary-soft) 70%);
     -webkit-background-clip:text; background-clip:text; color:transparent;
-    text-shadow:0 0 30px rgba(255,42,109,.25);
   }
-  .name-banner .subtitle{
+  .name-wrap .subtitle{
     font-family:'Amiri', serif; font-style:italic; color:var(--text-soft);
-    font-size:1.05rem; margin-top:8px; opacity:.9;
+    font-size:.95rem; margin-top:14px; opacity:.75;
   }
-  .divider{ display:flex; align-items:center; gap:12px; margin:26px 0; opacity:.6; }
+
+  .divider{ display:flex; align-items:center; gap:10px; margin:30px 0; opacity:.5; }
   .divider::before, .divider::after{
     content:''; flex:1; height:1px;
     background:linear-gradient(90deg, transparent, var(--primary), transparent);
   }
-  .divider span{ font-size:.9rem; }
+  .divider span{ font-size:.75rem; }
 
   .quote{
     font-family:'Amiri', serif; font-style:italic;
-    font-size:1.12rem; line-height:1.9; color:var(--text-soft);
-    text-align:center; margin:26px 0; padding:0 6px;
+    font-size:1.05rem; line-height:1.85; color:var(--text-soft);
+    text-align:center; margin:26px 0; padding:0 4px; opacity:.92;
   }
   .quote-card{
-    background:linear-gradient(160deg, rgba(255,42,109,0.08), rgba(255,255,255,0.02));
-    border:1px solid rgba(255,42,109,0.25);
-    border-radius:20px; padding:22px 20px;
-    font-family:'Amiri', serif; font-style:italic; font-size:1.08rem;
+    background:linear-gradient(160deg, rgba(230,62,109,0.06), rgba(255,255,255,0.015));
+    border:1px solid var(--line);
+    border-radius:18px; padding:22px 20px;
+    font-family:'Amiri', serif; font-style:italic; font-size:1.02rem;
     line-height:1.85; color:var(--text-soft); text-align:center;
-    margin:18px 0; position:relative;
-  }
-  .quote-card::before{
-    content:'❝'; position:absolute; top:-14px; right:20px;
-    font-size:2rem; color:var(--primary); background:var(--dark-2);
-    width:32px; height:32px; border-radius:50%; display:flex;
-    align-items:center; justify-content:center; box-shadow:0 0 12px rgba(255,42,109,.4);
+    margin:20px 0;
   }
 
   .section-title{
-    text-align:center; font-size:.95rem; color:var(--primary-soft);
-    letter-spacing:.05em; margin:34px 0 16px; opacity:.9; font-weight:700;
+    text-align:center; font-size:.72rem; color:var(--gold);
+    letter-spacing:.15em; text-transform:uppercase;
+    margin:40px 0 18px; opacity:.85; font-weight:700;
   }
 
-  .love-notes{ display:flex; flex-direction:column; gap:14px; margin:18px 0 30px; }
+  /* love notes - calmer cards */
+  .love-notes{ display:flex; flex-direction:column; gap:12px; margin:16px 0 30px; }
   .love-note{
-    background:rgba(255,255,255,0.03);
-    border-right:3px solid var(--primary);
-    border-radius:12px; padding:14px 16px;
-    font-size:.98rem; line-height:1.8; color:var(--text-soft);
+    background:rgba(255,255,255,0.02);
+    border:1px solid var(--line);
+    border-radius:14px; padding:16px 18px;
+    font-size:.94rem; line-height:1.85; color:var(--text-soft);
   }
-  .love-note b{ color:var(--primary-soft); }
 
-  .timeline{ margin:20px 0 30px; position:relative; padding-inline-start:22px; }
+  /* timeline - refined */
+  .timeline{ margin:18px 0 30px; position:relative; padding-inline-start:24px; }
   .timeline::before{
-    content:''; position:absolute; top:4px; bottom:4px; right:6px;
-    width:2px; background:linear-gradient(var(--primary), transparent);
+    content:''; position:absolute; top:4px; bottom:4px; right:5px;
+    width:1px; background:linear-gradient(var(--primary), transparent);
   }
-  .t-item{ position:relative; padding-inline-end:22px; margin-bottom:22px; }
+  .t-item{ position:relative; padding-inline-end:22px; margin-bottom:24px; }
   .t-item::before{
-    content:'❤'; position:absolute; right:-10px; top:0;
-    color:var(--primary); font-size:.9rem;
-    background:var(--dark); width:18px; height:18px; text-align:center; line-height:18px; border-radius:50%;
+    content:''; position:absolute; right:-8px; top:5px;
+    width:9px; height:9px; border-radius:50%; background:var(--primary);
+    box-shadow:0 0 8px rgba(230,62,109,.6);
   }
-  .t-item h4{ margin:0 0 4px; color:#fff; font-size:.95rem; }
-  .t-item p{ margin:0; color:var(--text-soft); font-size:.85rem; opacity:.85; line-height:1.7; }
+  .t-item h4{ margin:0 0 5px; color:#fff; font-size:.9rem; font-weight:700; }
+  .t-item p{ margin:0; color:var(--text-soft); font-size:.83rem; opacity:.8; line-height:1.75; }
 
-  .gallery{ display:flex; flex-direction:column; gap:22px; align-items:center; margin:30px 0; }
-  .polaroid{
-    background:#0f0713; padding:10px 10px 22px; border-radius:12px;
-    border:1px solid rgba(255,255,255,0.06);
-    box-shadow:0 10px 25px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,42,109,0.15);
-    max-width:260px; width:100%;
-    transform:rotate(var(--tilt,0deg));
+  /* gallery - cleaner grid */
+  .gallery{ display:flex; flex-direction:column; gap:18px; margin:30px 0; }
+  .frame{
+    background:var(--dark-2); padding:8px; border-radius:14px;
+    border:1px solid var(--line);
+    box-shadow:0 10px 24px rgba(0,0,0,0.4);
   }
-  .polaroid:nth-child(1){ --tilt:-3deg; }
-  .polaroid:nth-child(2){ --tilt:2deg; }
-  .polaroid:nth-child(3){ --tilt:-2deg; }
-  .polaroid img{ width:100%; display:block; border-radius:6px; object-fit:cover; aspect-ratio:4/5; }
-  .polaroid .cap{
-    text-align:center; font-size:.78rem; color:var(--text-soft);
-    margin-top:10px; opacity:.75; font-family:'Amiri', serif; font-style:italic;
+  .frame img{ width:100%; display:block; border-radius:8px; object-fit:cover; aspect-ratio:4/5; }
+  .frame .cap{
+    text-align:center; font-size:.75rem; color:var(--text-soft);
+    margin-top:9px; opacity:.65; font-family:'Amiri', serif; font-style:italic;
   }
 
-  .love-stats{ display:flex; justify-content:space-between; gap:10px; margin:30px 0; text-align:center; }
+  .love-stats{ display:flex; justify-content:space-between; gap:8px; margin:32px 0; text-align:center; }
   .love-stats .stat{ flex:1; }
-  .love-stats .stat b{ display:block; font-size:1.5rem; color:var(--primary-soft); text-shadow:0 0 12px rgba(255,42,109,.4); }
-  .love-stats .stat span{ font-size:.72rem; color:var(--text-soft); opacity:.7; }
+  .love-stats .stat b{ display:block; font-size:1.3rem; color:var(--primary-soft); }
+  .love-stats .stat span{ font-size:.68rem; color:var(--text-soft); opacity:.65; }
 
   .letter-box{
-    background:linear-gradient(160deg, rgba(255,208,168,0.06), rgba(255,42,109,0.05));
-    border:1px dashed rgba(255,208,168,0.4);
-    border-radius:18px; padding:22px 18px; margin:30px 0;
+    background:linear-gradient(160deg, rgba(217,185,140,0.05), rgba(230,62,109,0.04));
+    border:1px solid rgba(217,185,140,0.25);
+    border-radius:16px; padding:22px 18px; margin:32px 0;
   }
-  .letter-box h3{ margin:0 0 12px; color:var(--gold); font-size:1rem; text-align:center; }
-  .letter-box p{ color:var(--text-soft); font-size:.95rem; line-height:1.9; margin:0 0 10px; }
+  .letter-box h3{ margin:0 0 12px; color:var(--gold); font-size:.92rem; text-align:center; font-weight:700; }
+  .letter-box p{ color:var(--text-soft); font-size:.9rem; line-height:1.9; margin:0 0 10px; }
 
   #music-toggle{
     position:fixed; bottom:18px; left:18px; z-index:50;
-    background:rgba(255,42,109,0.15); border:1px solid rgba(255,42,109,0.5);
-    color:#fff; width:48px; height:48px; border-radius:50%;
+    background:rgba(230,62,109,0.12); border:1px solid rgba(230,62,109,0.4);
+    color:#fff; width:44px; height:44px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
-    font-size:1.3rem; cursor:pointer; backdrop-filter:blur(6px);
-    box-shadow:0 4px 14px rgba(0,0,0,.4);
+    font-size:1.15rem; cursor:pointer; backdrop-filter:blur(6px);
   }
-  #music-toggle.paused{ opacity:.6; }
+  #music-toggle.paused{ opacity:.55; }
 
   footer{
-    text-align:center; margin-top:40px; padding-top:20px;
-    border-top:1px solid rgba(255,255,255,0.06);
-    color:var(--text-soft); font-size:.95rem; opacity:.8;
+    text-align:center; margin-top:44px; padding-top:22px;
+    border-top:1px solid var(--line);
+    color:var(--text-soft); font-size:.85rem; opacity:.75;
   }
   footer .signature{
     font-family:'Aref Ruqaa', serif; font-weight:700;
-    font-size:1.6rem; color:var(--primary-soft);
-    text-shadow:0 0 14px rgba(255,42,109,.4);
+    font-size:1.5rem; color:var(--primary-soft);
     display:block; margin-top:6px;
   }
 
   @media (max-width:380px){
-    .name-banner h1{ font-size:2.1rem; }
-    .quote-card{ font-size:1rem; padding:18px 14px; }
-    footer .signature{ font-size:1.4rem; }
+    .name-card h1{ font-size:1.8rem; }
+    .name-card{ padding:14px 22px; gap:10px; }
   }
-
   @media (prefers-reduced-motion: reduce){
-    .heart-fall, .kiss-emoji, .kiss-ring, .content.show{ animation:none !important; }
+    .heart-fall, .kiss-emoji, .kiss-ring, .content.show, .name-card .heart-icon{ animation:none !important; }
   }
 </style>
 </head>
@@ -261,51 +252,53 @@
 <div class="content" id="main-content">
   <div class="wrap">
 
-    <div class="name-banner">
+    <div class="name-wrap">
       <span class="eyebrow">أميرة قلبي</span>
-      <h1>رحمة</h1>
-      <p class="subtitle">أميرة قلبي وكل ما أملك</p>
+      <div class="name-card">
+        <span class="heart-icon">❤</span>
+        <h1>رحمة</h1>
+      </div>
+      <p class="subtitle">وكل ما أملك</p>
     </div>
 
-    <div class="divider"><span>❤️</span></div>
+    <div class="divider"><span>❤</span></div>
 
     <p class="quote">"لا يوجد في العالم ما هو أجمل من وجودكِ في حياتي، أنتِ السعادة التي كنت أبحث عنها."</p>
 
-    <div class="section-title">كلام من قلبي ليكي</div>
+    <div class="section-title">كلام من قلبي</div>
     <div class="love-notes">
-      <div class="love-note">يا رحمة، انتي مش حبيبتي بس، انتي <b>أحلى حاجة</b> حصلت في حياتي خالص.</div>
-      <div class="love-note">كل ما اشوف اسمك على الشاشة قلبي بيدق بجنون، والله العظيم ده حقيقي مش كلام بس.</div>
-      <div class="love-note">انتي الأمان اللي كنت بدور عليه، معاكي حاسس إني في بيتي حتى لو بعيد عنك.</div>
-      <div class="love-note">ضحكتك يا رحمة بتنسيني أي تعب، وصوتك ده أحلى موسيقى في الدنيا بالنسبالي.</div>
-      <div class="love-note">يارب تفضلي جنبي طول العمر، انتي مش اختيار، انتي قدر ربنا اداهولي.</div>
+      <div class="love-note">يا رحمة، وجودك في حياتي حاجة بشكر ربنا عليها كل يوم.</div>
+      <div class="love-note">لسه بحس بنفس الإحساس اللي حسيته أول ما اتكلمنا.</div>
+      <div class="love-note">معاكي بحس بالراحة، وده حاجة مش بتحصل مع أي حد.</div>
+      <div class="love-note">بحبك بطريقتي، ومحاول أثبتها كل يوم بالأفعال مش بس بالكلام.</div>
     </div>
 
     <div class="section-title">حكايتنا</div>
     <div class="timeline">
       <div class="t-item">
         <h4>أول مرة</h4>
-        <p>أول ما اتعرفنا حسيت إن في حاجة مختلفة، إحساس مكنش زي أي حد قبلك.</p>
+        <p>حسيت إن في حاجة مختلفة من أول ما اتعرفنا.</p>
       </div>
       <div class="t-item">
         <h4>بقينا احنا</h4>
-        <p>مع الوقت بقيتي جزء من يومي، مبقتش اتخيل يوم من غير كلامك.</p>
+        <p>بقيتي جزء من يومي، ومبقتش اتخيله من غيرك.</p>
       </div>
       <div class="t-item">
-        <h4>دلوقتي وكل يوم</h4>
-        <p>كل يوم بحبك أكتر من اللي فات، وده اللي خلاني أعمل الصفحة دي بس عشانك.</p>
+        <h4>دلوقتي</h4>
+        <p>كل يوم بحبك أكتر، وده اللي خلاني أعمل الصفحة دي.</p>
       </div>
     </div>
 
     <div class="gallery">
-      <div class="polaroid">
+      <div class="frame">
         <img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM%5B1%5D.jpeg" alt="رحمة">
         <div class="cap">لحظة لا تُنسى</div>
       </div>
-      <div class="polaroid">
+      <div class="frame">
         <img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%281%29%5B1%5D.jpeg" alt="رحمة">
         <div class="cap">ابتسامتك نور حياتي</div>
       </div>
-      <div class="polaroid">
+      <div class="frame">
         <img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%282%29%5B1%5D.jpeg" alt="رحمة">
         <div class="cap">انتي وطني الصغير</div>
       </div>
@@ -314,7 +307,7 @@
     <div class="love-stats">
       <div class="stat"><b>∞</b><span>مقدار حبي ليكي</span></div>
       <div class="stat"><b>1</b><span>قلب واحد وهو ليكي</span></div>
-      <div class="stat"><b>100%</b><span>وفاء وإخلاص</span></div>
+      <div class="stat"><b>100%</b><span>وفاء</span></div>
     </div>
 
     <div class="quote-card">
@@ -324,9 +317,8 @@
     <div class="section-title">وعدي ليكي</div>
     <div class="letter-box">
       <h3>يا رحمة الغالية</h3>
-      <p>وعدي ليكي إني هفضل جنبك في أي ظرف، مش هسيبك وقت التعب، وهفضل داعمك في كل خطوة.</p>
-      <p>مهما الدنيا زنقت، إنتي أول حد بفكر فيه، وآخر حد بسلم عليه بالليل.</p>
-      <p>حبيبتي، انتي مش مرحلة، انتي حياة كاملة اخترتها بكل وعي وحب.</p>
+      <p>مش هوعدك بالمستحيل، بس هوعدك إني هكون جنبك وقت ما تحتاجيني.</p>
+      <p>إنتي مش بس حبيبتي، إنتي حد باحترمه وبقدر وجوده في حياتي.</p>
     </div>
 
     <footer>
@@ -338,54 +330,57 @@
 
 <button id="music-toggle" title="تشغيل / إيقاف الموسيقى">🎵</button>
 
-<audio id="music" loop>
+<!--
+  ملاحظة عن الموسيقى:
+  لو الصوت لسه مش شغال بعد التعديل، غالبًا رابط bensound بيرفض الروابط المباشرة.
+  الحل الأضمن: ارفعي ملف mp3 بتاعك على نفس الـ GitHub repo اللي فيه الصور،
+  وحطي رابطه هنا بنفس طريقة روابط الصور (raw.githubusercontent.com/.../song.mp3)
+-->
+<audio id="music" loop preload="auto">
   <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
 </audio>
 
 <script>
   function createHeart(){
     const heart = document.createElement("div");
-    heart.innerHTML = "❤️";
+    heart.innerHTML = "❤";
     heart.className = "heart-fall";
     heart.style.left = Math.random()*100 + "vw";
-    heart.style.animationDuration = (Math.random()*3+3) + "s";
-    heart.style.fontSize = (Math.random()*12+14) + "px";
+    heart.style.animationDuration = (Math.random()*3+4) + "s";
+    heart.style.fontSize = (Math.random()*8+10) + "px";
     document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(), 6500);
+    setTimeout(()=>heart.remove(), 7500);
   }
 
   function playKissEffect(callback){
     const overlay = document.getElementById("kiss-overlay");
     overlay.innerHTML = "";
-    const emojis = ["💋","💋","💋"];
     const positions = [
       {top:"42%", left:"50%"},
-      {top:"38%", left:"38%"},
-      {top:"38%", left:"62%"}
+      {top:"38%", left:"40%"},
+      {top:"38%", left:"60%"}
     ];
-    emojis.forEach((e,i)=>{
+    positions.forEach((p,i)=>{
       const span = document.createElement("div");
       span.className = "kiss-emoji";
-      span.textContent = e;
-      span.style.top = positions[i].top;
-      span.style.left = positions[i].left;
-      span.style.animationDelay = (i*0.15) + "s";
+      span.textContent = "💋";
+      span.style.top = p.top;
+      span.style.left = p.left;
+      span.style.animationDelay = (i*0.12) + "s";
       overlay.appendChild(span);
     });
-    for(let i=0;i<2;i++){
-      const ring = document.createElement("div");
-      ring.className = "kiss-ring";
-      ring.style.top = "40%";
-      ring.style.left = "50%";
-      ring.style.animationDelay = (i*0.3) + "s";
-      overlay.appendChild(ring);
-    }
+    const ring = document.createElement("div");
+    ring.className = "kiss-ring";
+    ring.style.top = "40%";
+    ring.style.left = "50%";
+    overlay.appendChild(ring);
+
     overlay.classList.add("play");
     setTimeout(()=>{
       overlay.classList.remove("play");
       overlay.innerHTML = "";
       if (callback) callback();
-    }, 1500);
+    }, 1300);
   }
 
   const musicEl = document.getElementById("music");
@@ -394,40 +389,9 @@
   function checkPass(){
     const input = document.getElementById("pass");
     if (input.value.toLowerCase() === "love"){
-      playKissEffect(()=>{
-        document.getElementById("lock-screen").style.opacity = "0";
-        setTimeout(()=>{
-          document.getElementById("lock-screen").style.display = "none";
-          const main = document.getElementById("main-content");
-          main.classList.add("show");
-          setInterval(createHeart, 750);
-          musicEl.volume = 0.6;
-          musicEl.play().catch(()=>{
-            musicBtn.classList.add("paused");
-          });
-        }, 300);
-      });
-    } else {
-      input.classList.add("shake");
-      setTimeout(()=>input.classList.remove("shake"), 400);
-      alert("حاولي مرة أخرى يا أميرتي.. السر كلمة love ❤️");
-    }
-  }
 
-  document.getElementById("pass").addEventListener("keydown", function(e){
-    if (e.key === "Enter") checkPass();
-  });
-
-  musicBtn.addEventListener("click", function(){
-    if (musicEl.paused){
-      musicEl.play().catch(()=>{});
-      musicBtn.classList.remove("paused");
-    } else {
-      musicEl.pause();
-      musicBtn.classList.add("paused");
-    }
-  });
-</script>
-
-</body>
-</html>
+      // الصوت لازم يتنادى فورًا جوه حدث الضغطة نفسه عشان المتصفح يسمح بالتشغيل التلقائي
+      musicEl.volume = 0.6;
+      const playPromise = musicEl.play();
+      if (playPromise !== undefined){
+        playPromise.catch(()=>{
