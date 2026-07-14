@@ -158,7 +158,6 @@
     animation:pulse 2.4s ease-in-out infinite;
   }
   @keyframes pulse{ 0%,100%{ transform:scale(1); opacity:.85; } 50%{ transform:scale(1.15); opacity:1; } }
-  /* توهج يضيء ويخفت كل ثانية على اسمها */
   .name-card h1{
     margin:0; font-size:2.1rem; font-weight:800;
     background:linear-gradient(135deg,#fff, var(--primary-soft) 70%);
@@ -174,7 +173,6 @@
     font-size:.95rem; margin-top:14px; opacity:.75;
   }
 
-  /* صندوق الأبيات المتحركة حرف حرف */
   .verse-box{
     max-width:380px; margin:22px auto 0; padding:20px 22px;
     background:linear-gradient(160deg, rgba(230,62,109,0.07), rgba(255,255,255,0.015));
@@ -493,8 +491,9 @@
   </div>
 </div>
 
+<!-- موسيقى رومانسية هادئة -->
 <audio id="romantic-music" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  <source src="https://www.chosic.com/wp-content/uploads/2021/07/The-Ambient-Piano-Music.mp3" type="audio/mpeg">
   متصفحك لا يدعم مشغل الصوت.
 </audio>
 
@@ -565,7 +564,6 @@
     }, 300);
   }
 
-  /* ---------- كتابة الأبيات حرف حرف (أبيات أصلية، مش من أغنية) ---------- */
   const verses = [
     "قلبي اختارِك من كل قلوب الدنيا،",
     "وهفضل مختارك في كل يوم جديد.",
@@ -603,8 +601,7 @@
     if (input.value.toLowerCase() === "love"){
       try{
         music.volume = 0.6;
-        const p = music.play();
-        if (p !== undefined){ p.catch(()=>{ musicBtn.classList.add("paused"); }); }
+        music.play().catch(()=>{ musicBtn.classList.add("paused"); });
       }catch(e){
         musicBtn.classList.add("paused");
       }
