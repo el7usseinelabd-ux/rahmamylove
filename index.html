@@ -33,15 +33,12 @@
   }
   @keyframes fall{ to{ transform:translateY(105vh) rotate(20deg); opacity:0; } }
 
-  /* ---------- lock screen ---------- */
   #lock-screen{
     position:fixed; inset:0; display:flex; justify-content:center; align-items:center;
     background:radial-gradient(circle at 50% 35%,#2a1220 0%,#0b0710 75%);
     z-index:9999; padding:24px; transition:opacity .7s ease; overflow:hidden;
   }
-  .lock-heart-bg{
-    position:absolute; inset:0; pointer-events:none;
-  }
+  .lock-heart-bg{ position:absolute; inset:0; pointer-events:none; }
   .login-box{
     background:rgba(255,255,255,0.035);
     backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
@@ -98,7 +95,6 @@
   }
   button.enter-btn:active{ transform:scale(.97); }
 
-  /* ---------- unlock transition ---------- */
   #unlock-flash{
     position:fixed; inset:0; z-index:10001; pointer-events:none;
     background:radial-gradient(circle, rgba(230,62,109,0.9), rgba(165,39,83,0.3) 60%, transparent 75%);
@@ -139,13 +135,12 @@
     100%{ opacity:0; transform:translate(-50%,-60%) scale(1.05); }
   }
 
-  /* ---------- main content ---------- */
   .content{ display:none; position:relative; z-index:2; padding:32px 20px 60px; }
   .content.show{ display:block; animation:fadeUp .8s ease; }
   @keyframes fadeUp{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
   .wrap{ max-width:440px; margin:0 auto; }
 
-  .name-wrap{ text-align:center; margin-bottom:36px; }
+  .name-wrap{ text-align:center; margin-bottom:20px; }
   .eyebrow{
     display:inline-block; font-size:.68rem; letter-spacing:.15em;
     color:var(--gold); opacity:.8; margin-bottom:16px; text-transform:uppercase;
@@ -156,21 +151,46 @@
     border:1px solid rgba(230,62,109,0.3);
     border-radius:20px; padding:16px 30px;
     box-shadow:0 8px 30px rgba(0,0,0,0.35);
+    position:relative;
   }
   .name-card .heart-icon{
     font-size:1.4rem; color:var(--primary);
     animation:pulse 2.4s ease-in-out infinite;
   }
   @keyframes pulse{ 0%,100%{ transform:scale(1); opacity:.85; } 50%{ transform:scale(1.15); opacity:1; } }
+  /* توهج يضيء ويخفت كل ثانية على اسمها */
   .name-card h1{
     margin:0; font-size:2.1rem; font-weight:800;
     background:linear-gradient(135deg,#fff, var(--primary-soft) 70%);
     -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:nameGlow 2s ease-in-out infinite;
+  }
+  @keyframes nameGlow{
+    0%,100%{ filter:drop-shadow(0 0 4px rgba(230,62,109,.25)); }
+    50%{ filter:drop-shadow(0 0 18px rgba(230,62,109,.85)); }
   }
   .name-wrap .subtitle{
     font-family:'Amiri', serif; font-style:italic; color:var(--text-soft);
     font-size:.95rem; margin-top:14px; opacity:.75;
   }
+
+  /* صندوق الأبيات المتحركة حرف حرف */
+  .verse-box{
+    max-width:380px; margin:22px auto 0; padding:20px 22px;
+    background:linear-gradient(160deg, rgba(230,62,109,0.07), rgba(255,255,255,0.015));
+    border:1px solid rgba(230,62,109,0.25); border-radius:16px;
+    min-height:90px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .verse-text{
+    font-family:'Amiri', serif; font-style:italic; color:var(--text-soft);
+    font-size:1rem; line-height:2; text-align:center; opacity:.95;
+  }
+  .verse-text .cursor{
+    display:inline-block; width:2px; background:var(--primary-soft);
+    margin-inline-start:2px; animation:blink 0.8s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
 
   .divider{ display:flex; align-items:center; gap:10px; margin:30px 0; opacity:.5; }
   .divider::before, .divider::after{
@@ -199,7 +219,6 @@
     margin:40px 0 18px; opacity:.85; font-weight:700;
   }
 
-  /* ---------- expandable love-note cards ---------- */
   .love-notes{ display:flex; flex-direction:column; gap:14px; margin:16px 0 30px; }
   .love-card{
     background:linear-gradient(160deg, rgba(230,62,109,0.07), rgba(255,255,255,0.015));
@@ -235,7 +254,6 @@
     border-top:1px dashed rgba(255,255,255,0.1); padding-top:12px;
   }
 
-  /* timeline as cards too */
   .timeline{ display:flex; flex-direction:column; gap:12px; margin:18px 0 30px; }
   .t-card{
     background:rgba(255,255,255,0.02);
@@ -245,7 +263,6 @@
   .t-card h4{ margin:0 0 5px; color:#fff; font-size:.92rem; font-weight:700; }
   .t-card p{ margin:0; color:var(--text-soft); font-size:.85rem; opacity:.85; line-height:1.8; }
 
-  /* gallery */
   .gallery{ display:flex; flex-direction:column; gap:18px; margin:30px 0; }
   .frame{
     background:var(--dark-2); padding:8px; border-radius:14px;
@@ -297,7 +314,7 @@
     .name-card{ padding:14px 22px; gap:10px; }
   }
   @media (prefers-reduced-motion: reduce){
-    .heart-fall, .kiss-emoji, .content.show, .name-card .heart-icon, .lock-ring::before, button.enter-btn{ animation:none !important; }
+    .heart-fall, .kiss-emoji, .content.show, .name-card .heart-icon, .name-card h1, .lock-ring::before, button.enter-btn{ animation:none !important; }
   }
 </style>
 </head>
@@ -330,6 +347,10 @@
         <h1>رحمة</h1>
       </div>
       <p class="subtitle">وكل ما أملك</p>
+
+      <div class="verse-box">
+        <p class="verse-text" id="verse-text"></p>
+      </div>
     </div>
 
     <div class="divider"><span>❤</span></div>
@@ -423,14 +444,46 @@
     </div>
 
     <div class="quote-card">
-      أحبكِ في كل ثانية، ومعكِ أشعر أن الدنيا بأكملها في يدي.
+      معاكِ الوقت بيبقى أحلى، وهمومي كلها بتخف لما بسمع صوتك. أنتِ الحتة اللي قلبي بيرتاح فيها.
     </div>
 
     <div class="section-title">وعدي ليكي</div>
     <div class="letter-box">
       <h3>يا رحمة الغالية</h3>
-      <p>مش هوعدك بالمستحيل، بس هوعدك إني هكون جنبك وقت ما تحتاجيني.</p>
-      <p>إنتي مش بس حبيبتي، إنتي حد باحترمه وبقدر وجوده في حياتي.</p>
+      <p>وعدي ليكي إني هفضل داعمك في كل قرار بتاخديه، وهسمعك حتى لو الدنيا مشغولاني.</p>
+      <p>مش هخليكي تحسي بالوحدة وأنا موجود، وهفضل أختار إني أكون جنبك كل يوم من جديد، مش بس في البداية.</p>
+      <p>إنتي مش مجرد حبيبة عندي، إنتي بيت قلبي اللي بترجعله في آخر يوم تعبان.</p>
+    </div>
+
+    <div class="section-title">ليه بحبك</div>
+    <div class="love-notes">
+      <div class="love-card">
+        <div class="love-card-head">
+          <span class="teaser">لأنك بتسمعيني بجد</span>
+          <span class="icon">▾</span>
+        </div>
+        <div class="love-card-body">
+          <p>مش بس بتسمعي كلامي، إنتي بتسمعي اللي جوايا حتى لو مقولتوش، وده حاجة بتخليني حاسس إني مفهوم.</p>
+        </div>
+      </div>
+      <div class="love-card">
+        <div class="love-card-head">
+          <span class="teaser">لأنك أمان مش عبء</span>
+          <span class="icon">▾</span>
+        </div>
+        <div class="love-card-body">
+          <p>وجودك جنبي مبيحسسنيش إني بحمل حاجة زيادة، بالعكس، بتخففي عني وأنا مش حاسس بالتعب.</p>
+        </div>
+      </div>
+      <div class="love-card">
+        <div class="love-card-head">
+          <span class="teaser">لأنك بتصدقيني وأنا بصدقك</span>
+          <span class="icon">▾</span>
+        </div>
+        <div class="love-card-body">
+          <p>الثقة بينا حاجة بنيتها مع بعض بالوقت، ومحافظ عليها، لأنها أساس أي حاجة تانية بينا.</p>
+        </div>
+      </div>
     </div>
 
     <footer>
@@ -440,7 +493,6 @@
   </div>
 </div>
 
-<!-- مشغل الموسيقى -->
 <audio id="romantic-music" loop>
   <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
   متصفحك لا يدعم مشغل الصوت.
@@ -449,7 +501,6 @@
 <button id="music-toggle" onclick="toggleMusic()">🎶 موسيقى الحب</button>
 
 <script>
-  /* ---------- ambient hearts ---------- */
   function createHeart(target){
     try{
       const heart = document.createElement("div");
@@ -462,10 +513,8 @@
       setTimeout(()=>heart.remove(), 7500);
     }catch(e){}
   }
-  // قلوب هادئة في شاشة القفل من أول ما الصفحة تفتح
   const lockHeartsInterval = setInterval(()=>createHeart(document.getElementById("lock-hearts")), 1400);
 
-  /* ---------- unlock celebration ---------- */
   function playUnlockEffects(callback){
     try{
       const flash = document.getElementById("unlock-flash");
@@ -512,10 +561,38 @@
       document.getElementById("lock-screen").style.display = "none";
       document.getElementById("main-content").classList.add("show");
       setInterval(()=>createHeart(), 1200);
+      startVerseTyping();
     }, 300);
   }
 
-  /* ---------- password ---------- */
+  /* ---------- كتابة الأبيات حرف حرف (أبيات أصلية، مش من أغنية) ---------- */
+  const verses = [
+    "قلبي اختارِك من كل قلوب الدنيا،",
+    "وهفضل مختارك في كل يوم جديد.",
+    "ضحكتك أمان، وصوتك سكينة،",
+    "ومعاكِ الطريق مهما طال، بيهون."
+  ];
+  let verseIndex = 0;
+  let charIndex = 0;
+  const verseEl = document.getElementById("verse-text");
+
+  function typeNextChar(){
+    if (!verseEl) return;
+    const current = verses[verseIndex];
+    if (charIndex <= current.length){
+      verseEl.innerHTML = current.slice(0, charIndex) + '<span class="cursor">&nbsp;</span>';
+      charIndex++;
+      setTimeout(typeNextChar, 75);
+    } else {
+      setTimeout(()=>{
+        charIndex = 0;
+        verseIndex = (verseIndex + 1) % verses.length;
+        typeNextChar();
+      }, 1800);
+    }
+  }
+  function startVerseTyping(){ typeNextChar(); }
+
   const music = document.getElementById("romantic-music");
   const musicBtn = document.getElementById("music-toggle");
 
@@ -524,7 +601,6 @@
     if (!input) return;
 
     if (input.value.toLowerCase() === "love"){
-      // لازم play() تتنادى فورًا هنا -- جوه حدث الضغطة نفسه -- عشان المتصفح يسمح بالتشغيل
       try{
         music.volume = 0.6;
         const p = music.play();
@@ -555,7 +631,6 @@
     }
   }
 
-  /* ---------- expandable love cards ---------- */
   document.querySelectorAll(".love-card-head").forEach(head=>{
     head.addEventListener("click", function(){
       this.closest(".love-card").classList.toggle("open");
