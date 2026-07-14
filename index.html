@@ -6,57 +6,52 @@
     <title>مملكة رحمة الأبدية ❤️</title>
     <style>
         :root { --primary: #ff2a6d; --dark: #070312; }
-        body { background: var(--dark); color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
+        body { background: var(--dark); color: #fff; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; overflow-x: hidden; }
 
-        /* شاشة الدخول */
-        #lock-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, #2d0b1a 0%, #070312 100%);
-            display: flex; justify-content: center; align-items: center; z-index: 9999;
-        }
-        .login-box { 
-            background: rgba(255,255,255,0.05); backdrop-filter: blur(10px);
-            padding: 30px; border-radius: 20px; border: 1px solid var(--primary);
-            text-align: center; width: 80%; max-width: 350px;
-        }
-        input { padding: 12px; border-radius: 25px; border: none; width: 80%; text-align: center; margin-bottom: 15px; }
-        button { background: var(--primary); color: white; border: none; padding: 12px 40px; border-radius: 25px; cursor: pointer; font-weight: bold; }
+        /* تأثير القلوب المتساقطة */
+        .heart-fall { position: fixed; top: -10px; color: var(--primary); font-size: 20px; animation: fall linear forwards; z-index: 1; pointer-events: none; }
+        @keyframes fall { to { transform: translateY(100vh); opacity: 0; } }
+
+        /* شاشة القفل */
+        #lock-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, #2d0b1a 0%, #070312 100%); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+        .login-box { background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); padding: 30px; border-radius: 30px; border: 1px solid var(--primary); text-align: center; width: 85%; max-width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        input { padding: 12px; border-radius: 20px; border: 1px solid var(--primary); width: 80%; text-align: center; background: transparent; color: #fff; margin-bottom: 20px; outline: none; }
+        button { background: var(--primary); color: white; border: none; padding: 12px 30px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--primary); }
 
         /* المحتوى */
-        .content { display: none; padding: 20px; text-align: center; animation: fadeIn 1s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        .gallery-img { width: 100%; max-width: 400px; border-radius: 15px; border: 3px solid var(--primary); margin: 15px 0; box-shadow: 0 5px 15px rgba(255,42,109,0.3); }
-        .quote { font-size: 1.2rem; color: #ffb8c6; margin: 20px; line-height: 1.6; }
-        
-        #kiss-overlay { position: fixed; top:0; left:0; width:100%; height:100%; display:none; justify-content:center; align-items:center; font-size: 100px; z-index: 9998; background: rgba(0,0,0,0.9); }
+        .content { display: none; padding: 20px; max-width: 500px; margin: auto; text-align: center; position: relative; z-index: 2; }
+        .gallery-img { width: 90%; border-radius: 20px; border: 3px solid var(--primary); margin: 20px 0; transition: 0.5s; }
+        .gallery-img:hover { transform: scale(1.03); }
+        .quote { font-size: 1.3rem; margin: 25px 0; color: #ffebf0; text-shadow: 0 0 10px rgba(255,42,109,0.5); }
+        h1 { color: var(--primary); }
     </style>
 </head>
 <body>
 
+<!-- شاشة القفل -->
 <div id="lock-screen">
     <div class="login-box">
         <h2 style="color:var(--primary)">أهلاً يا ملكة قلبي ❤️</h2>
-        <p>اكتبي "love" لتفتحي باب عالمنا</p>
+        <p>اكتبي كلمة السر لفتح باب جنتنا:</p>
         <input type="password" id="pass" placeholder="كلمة السر..">
         <br>
-        <button onclick="checkPass()">دخول إلى قلبي</button>
+        <button onclick="checkPass()">دخول</button>
     </div>
 </div>
 
-<div id="kiss-overlay">💋</div>
-
+<!-- المحتوى الرئيسي -->
 <div class="content" id="main-content">
     <h1>رحمة.. يا كل دنيتي ❤️</h1>
-    <p class="quote">"إلى من جعلت لحياتي معنى، إلى رحمة التي أرى في عينيها وطني.. كل عام وأنتِ الأجمل والأغلى."</p>
+    <p class="quote">"يا من ملكتِ قلبي وأصبحتِ نبضه، كل لحظة وأنتِ معي هي عيد لي."</p>
     
-    <div id="gallery">
-        <img class="gallery-img" src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM%5B1%5D.jpeg">
-        <div class="quote">"ضحكتكِ هي النور الذي يطرد عتمة أيامي."</div>
-        <img class="gallery-img" src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%281%29%5B1%5D.jpeg">
-        <img class="gallery-img" src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%282%29%5B1%5D.jpeg">
-        <div class="quote">"أحبكِ فوق ما يتخيله البشر، يا أجمل أقداري."</div>
-    </div>
+    <img class="gallery-img" src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM%5B1%5D.jpeg">
+    <p class="quote">"ضحكتكِ هي النور الذي يطرد أي حزن من حياتي."</p>
+    
+    <img class="gallery-img" src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%281%29%5B1%5D.jpeg">
+    <img class="gallery-img" src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%282%29%5B1%5D.jpeg">
+    
+    <p class="quote">"أحبكِ اليوم، وغداً، وإلى الأبد يا رحمة قلبي."</p>
 </div>
 
 <audio id="music" loop>
@@ -64,19 +59,24 @@
 </audio>
 
 <script>
+    // تفعيل تساقط القلوب
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.className = "heart-fall";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+    }
+
     function checkPass() {
         if (document.getElementById("pass").value.toLowerCase() === "love") {
-            const audio = document.getElementById("music");
-            const kiss = document.getElementById("kiss-overlay");
-            
-            kiss.style.display = "flex";
-            audio.play();
-            
-            setTimeout(() => {
-                document.getElementById("lock-screen").style.display = "none";
-                kiss.style.display = "none";
-                document.getElementById("main-content").style.display = "block";
-            }, 2000);
+            document.getElementById("music").play();
+            document.getElementById("lock-screen").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+            // تشغيل القلوب
+            setInterval(createHeart, 600);
         } else {
             alert("حاولي مرة أخرى يا أميرتي.. السر كلمة love ❤️");
         }
