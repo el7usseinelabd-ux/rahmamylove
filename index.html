@@ -2,97 +2,87 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مملكة رحمة الأبدية ❤️</title>
     <style>
-        body { background: #0b0312; color: #fff; font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; padding: 20px; }
-        
-        /* شاشة القفل */
+        :root { --primary: #ff2a6d; --dark: #070312; }
+        body { background: var(--dark); color: #fff; font-family: 'Tajawal', sans-serif; margin: 0; overflow-x: hidden; }
+
+        /* شاشة الدخول الاحترافية */
         #lock-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, #2d0b1a, #0b0312);
-            z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: radial-gradient(circle, #2d0b1a 0%, #070312 100%);
+            display: flex; justify-content: center; align-items: center; z-index: 9999;
         }
-        .login-box { background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 20px; border: 1px solid #ff2a6d; }
-        input { padding: 10px; border-radius: 10px; border: none; text-align: center; }
-        
-        /* المحتوى الرئيسي */
-        .hidden { display: none; }
-        .container { max-width: 500px; margin: auto; }
-        h1 { color: #ff2a6d; }
-        .photo-card { background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 20px; margin-bottom: 20px; border: 1px solid #ff2a6d; }
-        img { width: 100%; border-radius: 15px; }
-        .quote { font-style: italic; color: #ffd700; margin: 15px 0; padding: 10px; border-right: 3px solid #ff2a6d; }
-        .btn { background: #ff2a6d; color: white; border: none; padding: 12px 25px; border-radius: 30px; cursor: pointer; }
+        .login-box { 
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(15px);
+            padding: 40px; border-radius: 30px; border: 1px solid var(--primary);
+            text-align: center; box-shadow: 0 0 50px rgba(255,42,109,0.3);
+        }
+        input { padding: 15px; border-radius: 50px; border: none; width: 200px; text-align: center; font-size: 1.1rem; }
         
         /* تأثير القبلة */
-        #kiss-effect { font-size: 100px; display: none; position: fixed; top: 40%; left: 40%; z-index: 2000; }
+        #kiss-overlay { 
+            position: fixed; top:0; left:0; width:100%; height:100%; 
+            display:none; justify-content:center; align-items:center; 
+            font-size: 200px; z-index: 9998; background: rgba(0,0,0,0.8);
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+
+        /* المحتوى */
+        .content { display: none; padding: 20px; max-width: 500px; margin: auto; text-align: center; }
+        img { width: 100%; border-radius: 20px; border: 2px solid var(--primary); margin: 20px 0; }
+        .heart-beat { animation: heartbeat 1.5s infinite; display: inline-block; }
+        @keyframes heartbeat { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
 
-<!-- شاشة كلمة السر -->
+<!-- شاشة القفل -->
 <div id="lock-screen">
     <div class="login-box">
-        <h2>أدخلي مفتاح قلبي يا رحمة ❤️</h2>
-        <input type="password" id="pass" placeholder="كلمة السر هنا">
-        <button class="btn" onclick="checkPass()">دخول</button>
+        <h2 style="color:var(--primary)">أهلاً يا ملكة قلبي ❤️</h2>
+        <p>اكتبي "love" عشان تفتحي باب الجنة</p>
+        <input type="password" id="pass" placeholder="كلمة السر..">
+        <br><br>
+        <button onclick="checkPass()" style="background:var(--primary); color:white; border:none; padding:10px 30px; border-radius:20px; cursor:pointer;">دخول</button>
     </div>
 </div>
 
-<div id="kiss-effect">💋</div>
+<div id="kiss-overlay">💋</div>
 
-<!-- المحتوى الرئيسي -->
-<div id="main-content" class="hidden">
-    <div class="container">
-        <h1>رحمة.. يا أغلى ما في حياتي</h1>
-        <p>كل لحظة وانتي معايا بتخلي دنيتي أجمل بكتير.</p>
-        
-        <div class="photo-gallery">
-            <div class="photo-card"><img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM%5B1%5D.jpeg"></div>
-            <div class="quote">"يا رب يخليكي ليا يا رحمة، انتي اللي منورة حياتي بضحكتك دي"</div>
-            
-            <div class="photo-card"><img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%281%29%5B1%5D.jpeg"></div>
-            <div class="quote">"جمالك مفيش زيه في الدنيا، انتي كلك على بعضك حتة من الجنة"</div>
-            
-            <div class="photo-card"><img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%282%29%5B1%5D.jpeg"></div>
-            <div class="quote">"كل ما بشوف الصورة دي بحس إني أسعد واحد في الكون عشان انتي في حياتي"</div>
+<!-- المحتوى -->
+<div class="content" id="main-content">
+    <h1 class="heart-beat">رحمة.. يا كل دنيتي ❤️</h1>
+    <p>أجمل أقداري.. وكل ما بشوفك بحس إني اتولدت من جديد.</p>
+    
+    <div id="gallery">
+        <img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM%5B1%5D.jpeg">
+        <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:15px;">
+            "ضحكتك دي هي اللي بتنور أيامي يا أحلى رحمة في الدنيا"
         </div>
-
-        <audio id="myAudio" loop></audio>
-        <button class="btn" onclick="toggleMusic()">تشغيل/إيقاف الموسيقى الرومانسية 🎵</button>
+        <img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%281%29%5B1%5D.jpeg">
+        <img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%282%29%5B1%5D.jpeg">
     </div>
 </div>
+
+<audio id="music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-    // قائمة موسيقى رومانسية هادئة
-    const songs = [
-        "https://www.bensound.com/bensound-music/bensound-romantic.mp3",
-        "https://www.bensound.com/bensound-music/bensound-love.mp3"
-    ];
-
     function checkPass() {
-        const pass = document.getElementById("pass").value;
-        if (pass === "love") {
-            // تأثير القبلة
-            document.getElementById("kiss-effect").style.display = "block";
+        if (document.getElementById("pass").value.toLowerCase() === "love") {
+            const kiss = document.getElementById("kiss-overlay");
+            kiss.style.display = "flex";
+            document.getElementById("music").play(); // تشغيل تلقائي
             setTimeout(() => {
                 document.getElementById("lock-screen").style.display = "none";
-                document.getElementById("main-content").classList.remove("hidden");
-                document.getElementById("kiss-effect").style.display = "none";
-            }, 1500);
+                kiss.style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+            }, 2000);
         } else {
-            alert("كلمة السر غلط يا روح قلبي! حاولي تاني");
-        }
-    }
-
-    function toggleMusic() {
-        const audio = document.getElementById("myAudio");
-        if (audio.paused) {
-            audio.src = songs[Math.floor(Math.random() * songs.length)];
-            audio.play();
-        } else {
-            audio.pause();
+            alert("لا يا حبيبي، حاول تاني.. السر كلمة الحب ❤️");
         }
     }
 </script>
