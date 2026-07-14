@@ -5,99 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مملكة رحمة الأبدية ❤️</title>
     <style>
-        body { 
-            background: #070312; 
-            color: white; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            text-align: center; 
-            margin: 0; 
-            padding: 20px; 
-            line-height: 1.6;
+        body { background: #0b0312; color: #fff; font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; padding: 20px; }
+        
+        /* شاشة القفل */
+        #lock-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, #2d0b1a, #0b0312);
+            z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
+        .login-box { background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 20px; border: 1px solid #ff2a6d; }
+        input { padding: 10px; border-radius: 10px; border: none; text-align: center; }
+        
+        /* المحتوى الرئيسي */
+        .hidden { display: none; }
         .container { max-width: 500px; margin: auto; }
-        h1 { color: #ff2a6d; margin-bottom: 10px; }
+        h1 { color: #ff2a6d; }
+        .photo-card { background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 20px; margin-bottom: 20px; border: 1px solid #ff2a6d; }
+        img { width: 100%; border-radius: 15px; }
+        .quote { font-style: italic; color: #ffd700; margin: 15px 0; padding: 10px; border-right: 3px solid #ff2a6d; }
+        .btn { background: #ff2a6d; color: white; border: none; padding: 12px 25px; border-radius: 30px; cursor: pointer; }
         
-        /* ضبط الصور لتكون تحت بعضها وبشكل جميل */
-        .photo-gallery { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 20px; 
-            margin: 30px 0; 
-        }
-        .photo-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 10px;
-            border-radius: 20px;
-            border: 1px solid #333;
-        }
-        img { 
-            width: 100%; 
-            border-radius: 15px; 
-            display: block;
-        }
-        
-        .btn { 
-            background: #ff2a6d; 
-            color: white; 
-            border: none; 
-            padding: 15px 25px; 
-            border-radius: 30px; 
-            cursor: pointer; 
-            font-size: 1rem; 
-            margin-top: 20px;
-            transition: 0.3s;
-        }
-        .btn:hover { background: #d6245f; }
-        #audio-status { margin-top: 15px; color: #ffd700; font-size: 0.9rem; }
+        /* تأثير القبلة */
+        #kiss-effect { font-size: 100px; display: none; position: fixed; top: 40%; left: 40%; z-index: 2000; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>رحمة.. يا كل الحياة ❤️</h1>
-    <p>أجمل أقداري، وأعظم نعم حياتي.</p>
-
-    <div class="photo-gallery">
-        <!-- الصور الآن ستظهر تحت بعضها -->
-        <div class="photo-card">
-            <img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM%5B1%5D.jpeg" alt="صورة 1">
-        </div>
-        <div class="photo-card">
-            <img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%281%29%5B1%5D.jpeg" alt="صورة 2">
-        </div>
-        <div class="photo-card">
-            <img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%282%29%5B1%5D.jpeg" alt="صورة 3">
-        </div>
+<!-- شاشة كلمة السر -->
+<div id="lock-screen">
+    <div class="login-box">
+        <h2>أدخلي مفتاح قلبي يا رحمة ❤️</h2>
+        <input type="password" id="pass" placeholder="كلمة السر هنا">
+        <button class="btn" onclick="checkPass()">دخول</button>
     </div>
+</div>
 
-    <audio id="myAudio" style="display:none;"></audio>
-    <p id="audio-status">جاري تحضير معزوفة خاصة لكِ...</p>
-    <button class="btn" onclick="playMusic()">اضغطي لتشغيل الموسيقى 🎶</button>
+<div id="kiss-effect">💋</div>
+
+<!-- المحتوى الرئيسي -->
+<div id="main-content" class="hidden">
+    <div class="container">
+        <h1>رحمة.. يا أغلى ما في حياتي</h1>
+        <p>كل لحظة وانتي معايا بتخلي دنيتي أجمل بكتير.</p>
+        
+        <div class="photo-gallery">
+            <div class="photo-card"><img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM%5B1%5D.jpeg"></div>
+            <div class="quote">"يا رب يخليكي ليا يا رحمة، انتي اللي منورة حياتي بضحكتك دي"</div>
+            
+            <div class="photo-card"><img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%281%29%5B1%5D.jpeg"></div>
+            <div class="quote">"جمالك مفيش زيه في الدنيا، انتي كلك على بعضك حتة من الجنة"</div>
+            
+            <div class="photo-card"><img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%282%29%5B1%5D.jpeg"></div>
+            <div class="quote">"كل ما بشوف الصورة دي بحس إني أسعد واحد في الكون عشان انتي في حياتي"</div>
+        </div>
+
+        <audio id="myAudio" loop></audio>
+        <button class="btn" onclick="toggleMusic()">تشغيل/إيقاف الموسيقى الرومانسية 🎵</button>
+    </div>
 </div>
 
 <script>
+    // قائمة موسيقى رومانسية هادئة
     const songs = [
-        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-        "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+        "https://www.bensound.com/bensound-music/bensound-romantic.mp3",
+        "https://www.bensound.com/bensound-music/bensound-love.mp3"
     ];
 
-    const audioPlayer = document.getElementById("myAudio");
-    const statusText = document.getElementById("audio-status");
-    
-    // اختيار أغنية عشوائية عند فتح الصفحة
-    window.onload = function() {
-        const randomSong = songs[Math.floor(Math.random() * songs.length)];
-        audioPlayer.src = randomSong;
-    };
-
-    function playMusic() {
-        if (audioPlayer.paused) {
-            audioPlayer.play();
-            statusText.innerText = "تستمعين الآن إلى نغمة اخترتها لقلبكِ.. ❤️";
+    function checkPass() {
+        const pass = document.getElementById("pass").value;
+        if (pass === "love") {
+            // تأثير القبلة
+            document.getElementById("kiss-effect").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("lock-screen").style.display = "none";
+                document.getElementById("main-content").classList.remove("hidden");
+                document.getElementById("kiss-effect").style.display = "none";
+            }, 1500);
         } else {
-            audioPlayer.pause();
-            statusText.innerText = "توقفت الموسيقى..";
+            alert("كلمة السر غلط يا روح قلبي! حاولي تاني");
+        }
+    }
+
+    function toggleMusic() {
+        const audio = document.getElementById("myAudio");
+        if (audio.paused) {
+            audio.src = songs[Math.floor(Math.random() * songs.length)];
+            audio.play();
+        } else {
+            audio.pause();
         }
     }
 </script>
