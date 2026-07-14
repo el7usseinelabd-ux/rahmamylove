@@ -7,313 +7,92 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Amiri:ital@1&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --primary:#e63e6d;
-    --primary-soft:#ffb4c6;
-    --dark:#0b0710;
-    --dark-2:#160c1e;
-    --gold:#d9b98c;
-    --text-soft:#e8d6dc;
-    --line:rgba(255,255,255,0.08);
-  }
+  :root{ --primary:#e63e6d; --primary-soft:#ffb4c6; --dark:#0b0710; --dark-2:#160c1e; --gold:#d9b98c; --text-soft:#e8d6dc; --line:rgba(255,255,255,0.08); }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
-  body{
-    background:radial-gradient(ellipse at top,#1c0f22 0%,var(--dark) 60%,#050208 100%);
-    color:#fff;
-    font-family:'Almarai','Tajawal',sans-serif;
-    overflow-x:hidden;
-    min-height:100vh;
-  }
-
-  .heart-fall{
-    position:fixed; top:-30px; color:var(--primary);
-    font-size:14px; opacity:.5; animation:fall linear forwards;
-    z-index:2; pointer-events:none;
-  }
+  body{ background:radial-gradient(ellipse at top,#1c0f22 0%,var(--dark) 60%,#050208 100%); color:#fff; font-family:'Almarai','Tajawal',sans-serif; overflow-x:hidden; min-height:100vh; }
+  .heart-fall{ position:fixed; top:-30px; color:var(--primary); font-size:14px; opacity:.5; animation:fall linear forwards; z-index:2; pointer-events:none; }
   @keyframes fall{ to{ transform:translateY(105vh) rotate(20deg); opacity:0; } }
-
-  #lock-screen{
-    position:fixed; inset:0; display:flex; justify-content:center; align-items:center;
-    background:radial-gradient(circle at 50% 35%,#2a1220 0%,#0b0710 75%);
-    z-index:9999; padding:24px; transition:opacity .7s ease; overflow:hidden;
-  }
+  #lock-screen{ position:fixed; inset:0; display:flex; justify-content:center; align-items:center; background:radial-gradient(circle at 50% 35%,#2a1220 0%,#0b0710 75%); z-index:9999; padding:24px; transition:opacity .7s ease; overflow:hidden; }
   .lock-heart-bg{ position:absolute; inset:0; pointer-events:none; }
-  .login-box{
-    background:rgba(255,255,255,0.035);
-    backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-    padding:44px 28px 36px; border-radius:26px;
-    border:1px solid rgba(230,62,109,0.4);
-    text-align:center; width:100%; max-width:320px;
-    box-shadow:0 0 50px rgba(230,62,109,0.15), inset 0 0 25px rgba(230,62,109,0.04);
-    position:relative; z-index:2;
-  }
-  .login-tag{
-    position:absolute; top:-13px; left:50%; transform:translateX(-50%);
-    background:linear-gradient(135deg,var(--primary),#a52753);
-    padding:5px 18px; border-radius:999px; font-size:.68rem;
-    letter-spacing:.05em; box-shadow:0 4px 12px rgba(230,62,109,.4);
-  }
-  .lock-ring{
-    width:66px; height:66px; border-radius:50%; margin:8px auto 14px;
-    display:flex; align-items:center; justify-content:center;
-    background:radial-gradient(circle, rgba(230,62,109,0.18), transparent 70%);
-    border:1px solid rgba(230,62,109,0.35);
-    position:relative;
-  }
-  .lock-ring::before{
-    content:''; position:absolute; inset:-6px; border-radius:50%;
-    border:1px solid rgba(230,62,109,0.25);
-    animation:ringPulse 2.6s ease-in-out infinite;
-  }
+  .login-box{ background:rgba(255,255,255,0.035); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:44px 28px 36px; border-radius:26px; border:1px solid rgba(230,62,109,0.4); text-align:center; width:100%; max-width:320px; box-shadow:0 0 50px rgba(230,62,109,0.15), inset 0 0 25px rgba(230,62,109,0.04); position:relative; z-index:2; }
+  .login-tag{ position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:linear-gradient(135deg,var(--primary),#a52753); padding:5px 18px; border-radius:999px; font-size:.68rem; letter-spacing:.05em; box-shadow:0 4px 12px rgba(230,62,109,.4); }
+  .lock-ring{ width:66px; height:66px; border-radius:50%; margin:8px auto 14px; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle, rgba(230,62,109,0.18), transparent 70%); border:1px solid rgba(230,62,109,0.35); position:relative; }
+  .lock-ring::before{ content:''; position:absolute; inset:-6px; border-radius:50%; border:1px solid rgba(230,62,109,0.25); animation:ringPulse 2.6s ease-in-out infinite; }
   @keyframes ringPulse{ 0%,100%{ transform:scale(1); opacity:.6; } 50%{ transform:scale(1.12); opacity:.15; } }
   .lock-ring span{ font-size:1.7rem; }
   .login-box h2{ margin:0 0 6px; color:#fff; font-size:1.2rem; font-weight:700; }
   .login-box p.hint{ color:var(--text-soft); font-size:.78rem; margin:0 0 24px; opacity:.6; }
-  input{
-    padding:13px 16px; border-radius:14px; border:1px solid rgba(230,62,109,0.45);
-    width:100%; text-align:center; background:rgba(255,255,255,0.02); color:#fff;
-    margin-bottom:18px; font-size:1rem; font-family:inherit; outline:none;
-    transition:border-color .2s, box-shadow .2s;
-  }
+  input{ padding:13px 16px; border-radius:14px; border:1px solid rgba(230,62,109,0.45); width:100%; text-align:center; background:rgba(255,255,255,0.02); color:#fff; margin-bottom:18px; font-size:1rem; font-family:inherit; outline:none; transition:border-color .2s, box-shadow .2s; }
   input:focus{ border-color:var(--primary); box-shadow:0 0 0 4px rgba(230,62,109,0.18); }
   input.shake{ animation:shake .4s; border-color:#ff5252; }
-  @keyframes shake{
-    0%,100%{transform:translateX(0);} 20%{transform:translateX(-7px);}
-    40%{transform:translateX(7px);} 60%{transform:translateX(-5px);} 80%{transform:translateX(5px);}
-  }
-  button.enter-btn{
-    background:linear-gradient(135deg,var(--primary),#a52753);
-    color:#fff; border:none; padding:12px 38px; border-radius:16px;
-    cursor:pointer; font-size:.95rem; font-weight:700; font-family:inherit;
-    box-shadow:0 6px 18px rgba(230,62,109,0.35);
-    animation:btnGlow 2.8s ease-in-out infinite;
-  }
-  @keyframes btnGlow{
-    0%,100%{ box-shadow:0 6px 18px rgba(230,62,109,0.35); }
-    50%{ box-shadow:0 6px 26px rgba(230,62,109,0.6); }
-  }
+  @keyframes shake{ 0%,100%{transform:translateX(0);} 20%{transform:translateX(-7px);} 40%{transform:translateX(7px);} 60%{transform:translateX(-5px);} 80%{transform:translateX(5px);} }
+  button.enter-btn{ background:linear-gradient(135deg,var(--primary),#a52753); color:#fff; border:none; padding:12px 38px; border-radius:16px; cursor:pointer; font-size:.95rem; font-weight:700; font-family:inherit; box-shadow:0 6px 18px rgba(230,62,109,0.35); animation:btnGlow 2.8s ease-in-out infinite; }
+  @keyframes btnGlow{ 0%,100%{ box-shadow:0 6px 18px rgba(230,62,109,0.35); } 50%{ box-shadow:0 6px 26px rgba(230,62,109,0.6); } }
   button.enter-btn:active{ transform:scale(.97); }
-
-  #unlock-flash{
-    position:fixed; inset:0; z-index:10001; pointer-events:none;
-    background:radial-gradient(circle, rgba(230,62,109,0.9), rgba(165,39,83,0.3) 60%, transparent 75%);
-    opacity:0; transform:scale(0.05);
-  }
+  #unlock-flash{ position:fixed; inset:0; z-index:10001; pointer-events:none; background:radial-gradient(circle, rgba(230,62,109,0.9), rgba(165,39,83,0.3) 60%, transparent 75%); opacity:0; transform:scale(0.05); }
   #unlock-flash.play{ animation:flashGrow 1.1s ease forwards; }
-  @keyframes flashGrow{
-    0%{ opacity:0; transform:scale(0.05); }
-    35%{ opacity:.85; transform:scale(1.4); }
-    100%{ opacity:0; transform:scale(2.4); }
-  }
-  #kiss-overlay{
-    position:fixed; inset:0; z-index:10002; pointer-events:none;
-    display:flex; justify-content:center; align-items:center; opacity:0;
-  }
+  @keyframes flashGrow{ 0%{ opacity:0; transform:scale(0.05); } 35%{ opacity:.85; transform:scale(1.4); } 100%{ opacity:0; transform:scale(2.4); } }
+  #kiss-overlay{ position:fixed; inset:0; z-index:10002; pointer-events:none; display:flex; justify-content:center; align-items:center; opacity:0; }
   #kiss-overlay.play{ animation:kissFade 1.5s ease forwards; }
   @keyframes kissFade{ 0%{opacity:0;} 12%{opacity:1;} 78%{opacity:1;} 100%{opacity:0;} }
-  .kiss-emoji{
-    position:absolute; font-size:2.4rem; opacity:0;
-    animation:kissPop 1.5s ease forwards;
-  }
-  @keyframes kissPop{
-    0%{ opacity:0; transform:translate(0,15px) scale(.4); }
-    30%{ opacity:1; transform:translate(0,0) scale(1.05); }
-    100%{ opacity:0; transform:translate(var(--dx,0),-70px) scale(.55); }
-  }
-  .welcome-toast{
-    position:fixed; top:40%; left:50%; transform:translate(-50%,-50%);
-    z-index:10003; font-family:'Amiri', serif; font-style:italic;
-    font-size:1.3rem; color:#fff; opacity:0; pointer-events:none;
-    text-shadow:0 0 20px rgba(230,62,109,.8);
-  }
+  .kiss-emoji{ position:absolute; font-size:2.4rem; opacity:0; animation:kissPop 1.5s ease forwards; }
+  @keyframes kissPop{ 0%{ opacity:0; transform:translate(0,15px) scale(.4); } 30%{ opacity:1; transform:translate(0,0) scale(1.05); } 100%{ opacity:0; transform:translate(var(--dx,0),-70px) scale(.55); } }
+  .welcome-toast{ position:fixed; top:40%; left:50%; transform:translate(-50%,-50%); z-index:10003; font-family:'Amiri', serif; font-style:italic; font-size:1.3rem; color:#fff; opacity:0; pointer-events:none; text-shadow:0 0 20px rgba(230,62,109,.8); }
   .welcome-toast.play{ animation:toastPop 1.6s ease forwards; }
-  @keyframes toastPop{
-    0%{ opacity:0; transform:translate(-50%,-40%) scale(.9); }
-    25%{ opacity:1; transform:translate(-50%,-50%) scale(1); }
-    75%{ opacity:1; }
-    100%{ opacity:0; transform:translate(-50%,-60%) scale(1.05); }
-  }
-
+  @keyframes toastPop{ 0%{ opacity:0; transform:translate(-50%,-40%) scale(.9); } 25%{ opacity:1; transform:translate(-50%,-50%) scale(1); } 75%{ opacity:1; } 100%{ opacity:0; transform:translate(-50%,-60%) scale(1.05); } }
   .content{ display:none; position:relative; z-index:2; padding:32px 20px 60px; }
   .content.show{ display:block; animation:fadeUp .8s ease; }
   @keyframes fadeUp{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
   .wrap{ max-width:440px; margin:0 auto; }
-
   .name-wrap{ text-align:center; margin-bottom:20px; }
-  .eyebrow{
-    display:inline-block; font-size:.68rem; letter-spacing:.15em;
-    color:var(--gold); opacity:.8; margin-bottom:16px; text-transform:uppercase;
-  }
-  .name-card{
-    display:inline-flex; align-items:center; gap:14px;
-    background:linear-gradient(160deg, rgba(230,62,109,0.08), rgba(255,255,255,0.02));
-    border:1px solid rgba(230,62,109,0.3);
-    border-radius:20px; padding:16px 30px;
-    box-shadow:0 8px 30px rgba(0,0,0,0.35);
-    position:relative;
-  }
-  .name-card .heart-icon{
-    font-size:1.4rem; color:var(--primary);
-    animation:pulse 2.4s ease-in-out infinite;
-  }
+  .eyebrow{ display:inline-block; font-size:.68rem; letter-spacing:.15em; color:var(--gold); opacity:.8; margin-bottom:16px; text-transform:uppercase; }
+  .name-card{ display:inline-flex; align-items:center; gap:14px; background:linear-gradient(160deg, rgba(230,62,109,0.08), rgba(255,255,255,0.02)); border:1px solid rgba(230,62,109,0.3); border-radius:20px; padding:16px 30px; box-shadow:0 8px 30px rgba(0,0,0,0.35); position:relative; }
+  .name-card .heart-icon{ font-size:1.4rem; color:var(--primary); animation:pulse 2.4s ease-in-out infinite; }
   @keyframes pulse{ 0%,100%{ transform:scale(1); opacity:.85; } 50%{ transform:scale(1.15); opacity:1; } }
-  .name-card h1{
-    margin:0; font-size:2.1rem; font-weight:800;
-    background:linear-gradient(135deg,#fff, var(--primary-soft) 70%);
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-    animation:nameGlow 2s ease-in-out infinite;
-  }
-  @keyframes nameGlow{
-    0%,100%{ filter:drop-shadow(0 0 4px rgba(230,62,109,.25)); }
-    50%{ filter:drop-shadow(0 0 18px rgba(230,62,109,.85)); }
-  }
-  .name-wrap .subtitle{
-    font-family:'Amiri', serif; font-style:italic; color:var(--text-soft);
-    font-size:.95rem; margin-top:14px; opacity:.75;
-  }
-
-  .verse-box{
-    max-width:380px; margin:22px auto 0; padding:20px 22px;
-    background:linear-gradient(160deg, rgba(230,62,109,0.07), rgba(255,255,255,0.015));
-    border:1px solid rgba(230,62,109,0.25); border-radius:16px;
-    min-height:90px;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .verse-text{
-    font-family:'Amiri', serif; font-style:italic; color:var(--text-soft);
-    font-size:1rem; line-height:2; text-align:center; opacity:.95;
-  }
-  .verse-text .cursor{
-    display:inline-block; width:2px; background:var(--primary-soft);
-    margin-inline-start:2px; animation:blink 0.8s step-end infinite;
-  }
+  .name-card h1{ margin:0; font-size:2.1rem; font-weight:800; background:linear-gradient(135deg,#fff, var(--primary-soft) 70%); -webkit-background-clip:text; background-clip:text; color:transparent; animation:nameGlow 2s ease-in-out infinite; }
+  @keyframes nameGlow{ 0%,100%{ filter:drop-shadow(0 0 4px rgba(230,62,109,.25)); } 50%{ filter:drop-shadow(0 0 18px rgba(230,62,109,.85)); } }
+  .name-wrap .subtitle{ font-family:'Amiri', serif; font-style:italic; color:var(--text-soft); font-size:.95rem; margin-top:14px; opacity:.75; }
+  .verse-box{ max-width:380px; margin:22px auto 0; padding:20px 22px; background:linear-gradient(160deg, rgba(230,62,109,0.07), rgba(255,255,255,0.015)); border:1px solid rgba(230,62,109,0.25); border-radius:16px; min-height:90px; display:flex; align-items:center; justify-content:center; }
+  .verse-text{ font-family:'Amiri', serif; font-style:italic; color:var(--text-soft); font-size:1rem; line-height:2; text-align:center; opacity:.95; }
+  .verse-text .cursor{ display:inline-block; width:2px; background:var(--primary-soft); margin-inline-start:2px; animation:blink 0.8s step-end infinite; }
   @keyframes blink{ 50%{ opacity:0; } }
-
   .divider{ display:flex; align-items:center; gap:10px; margin:30px 0; opacity:.5; }
-  .divider::before, .divider::after{
-    content:''; flex:1; height:1px;
-    background:linear-gradient(90deg, transparent, var(--primary), transparent);
-  }
+  .divider::before, .divider::after{ content:''; flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--primary), transparent); }
   .divider span{ font-size:.75rem; }
-
-  .quote{
-    font-family:'Amiri', serif; font-style:italic;
-    font-size:1.05rem; line-height:1.85; color:var(--text-soft);
-    text-align:center; margin:26px 0; padding:0 4px; opacity:.92;
-  }
-  .quote-card{
-    background:linear-gradient(160deg, rgba(230,62,109,0.06), rgba(255,255,255,0.015));
-    border:1px solid var(--line);
-    border-radius:18px; padding:22px 20px;
-    font-family:'Amiri', serif; font-style:italic; font-size:1.02rem;
-    line-height:1.85; color:var(--text-soft); text-align:center;
-    margin:20px 0;
-  }
-
-  .section-title{
-    text-align:center; font-size:.72rem; color:var(--gold);
-    letter-spacing:.15em; text-transform:uppercase;
-    margin:40px 0 18px; opacity:.85; font-weight:700;
-  }
-
+  .quote{ font-family:'Amiri', serif; font-style:italic; font-size:1.05rem; line-height:1.85; color:var(--text-soft); text-align:center; margin:26px 0; padding:0 4px; opacity:.92; }
+  .quote-card{ background:linear-gradient(160deg, rgba(230,62,109,0.06), rgba(255,255,255,0.015)); border:1px solid var(--line); border-radius:18px; padding:22px 20px; font-family:'Amiri', serif; font-style:italic; font-size:1.02rem; line-height:1.85; color:var(--text-soft); text-align:center; margin:20px 0; }
+  .section-title{ text-align:center; font-size:.72rem; color:var(--gold); letter-spacing:.15em; text-transform:uppercase; margin:40px 0 18px; opacity:.85; font-weight:700; }
   .love-notes{ display:flex; flex-direction:column; gap:14px; margin:16px 0 30px; }
-  .love-card{
-    background:linear-gradient(160deg, rgba(230,62,109,0.07), rgba(255,255,255,0.015));
-    border:1px solid rgba(230,62,109,0.25);
-    border-radius:18px; overflow:hidden;
-    box-shadow:0 6px 18px rgba(0,0,0,0.25);
-    cursor:pointer;
-    transition:border-color .25s ease, box-shadow .25s ease;
-  }
+  .love-card{ background:linear-gradient(160deg, rgba(230,62,109,0.07), rgba(255,255,255,0.015)); border:1px solid rgba(230,62,109,0.25); border-radius:18px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.25); cursor:pointer; transition:border-color .25s ease, box-shadow .25s ease; }
   .love-card:active{ transform:scale(.995); }
   .love-card.open{ border-color:rgba(230,62,109,0.55); box-shadow:0 8px 24px rgba(230,62,109,0.15); }
-  .love-card-head{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:16px 18px; gap:12px;
-  }
-  .love-card-head .teaser{
-    font-size:.94rem; color:#fff; line-height:1.6; font-weight:700;
-  }
-  .love-card-head .icon{
-    flex-shrink:0; width:26px; height:26px; border-radius:50%;
-    background:rgba(230,62,109,0.15); color:var(--primary-soft);
-    display:flex; align-items:center; justify-content:center;
-    font-size:.85rem; transition:transform .3s ease;
-  }
+  .love-card-head{ display:flex; align-items:center; justify-content:space-between; padding:16px 18px; gap:12px; }
+  .love-card-head .teaser{ font-size:.94rem; color:#fff; line-height:1.6; font-weight:700; }
+  .love-card-head .icon{ flex-shrink:0; width:26px; height:26px; border-radius:50%; background:rgba(230,62,109,0.15); color:var(--primary-soft); display:flex; align-items:center; justify-content:center; font-size:.85rem; transition:transform .3s ease; }
   .love-card.open .love-card-head .icon{ transform:rotate(180deg); }
-  .love-card-body{
-    max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s ease;
-    padding:0 18px;
-  }
+  .love-card-body{ max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s ease; padding:0 18px; }
   .love-card.open .love-card-body{ max-height:200px; padding:0 18px 18px; }
-  .love-card-body p{
-    margin:0; font-size:.9rem; line-height:1.9; color:var(--text-soft);
-    border-top:1px dashed rgba(255,255,255,0.1); padding-top:12px;
-  }
-
+  .love-card-body p{ margin:0; font-size:.9rem; line-height:1.9; color:var(--text-soft); border-top:1px dashed rgba(255,255,255,0.1); padding-top:12px; }
   .timeline{ display:flex; flex-direction:column; gap:12px; margin:18px 0 30px; }
-  .t-card{
-    background:rgba(255,255,255,0.02);
-    border:1px solid var(--line); border-right:3px solid var(--primary);
-    border-radius:14px; padding:16px 18px;
-  }
+  .t-card{ background:rgba(255,255,255,0.02); border:1px solid var(--line); border-right:3px solid var(--primary); border-radius:14px; padding:16px 18px; }
   .t-card h4{ margin:0 0 5px; color:#fff; font-size:.92rem; font-weight:700; }
   .t-card p{ margin:0; color:var(--text-soft); font-size:.85rem; opacity:.85; line-height:1.8; }
-
   .gallery{ display:flex; flex-direction:column; gap:18px; margin:30px 0; }
-  .frame{
-    background:var(--dark-2); padding:8px; border-radius:14px;
-    border:1px solid var(--line);
-    box-shadow:0 10px 24px rgba(0,0,0,0.4);
-  }
+  .frame{ background:var(--dark-2); padding:8px; border-radius:14px; border:1px solid var(--line); box-shadow:0 10px 24px rgba(0,0,0,0.4); }
   .frame img{ width:100%; display:block; border-radius:8px; object-fit:cover; aspect-ratio:4/5; }
-  .frame .cap{
-    text-align:center; font-size:.75rem; color:var(--text-soft);
-    margin-top:9px; opacity:.65; font-family:'Amiri', serif; font-style:italic;
-  }
-
+  .frame .cap{ text-align:center; font-size:.75rem; color:var(--text-soft); margin-top:9px; opacity:.65; font-family:'Amiri', serif; font-style:italic; }
   .love-stats{ display:flex; justify-content:space-between; gap:8px; margin:32px 0; text-align:center; }
   .love-stats .stat{ flex:1; }
   .love-stats .stat b{ display:block; font-size:1.3rem; color:var(--primary-soft); }
   .love-stats .stat span{ font-size:.68rem; color:var(--text-soft); opacity:.65; }
-
-  .letter-box{
-    background:linear-gradient(160deg, rgba(217,185,140,0.05), rgba(230,62,109,0.04));
-    border:1px solid rgba(217,185,140,0.25);
-    border-radius:16px; padding:22px 18px; margin:32px 0;
-  }
+  .letter-box{ background:linear-gradient(160deg, rgba(217,185,140,0.05), rgba(230,62,109,0.04)); border:1px solid rgba(217,185,140,0.25); border-radius:16px; padding:22px 18px; margin:32px 0; }
   .letter-box h3{ margin:0 0 12px; color:var(--gold); font-size:.92rem; text-align:center; font-weight:700; }
   .letter-box p{ color:var(--text-soft); font-size:.9rem; line-height:1.9; margin:0 0 10px; }
-
-  #music-toggle{
-    position:fixed; bottom:18px; left:18px; z-index:50;
-    background:linear-gradient(135deg,var(--primary),#a52753);
-    border:none; color:#fff; width:auto; height:44px; border-radius:22px;
-    display:flex; align-items:center; justify-content:center; gap:8px;
-    padding:0 18px; font-size:.85rem; font-weight:700; cursor:pointer;
-    box-shadow:0 6px 16px rgba(230,62,109,0.35); font-family:inherit;
-  }
+  #music-toggle{ position:fixed; bottom:18px; left:18px; z-index:50; background:linear-gradient(135deg,var(--primary),#a52753); border:none; color:#fff; width:auto; height:44px; border-radius:22px; display:flex; align-items:center; justify-content:center; gap:8px; padding:0 18px; font-size:.85rem; font-weight:700; cursor:pointer; box-shadow:0 6px 16px rgba(230,62,109,0.35); font-family:inherit; }
   #music-toggle.paused{ opacity:.6; }
-
-  footer{
-    text-align:center; margin-top:44px; padding-top:22px;
-    border-top:1px solid var(--line);
-    color:var(--text-soft); font-size:.85rem; opacity:.75;
-  }
-  footer .signature{
-    font-family:'Aref Ruqaa', serif; font-weight:700;
-    font-size:1.5rem; color:var(--primary-soft);
-    display:block; margin-top:6px;
-  }
-
-  @media (max-width:380px){
-    .name-card h1{ font-size:1.8rem; }
-    .name-card{ padding:14px 22px; gap:10px; }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .heart-fall, .kiss-emoji, .content.show, .name-card .heart-icon, .name-card h1, .lock-ring::before, button.enter-btn{ animation:none !important; }
-  }
+  footer{ text-align:center; margin-top:44px; padding-top:22px; border-top:1px solid var(--line); color:var(--text-soft); font-size:.85rem; opacity:.75; }
+  footer .signature{ font-family:'Aref Ruqaa', serif; font-weight:700; font-size:1.5rem; color:var(--primary-soft); display:block; margin-top:6px; }
 </style>
 </head>
 <body>
@@ -326,7 +105,6 @@
     <h2>مرحباً يا ملكة ❤️</h2>
     <p class="hint">أدخلي كلمة السر لتفتحي قلبي</p>
     <input type="password" id="pass" placeholder="كلمة السر..">
-    <br>
     <button class="enter-btn" onclick="checkPass()">دخول</button>
   </div>
 </div>
@@ -337,7 +115,6 @@
 
 <div class="content" id="main-content">
   <div class="wrap">
-
     <div class="name-wrap">
       <span class="eyebrow">أميرة قلبي</span>
       <div class="name-card">
@@ -345,295 +122,63 @@
         <h1>رحمة</h1>
       </div>
       <p class="subtitle">وكل ما أملك</p>
-
-      <div class="verse-box">
-        <p class="verse-text" id="verse-text"></p>
-      </div>
+      <div class="verse-box"><p class="verse-text" id="verse-text"></p></div>
     </div>
-
     <div class="divider"><span>❤</span></div>
-
     <p class="quote">"لا يوجد في العالم ما هو أجمل من وجودكِ في حياتي، أنتِ السعادة التي كنت أبحث عنها."</p>
-
     <div class="section-title">كلام من قلبي</div>
     <div class="love-notes" id="love-notes">
-      <div class="love-card">
-        <div class="love-card-head">
-          <span class="teaser">وجودك في حياتي نعمة</span>
-          <span class="icon">▾</span>
-        </div>
-        <div class="love-card-body">
-          <p>يا رحمة، كل يوم بشكر ربنا إنه وضعك في حياتي. مش بس بحبك، أنا بقدّر إنك موجودة أصلاً.</p>
-        </div>
-      </div>
-      <div class="love-card">
-        <div class="love-card-head">
-          <span class="teaser">لسه نفس الإحساس</span>
-          <span class="icon">▾</span>
-        </div>
-        <div class="love-card-body">
-          <p>من أول ما اتكلمنا لحد دلوقتي، الإحساس ده مبيتغيرش، لسه بيكبر أكتر كل ما الوقت بيعدي.</p>
-        </div>
-      </div>
-      <div class="love-card">
-        <div class="love-card-head">
-          <span class="teaser">معاكي بحس بالراحة</span>
-          <span class="icon">▾</span>
-        </div>
-        <div class="love-card-body">
-          <p>مش كل حد بيديك الإحساس ده. معاكي بحس إني مش لازم أتكلف، وده حاجة نادرة أوي بالنسبالي.</p>
-        </div>
-      </div>
-      <div class="love-card">
-        <div class="love-card-head">
-          <span class="teaser">بحبك بطريقتي</span>
-          <span class="icon">▾</span>
-        </div>
-        <div class="love-card-body">
-          <p>ممكن مبقولش كلام كتير كل شوية، بس اللي جوايا بحاول أوصله بالأفعال، وده أصدق عندي من أي كلام.</p>
-        </div>
-      </div>
-      <div class="love-card">
-        <div class="love-card-head">
-          <span class="teaser">ضحكتك سر يومي</span>
-          <span class="icon">▾</span>
-        </div>
-        <div class="love-card-body">
-          <p>لما بتضحكي، بينسيني أي تعب في يومي. صوتك وضحكتك بقوا حاجة بستنى أسمعها كل يوم.</p>
-        </div>
-      </div>
+      <div class="love-card"><div class="love-card-head"><span class="teaser">وجودك في حياتي نعمة</span><span class="icon">▾</span></div><div class="love-card-body"><p>يا رحمة، كل يوم بشكر ربنا إنه وضعك في حياتي. مش بس بحبك، أنا بقدّر إنك موجودة أصلاً.</p></div></div>
+      <div class="love-card"><div class="love-card-head"><span class="teaser">لسه نفس الإحساس</span><span class="icon">▾</span></div><div class="love-card-body"><p>من أول ما اتكلمنا لحد دلوقتي، الإحساس ده مبيتغيرش، لسه بيكبر أكتر كل ما الوقت بيعدي.</p></div></div>
     </div>
-
-    <div class="section-title">حكايتنا</div>
-    <div class="timeline">
-      <div class="t-card">
-        <h4>أول مرة</h4>
-        <p>حسيت إن في حاجة مختلفة من أول ما اتعرفنا.</p>
-      </div>
-      <div class="t-card">
-        <h4>بقينا احنا</h4>
-        <p>بقيتي جزء من يومي، ومبقتش اتخيله من غيرك.</p>
-      </div>
-      <div class="t-card">
-        <h4>دلوقتي</h4>
-        <p>كل يوم بحبك أكتر، وده اللي خلاني أعمل الصفحة دي.</p>
-      </div>
-    </div>
-
-    <div class="gallery">
-      <div class="frame">
-        <img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM%5B1%5D.jpeg" alt="رحمة">
-        <div class="cap">لحظة لا تُنسى</div>
-      </div>
-      <div class="frame">
-        <img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%281%29%5B1%5D.jpeg" alt="رحمة">
-        <div class="cap">ابتسامتك نور حياتي</div>
-      </div>
-      <div class="frame">
-        <img src="https://raw.githubusercontent.com/el7usseinelabd-ux/rahmamylove/main/WhatsApp_Image_2026-07-14_at_12.46.05_PM_%282%29%5B1%5D.jpeg" alt="رحمة">
-        <div class="cap">انتي وطني الصغير</div>
-      </div>
-    </div>
-
-    <div class="love-stats">
-      <div class="stat"><b>∞</b><span>مقدار حبي ليكي</span></div>
-      <div class="stat"><b>1</b><span>قلب واحد وهو ليكي</span></div>
-      <div class="stat"><b>100%</b><span>وفاء</span></div>
-    </div>
-
-    <div class="quote-card">
-      معاكِ الوقت بيبقى أحلى، وهمومي كلها بتخف لما بسمع صوتك. أنتِ الحتة اللي قلبي بيرتاح فيها.
-    </div>
-
-    <div class="section-title">وعدي ليكي</div>
-    <div class="letter-box">
-      <h3>يا رحمة الغالية</h3>
-      <p>وعدي ليكي إني هفضل داعمك في كل قرار بتاخديه، وهسمعك حتى لو الدنيا مشغولاني.</p>
-      <p>مش هخليكي تحسي بالوحدة وأنا موجود، وهفضل أختار إني أكون جنبك كل يوم من جديد، مش بس في البداية.</p>
-      <p>إنتي مش مجرد حبيبة عندي، إنتي بيت قلبي اللي بترجعله في آخر يوم تعبان.</p>
-    </div>
-
-    <div class="section-title">ليه بحبك</div>
-    <div class="love-notes">
-      <div class="love-card">
-        <div class="love-card-head">
-          <span class="teaser">لأنك بتسمعيني بجد</span>
-          <span class="icon">▾</span>
-        </div>
-        <div class="love-card-body">
-          <p>مش بس بتسمعي كلامي، إنتي بتسمعي اللي جوايا حتى لو مقولتوش، وده حاجة بتخليني حاسس إني مفهوم.</p>
-        </div>
-      </div>
-      <div class="love-card">
-        <div class="love-card-head">
-          <span class="teaser">لأنك أمان مش عبء</span>
-          <span class="icon">▾</span>
-        </div>
-        <div class="love-card-body">
-          <p>وجودك جنبي مبيحسسنيش إني بحمل حاجة زيادة، بالعكس، بتخففي عني وأنا مش حاسس بالتعب.</p>
-        </div>
-      </div>
-      <div class="love-card">
-        <div class="love-card-head">
-          <span class="teaser">لأنك بتصدقيني وأنا بصدقك</span>
-          <span class="icon">▾</span>
-        </div>
-        <div class="love-card-body">
-          <p>الثقة بينا حاجة بنيتها مع بعض بالوقت، ومحافظ عليها، لأنها أساس أي حاجة تانية بينا.</p>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      صُنع بكل حب من أجلكِ
-      <span class="signature">حسين</span>
-    </footer>
+    <footer>صُنع بكل حب من أجلكِ <span class="signature">حسين</span></footer>
   </div>
 </div>
 
-<!-- موسيقى رومانسية هادئة -->
 <audio id="romantic-music" loop>
   <source src="https://www.chosic.com/wp-content/uploads/2021/07/The-Ambient-Piano-Music.mp3" type="audio/mpeg">
-  متصفحك لا يدعم مشغل الصوت.
 </audio>
-
 <button id="music-toggle" onclick="toggleMusic()">🎶 موسيقى الحب</button>
 
 <script>
-  function createHeart(target){
-    try{
-      const heart = document.createElement("div");
-      heart.innerHTML = "❤";
-      heart.className = "heart-fall";
-      heart.style.left = Math.random()*100 + "vw";
-      heart.style.animationDuration = (Math.random()*3+4) + "s";
-      heart.style.fontSize = (Math.random()*8+10) + "px";
-      (target || document.body).appendChild(heart);
-      setTimeout(()=>heart.remove(), 7500);
-    }catch(e){}
-  }
-  const lockHeartsInterval = setInterval(()=>createHeart(document.getElementById("lock-hearts")), 1400);
-
-  function playUnlockEffects(callback){
-    try{
-      const flash = document.getElementById("unlock-flash");
-      flash.classList.add("play");
-
-      const overlay = document.getElementById("kiss-overlay");
-      overlay.innerHTML = "";
-      const spread = [-90,-40,0,40,90];
-      spread.forEach((deg,i)=>{
-        const span = document.createElement("div");
-        span.className = "kiss-emoji";
-        span.textContent = "💋";
-        span.style.left = "50%";
-        span.style.top = "45%";
-        span.style.setProperty("--dx", (deg) + "px");
-        span.style.animationDelay = (i*0.08) + "s";
-        overlay.appendChild(span);
-      });
-      overlay.classList.add("play");
-
-      const toast = document.getElementById("welcome-toast");
-      toast.classList.add("play");
-
-      for(let i=0;i<10;i++){
-        setTimeout(()=>createHeart(), i*90);
-      }
-
-      setTimeout(()=>{
-        flash.classList.remove("play");
-        overlay.classList.remove("play");
-        overlay.innerHTML = "";
-        toast.classList.remove("play");
-        if (callback) callback();
-      }, 1500);
-    }catch(e){
-      if (callback) callback();
-    }
-  }
-
-  function unlockPage(){
-    clearInterval(lockHeartsInterval);
-    document.getElementById("lock-screen").style.opacity = "0";
-    setTimeout(()=>{
-      document.getElementById("lock-screen").style.display = "none";
-      document.getElementById("main-content").classList.add("show");
-      setInterval(()=>createHeart(), 1200);
-      startVerseTyping();
-    }, 300);
-  }
-
-  const verses = [
-    "قلبي اختارِك من كل قلوب الدنيا،",
-    "وهفضل مختارك في كل يوم جديد.",
-    "ضحكتك أمان، وصوتك سكينة،",
-    "ومعاكِ الطريق مهما طال، بيهون."
-  ];
-  let verseIndex = 0;
-  let charIndex = 0;
-  const verseEl = document.getElementById("verse-text");
-
-  function typeNextChar(){
-    if (!verseEl) return;
-    const current = verses[verseIndex];
-    if (charIndex <= current.length){
-      verseEl.innerHTML = current.slice(0, charIndex) + '<span class="cursor">&nbsp;</span>';
-      charIndex++;
-      setTimeout(typeNextChar, 75);
-    } else {
-      setTimeout(()=>{
-        charIndex = 0;
-        verseIndex = (verseIndex + 1) % verses.length;
-        typeNextChar();
-      }, 1800);
-    }
-  }
-  function startVerseTyping(){ typeNextChar(); }
-
   const music = document.getElementById("romantic-music");
   const musicBtn = document.getElementById("music-toggle");
 
   function checkPass(){
     const input = document.getElementById("pass");
-    if (!input) return;
-
     if (input.value.toLowerCase() === "love"){
-      try{
-        music.volume = 0.6;
-        music.play().catch(()=>{ musicBtn.classList.add("paused"); });
-      }catch(e){
-        musicBtn.classList.add("paused");
-      }
-
-      playUnlockEffects(unlockPage);
+      music.play().catch(()=>{});
+      unlockPage();
     } else {
       input.classList.add("shake");
       setTimeout(()=>input.classList.remove("shake"), 400);
-      alert("حاولي مرة أخرى يا أميرتي.. السر كلمة love ❤️");
     }
   }
 
-  document.getElementById("pass").addEventListener("keydown", function(e){
-    if (e.key === "Enter") checkPass();
-  });
+  // تصحيح تشغيل الموسيقى عند أي لمسة للشاشة
+  document.addEventListener('click', function startAudio() {
+    if (music.paused) {
+      music.play();
+    }
+  }, { once: true });
 
   function toggleMusic(){
-    if (music.paused){
-      music.play().catch(()=>{});
-      musicBtn.classList.remove("paused");
-    } else {
-      music.pause();
-      musicBtn.classList.add("paused");
-    }
+    if (music.paused) { music.play(); musicBtn.classList.remove("paused"); }
+    else { music.pause(); musicBtn.classList.add("paused"); }
   }
 
+  function unlockPage(){
+    document.getElementById("lock-screen").style.opacity = "0";
+    setTimeout(()=>{
+      document.getElementById("lock-screen").style.display = "none";
+      document.getElementById("main-content").classList.add("show");
+    }, 300);
+  }
+  
+  // تفعيل فتح البطاقات
   document.querySelectorAll(".love-card-head").forEach(head=>{
-    head.addEventListener("click", function(){
-      this.closest(".love-card").classList.toggle("open");
-    });
+    head.addEventListener("click", function(){ this.closest(".love-card").classList.toggle("open"); });
   });
 </script>
-
 </body>
 </html>
