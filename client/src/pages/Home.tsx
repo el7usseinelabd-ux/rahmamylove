@@ -3,7 +3,7 @@ import { trpc } from "@/lib/trpc";
 import { ArrowDownLeft, ChevronDown, Heart, LockKeyhole, Music2, Sparkles, RotateCcw } from "lucide-react";
 
 const PUBLIC_PASSWORD = "Roo";
-const MUSIC_SRC = "/manus-storage/rahma-ambient_41ba99bf.mp3";
+const MUSIC_SRC = "/manus-storage/rahma-ambient.mp3";
 const VOICE_NOTE_SRC = "/manus-storage/roo-voice-note.mp3";
 
 const letters = [
