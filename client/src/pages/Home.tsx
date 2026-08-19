@@ -32,7 +32,7 @@ function AccessShell({ children }: { children: React.ReactNode }) {
 }
 
 export default function Home() {
-  const isPages = typeof window !== "undefined" && window.location.hostname.endsWith("github.io");
+  const isPages = typeof window !== "undefined" && (window.location.hostname.endsWith("github.io") || window.location.hostname.endsWith("vercel.app"));
   const access = trpc.access.status.useQuery(undefined, { enabled: !isPages });
   const [pagesUnlocked, setPagesUnlocked] = useState(() => isPages && localStorage.getItem("rahma_pages_unlocked") === "1");
   const [showWelcome, setShowWelcome] = useState(false);
