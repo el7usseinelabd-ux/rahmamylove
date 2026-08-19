@@ -4,7 +4,7 @@ import { ArrowDownLeft, ChevronDown, Heart, LockKeyhole, Music2, Sparkles, Rotat
 
 const PUBLIC_PASSWORD = "Roo";
 const MUSIC_SRC = "/manus-storage/rahma-ambient_41ba99bf.mp3";
-const VOICE_NOTE_SRC = "/manus-storage/roo-voice-note_0cb19133.wav";
+const VOICE_NOTE_SRC = "/manus-storage/roo-voice-note.mp3";
 
 const letters = [
   { number: "01", label: "لِرو…", teaser: "إنتِ الهدوء اللي بييجي بعد يوم طويل.", body: "لما بتكوني حواليا مش ببقى محتاج أشرح حاجة. ضحكتك لوحدها بتظبط الدنيا وبتخلّي كل حاجة تهدى." },
