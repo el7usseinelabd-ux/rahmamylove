@@ -1,5 +1,6 @@
 // Style reminder: Velvet Night — Arabic RTL, ink-black canvas, berry rose and antique gold accents, asymmetric editorial composition, restrained motion.
 import { useState } from "react";
+import { trpc } from "@/lib/trpc";
 import { ArrowDownLeft, ChevronDown, Heart, LockKeyhole, Sparkles } from "lucide-react";
 
 const letters = [
@@ -26,9 +27,44 @@ const memories = [
   { src: "/manus-storage/WhatsApp_Image_2026-07-14_at_12.46.05_PM_(2)[1]_dcaf0c89.jpeg", label: "من ألبومنا الخاص" },
 ];
 
+function AccessShell({ children }: { children: React.ReactNode }) {
+  return <main dir="rtl" className="access-screen"><div className="grain" aria-hidden="true" /><div className="access-glow" /><header className="access-header"><span className="mark-wrap"><img src="/manus-storage/rahma-mark_a9bbd087.png" alt="" className="brand-mark" /></span><span className="font-serif">رحمة</span></header>{children}<span className="access-footer">لا يفتح هذا الباب إلا لمن تعرف الطريق</span></main>;
+}
+
 export default function Home() {
+  const access = trpc.access.status.useQuery();
+  const [showWelcome, setShowWelcome] = useState(false);
+  const unlock = trpc.access.unlock.useMutation({ onSuccess: () => { setShowWelcome(true); access.refetch(); } });
+  const [password, setPassword] = useState("");
   const [openLetter, setOpenLetter] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+
+  if (access.isLoading) {
+    return <AccessShell><div className="access-loader"><span className="loader-heart">♥</span><p>نفتح لكِ صندوق الذكريات…</p></div></AccessShell>;
+  }
+
+  if (!access.data?.unlocked) {
+    return (
+      <AccessShell>
+        <div className="access-card">
+          <div className="access-seal"><img src="/manus-storage/rahma-mark_a9bbd087.png" alt="" /></div>
+          <p className="eyebrow">هذه المساحة لكِ وحدكِ</p>
+          <h1>إلى رحمة،<br /><em>بكلمة لا يعرفها سوانا.</em></h1>
+          <p className="access-copy">أدخلِي كلمة المرور لفتح الرسالة التي خبّأتها لكِ.</p>
+          <form onSubmit={(event) => { event.preventDefault(); unlock.mutate({ password }); }} className="access-form">
+            <label htmlFor="rahma-password">كلمة المرور</label>
+            <div className="password-field"><LockKeyhole size={16} /><input id="rahma-password" type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="اكتبيها هنا…" autoFocus /><button type="submit" disabled={unlock.isPending} aria-label="فتح الرسالة"><ArrowDownLeft size={18} /></button></div>
+            {unlock.error && <p className="access-error">الكلمة ليست هذه المرة… جرّبي مرة أخرى.</p>}
+          </form>
+          <span className="access-note">رسالة خاصة • 2026</span>
+        </div>
+      </AccessShell>
+    );
+  }
+
+  if (showWelcome) {
+    return <AccessShell><div className="welcome-card"><span className="welcome-petal petal-one">✦</span><span className="welcome-petal petal-two">♥</span><span className="welcome-petal petal-three">✦</span><div className="welcome-seal"><img src="/manus-storage/rahma-mark_a9bbd087.png" alt="" /></div><p className="eyebrow">تم فتح الرسالة</p><h1>أهلًا بكِ<br /><em>يا رحمة.</em></h1><p>كل ما في الداخل كُتب لكِ، وبهدوء يشبه حضوركِ.</p><button className="welcome-enter" onClick={() => setShowWelcome(false)}>أدخل إلى رسالتي <ArrowDownLeft size={17} /></button></div></AccessShell>;
+  }
 
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
