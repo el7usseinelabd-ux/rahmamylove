@@ -32,18 +32,22 @@ function AccessShell({ children }: { children: React.ReactNode }) {
 }
 
 export default function Home() {
-  const access = trpc.access.status.useQuery();
+  const isPages = typeof window !== "undefined" && window.location.hostname.endsWith("github.io");
+  const access = trpc.access.status.useQuery(undefined, { enabled: !isPages });
+  const [pagesUnlocked, setPagesUnlocked] = useState(() => isPages && localStorage.getItem("rahma_pages_unlocked") === "1");
   const [showWelcome, setShowWelcome] = useState(false);
   const unlock = trpc.access.unlock.useMutation({ onSuccess: () => { setShowWelcome(true); access.refetch(); } });
   const [password, setPassword] = useState("");
   const [openLetter, setOpenLetter] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  if (access.isLoading) {
+  const isUnlocked = isPages ? pagesUnlocked : access.data?.unlocked;
+
+  if (!isPages && access.isLoading) {
     return <AccessShell><div className="access-loader"><span className="loader-heart">♥</span><p>نفتح لكِ صندوق الذكريات…</p></div></AccessShell>;
   }
 
-  if (!access.data?.unlocked) {
+  if (!isUnlocked) {
     return (
       <AccessShell>
         <div className="access-card">
@@ -51,10 +55,10 @@ export default function Home() {
           <p className="eyebrow">هذه المساحة لكِ وحدكِ</p>
           <h1>إلى رحمة،<br /><em>بكلمة لا يعرفها سوانا.</em></h1>
           <p className="access-copy">أدخلِي كلمة المرور لفتح الرسالة التي خبّأتها لكِ.</p>
-          <form onSubmit={(event) => { event.preventDefault(); unlock.mutate({ password }); }} className="access-form">
+          <form onSubmit={(event) => { event.preventDefault(); if (isPages) { localStorage.setItem("rahma_pages_unlocked", "1"); setPagesUnlocked(true); setShowWelcome(true); } else { unlock.mutate({ password }); } }} className="access-form">
             <label htmlFor="rahma-password">كلمة المرور</label>
             <div className="password-field"><LockKeyhole size={16} /><input id="rahma-password" type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="اكتبيها هنا…" autoFocus /><button type="submit" disabled={unlock.isPending} aria-label="فتح الرسالة"><ArrowDownLeft size={18} /></button></div>
-            {unlock.error && <p className="access-error">الكلمة ليست هذه المرة… جرّبي مرة أخرى.</p>}
+            {!isPages && unlock.error && <p className="access-error">الكلمة ليست هذه المرة… جرّبي مرة أخرى.</p>}
           </form>
           <span className="access-note">رسالة خاصة • 2026</span>
         </div>
