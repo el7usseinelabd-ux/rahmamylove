@@ -59,3 +59,27 @@ em { color:#d84d78; font-style:normal; }
 
 .welcome-card { position:relative; z-index:1; width:min(500px,100%); padding:48px 34px 42px; border:1px solid rgba(217,173,108,.26); background:linear-gradient(145deg,rgba(42,22,37,.78),rgba(17,13,22,.9)); box-shadow:0 25px 70px rgba(0,0,0,.35); text-align:center; animation:welcomeIn .55s var(--ease-out) both; }.welcome-card h1{margin:18px 0 15px;font-family:'Noto Serif Arabic',serif;font-size:clamp(40px,6vw,60px);line-height:1.27;letter-spacing:-.06em}.welcome-card>p:not(.eyebrow){margin:0 auto;color:rgba(243,233,223,.58);font-size:14px;line-height:2}.welcome-seal{display:grid;place-items:center;width:68px;height:68px;margin:0 auto 26px;border:1px solid rgba(216,77,120,.58);border-radius:50%;box-shadow:0 0 0 9px rgba(216,77,120,.05)}.welcome-seal img{width:45px;height:45px;object-fit:contain}.welcome-enter{display:inline-flex;align-items:center;gap:11px;margin-top:33px;padding:12px 18px;border:1px solid rgba(216,77,120,.7);background:rgba(216,77,120,.08);color:#f3e9df;font-size:13px;transition:all .23s}.welcome-enter:hover{background:#d84d78;color:#110d16;transform:translateY(-2px)}.welcome-petal{position:absolute;color:#d9ad6c;opacity:.75;animation:floatPetal 2.8s ease-in-out infinite}.petal-one{top:18%;right:10%;font-size:18px}.petal-two{bottom:18%;left:9%;color:#d84d78;font-size:17px;animation-delay:.7s}.petal-three{top:34%;left:6%;font-size:11px;animation-delay:1.3s}@keyframes welcomeIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}@keyframes floatPetal{50%{transform:translateY(-8px) rotate(12deg);opacity:.45}}
 @media (max-width:600px){.welcome-card{padding:40px 22px 34px}}
+
+/* Romantic polish pass: softer gate, genuine seal, and slow floating keepsakes. */
+.access-screen { isolation:isolate; }
+.access-card, .welcome-card { border-radius:2px 18px 2px 18px; box-shadow:0 28px 90px rgba(0,0,0,.46), 0 0 0 8px rgba(216,77,120,.025); }
+.access-seal, .welcome-seal { background:rgba(216,77,120,.035); box-shadow:0 0 28px rgba(216,77,120,.12); }
+.access-seal img, .welcome-seal img, .brand-mark, .archive-mark img, .promise-mark, .letters-stamp img { mix-blend-mode:screen; }
+.floating-heart { position:absolute; z-index:0; color:#d84d78; opacity:.35; font-family:'Cormorant Garamond',serif; pointer-events:none; animation:floatKeepsake 6s ease-in-out infinite; }
+.heart-one { top:21%; left:18%; font-size:38px; animation-delay:-1.2s; }
+.heart-two { top:31%; right:17%; color:#d9ad6c; font-size:18px; animation-delay:-3.4s; }
+.heart-three { bottom:22%; left:24%; font-size:26px; animation-delay:-4.6s; }
+@keyframes floatKeepsake { 0%,100% { transform:translate3d(0,8px,0) rotate(-8deg); opacity:.18; } 50% { transform:translate3d(0,-16px,0) rotate(8deg); opacity:.52; } }
+.music-toggle { padding:9px 13px; border:1px solid rgba(217,173,108,.22); border-radius:999px; background:rgba(17,13,22,.42); box-shadow:0 8px 22px rgba(0,0,0,.14); }
+.music-toggle:hover { border-color:rgba(216,77,120,.72); background:rgba(216,77,120,.1); }
+.memory-card { position:relative; border:1px solid rgba(217,173,108,.18); background:#160e17; box-shadow:0 18px 42px rgba(0,0,0,.2); }
+.memory-card:after { content:'♡'; position:absolute; top:12px; left:14px; color:#f3e9df; font-family:'Cormorant Garamond',serif; font-size:18px; opacity:.72; }
+.memory-card figcaption { padding:13px 14px 16px; }
+.letter-card:after { content:'رسالة'; position:absolute; left:18px; bottom:10px; color:rgba(217,173,108,.48); font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:.08em; }
+@media (max-width:600px) { .floating-heart { transform:scale(.78); }.heart-one{left:7%}.heart-two{right:6%}.heart-three{left:12%}.music-toggle{padding:8px 10px} }
+@media (prefers-reduced-motion: reduce) { .floating-heart { animation:none; } }
+
+.mark-glyph { display:inline-grid; place-items:center; width:24px; height:24px; color:#d84d78; font-family:'Cormorant Garamond',serif; font-size:27px; line-height:1; text-shadow:0 0 14px rgba(216,77,120,.45); transform:translateY(-1px); }
+.access-seal .mark-glyph, .welcome-seal .mark-glyph { width:39px; height:39px; font-size:43px; color:#d9ad6c; }
+.promise-mark.mark-glyph { display:grid; width:48px; height:48px; margin:0 auto 4px; font-size:53px; color:#d9ad6c; }
+.archive-mark .mark-glyph, .letters-stamp .mark-glyph { width:22px; height:22px; font-size:25px; }
