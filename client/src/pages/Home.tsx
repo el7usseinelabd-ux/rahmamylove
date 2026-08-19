@@ -2,24 +2,24 @@ import { useEffect, useRef, useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { ArrowDownLeft, ChevronDown, Heart, LockKeyhole, Music2, Sparkles, RotateCcw } from "lucide-react";
 
-const PUBLIC_PASSWORD = "rahma";
+const PUBLIC_PASSWORD = "Roo";
 const MUSIC_SRC = "/manus-storage/rahma-ambient.mp3";
 
 const letters = [
-  { number: "01", label: "إلى رحمة…", teaser: "أنتِ الهدوء الذي يأتي بعد يوم طويل.", body: "في وجودكِ لا أحتاج أن أشرح نفسي كثيرًا. يكفيني أن تبتسمي فأعرف أن العالم، ولو للحظة، صار في مكانه الصحيح." },
-  { number: "02", label: "تفاصيلكِ الصغيرة", teaser: "أحب الأشياء التي لا يلاحظها أحد.", body: "طريقة إصغائكِ، ضحكتكِ حين تحاولين إخفاءها، ودفء حضوركِ الذي يظل في المكان حتى بعد أن ترحلي." },
-  { number: "03", label: "وقتٌ لنا", teaser: "لو امتلكتُ دقيقةً إضافية… لاخترتكِ فيها.", body: "ليس لأن كل شيء سهل، بل لأنكِ تجعلين حتى الأيام الثقيلة قابلة للحب، وقابلة لأن تُحكى مرة أخرى." },
-  { number: "04", label: "وعدٌ هادئ", teaser: "سأختاركِ بلا ضجيج، كل مرة.", body: "سأكون حاضرًا في التفاصيل التي لا يراها أحد، في السؤال الصغير، وفي المسافة التي تحتاجينها كي تطمئني." },
-  { number: "05", label: "آخر الرسالة", teaser: "لو قرأتِ هذا حتى هنا… فأنتِ تعرفين.", body: "كل هذه الكلمات ليست إلا طريقة طويلة لأقول جملة قصيرة: أحبكِ يا رحمة، وأحب الحياة أكثر حين تكونين فيها." },
+  { number: "01", label: "لِرو…", teaser: "إنتِ الهدوء اللي بييجي بعد يوم طويل.", body: "لما بتكوني حواليا مش ببقى محتاج أشرح حاجة. ضحكتك لوحدها بتظبط الدنيا وبتخلّي كل حاجة تهدى." },
+  { number: "02", label: "تفاصيلك يا رو", teaser: "بحب الحاجات الصغيرة اللي فيكي.", body: "بحب طريقتك وإنتِ بتسمعي، وضحكتك وإنتِ بتحاولي تخبيها، والأثر الحلو اللي بيفضل في المكان بعد ما تمشي." },
+  { number: "03", label: "وقت لينا", teaser: "لو معايا دقيقة زيادة، هختارك فيها برضه.", body: "مش عشان الدنيا سهلة، بس عشان وجودك بيخلّي حتى اليوم التقيل يتعاش ويتحكي من تاني." },
+  { number: "04", label: "وعد ليكي", teaser: "هختارك من غير دوشة، كل مرة.", body: "هفضل موجود في السؤال الصغير، وفي التفاصيل اللي محدش بياخد باله منها، وفي كل وقت تحتاجي فيه تحسي إنك مش لوحدك." },
+  { number: "05", label: "آخر الكلام", teaser: "لو وصلتي لهنا، يبقى إنتِ عارفة.", body: "كل الكلام ده طريقة طويلة أقولك بيها جملة واحدة: بحبك يا رو، وبحب الدنيا أكتر عشان إنتِ فيها." },
 ];
 
 const memories = [
-  { src: "/manus-storage/rahma-hero.webp", label: "رسالة لم تُرسل" },
-  { src: "/manus-storage/rahma-memory-1.webp", label: "تفصيل صغير" },
-  { src: "/manus-storage/rahma-memory-2.webp", label: "مساء محفوظ" },
-  { src: "/manus-storage/rahma-memory-3.webp", label: "من ألبومنا" },
-  { src: "/manus-storage/rahma-memory-4.webp", label: "أثر لا يزول" },
-  { src: "/manus-storage/rahma-memory-5.webp", label: "قربكِ" },
+  { src: "/manus-storage/roo-memory-1_4e6d66f3.jpg", label: "قعدة شاي على السطح" },
+  { src: "/manus-storage/roo-memory-2_23e2c471.jpg", label: "جواب متساب ليكي" },
+  { src: "/manus-storage/roo-memory-3_780462dd.jpg", label: "ليل النيل" },
+  { src: "/manus-storage/roo-memory-1_4e6d66f3.jpg", label: "تفصيلة من يومنا" },
+  { src: "/manus-storage/roo-memory-2_23e2c471.jpg", label: "كلمة على الماشي" },
+  { src: "/manus-storage/roo-memory-3_780462dd.jpg", label: "المكان اللي بيجمعنا" },
 ];
 
 function MarkSeal({ className = "" }: { className?: string }) {
@@ -40,7 +40,7 @@ function AccessShell({ children }: { children: React.ReactNode }) {
       <span className="floating-heart heart-one" aria-hidden="true">♡</span>
       <span className="floating-heart heart-two" aria-hidden="true">✦</span>
       <span className="floating-heart heart-three" aria-hidden="true">♡</span>
-      <header className="access-header"><span className="mark-wrap"><MarkSeal /></span><span className="font-serif">رحمة</span></header>
+      <header className="access-header"><span className="mark-wrap"><MarkSeal /></span><span className="font-serif">رو</span></header>
       {children}
       <span className="access-footer">رسالة خاصة · لا تُفتح إلا بكلمة تعرفينها</span>
     </main>
@@ -129,22 +129,22 @@ export default function Home() {
             <aside className="entry-aside">
               <p className="eyebrow">صندوق الذكريات · 01</p>
               <div className="aside-line" />
-              <p className="aside-quote">"بعض الأشخاص لا يدخلون حياتنا… بل يضيئونها."</p>
-              <div className="aside-note"><MarkSeal /><span>إلى رحمة<br /><small>من حسين، بحب</small></span></div>
-              <div className="entry-memory-strip"><img src="/manus-storage/rahma-memory-2.webp" alt="ذكرى محفوظة" /><span>من ألبومنا · 02</span></div>
+              <p className="aside-quote">"إنتِ مش بس حد بحبه… إنتِ الحتة الحلوة في يومي كله."</p>
+              <div className="aside-note"><MarkSeal /><span>لِرُو<br /><small>من حسين، بكل قلبي</small></span></div>
+              <div className="entry-memory-strip"><img src="/manus-storage/roo-memory-2_23e2c471.jpg" alt="ذكرى من ألبوم رو" /><span>من ألبومنا · 02</span></div>
             </aside>
             <div className="entry-card">
               <div className="entry-card-top"><span>PRIVATE LETTER</span><span>2026 / R</span></div>
               <div className="entry-seal"><MarkSeal /></div>
-              <p className="eyebrow">هذه المساحة لكِ وحدكِ</p>
-              <h1>يا رحمة،<br /><em>هناك شيء يشبهكِ هنا.</em></h1>
-              <p className="entry-copy">اكتبي الكلمة التي لا يعرفها سوانا، وسأفتح لكِ الرسالة التي خبّأتها في هذا المساء.</p>
+              <p className="eyebrow">دي مساحتك… محدش يدخلها غيرك</p>
+              <h1>يا رو،<br /><em>هنا حتة من قلبي.</em></h1>
+              <p className="entry-copy">اكتبي كلمة السر، وأنا أفتحلك الكلام اللي مكنتش عارف أقولهولك وش لوش.</p>
               <form onSubmit={submitPassword} className="access-form">
-                <label htmlFor="rahma-password">الكلمة السرية</label>
-                <div className="password-field"><LockKeyhole size={16} /><input id="rahma-password" type="password" value={password} onChange={event => { setPassword(event.target.value); setError(false); }} placeholder="اكتبيها هنا…" autoFocus /><button type="submit" disabled={unlock.isPending} aria-label="فتح الرسالة"><ArrowDownLeft size={18} /></button></div>
-                {error && <p className="access-error">هذه ليست الكلمة… اقتربي من الذاكرة وحاولي مرة أخرى.</p>}
+                <label htmlFor="rahma-password">كلمة السر بينا</label>
+                <div className="password-field"><LockKeyhole size={16} /><input id="rahma-password" type="password" value={password} onChange={event => { setPassword(event.target.value); setError(false); }} placeholder="اكتبي Roo هنا…" autoFocus /><button type="submit" disabled={unlock.isPending} aria-label="فتح الرسالة"><ArrowDownLeft size={18} /></button></div>
+                {error && <p className="access-error">مش هي دي يا رو… جربي الكلمة اللي بينا.</p>}
               </form>
-              <div className="entry-card-bottom"><span>لا نحفظ شيئًا هنا</span><span>♡</span></div>
+              <div className="entry-card-bottom"><span>الكلام ده ليكي إنتِ وبس</span><span>♡</span></div>
             </div>
           </section>
         </AccessShell>
@@ -153,7 +153,7 @@ export default function Home() {
   }
 
   if (showWelcome) {
-    return <><audio ref={audioRef} src={MUSIC_SRC} loop preload="metadata" autoPlay /><AccessShell><div className="welcome-card welcome-v2"><span className="welcome-petal petal-one">✦</span><span className="welcome-petal petal-two">♡</span><span className="welcome-petal petal-three">✦</span><div className="welcome-seal"><MarkSeal /></div><p className="eyebrow">تم العثور على الرسالة</p><h1>أهلًا بكِ<br /><em>يا رحمة.</em></h1><p>كل ما في الداخل كُتب لكِ ببطء، ليشبه صوتكِ حين يهدأ.</p><button className="welcome-enter" onClick={() => setShowWelcome(false)}>أدخل إلى رسالتي <ArrowDownLeft size={17} /></button></div></AccessShell></>;
+    return <><audio ref={audioRef} src={MUSIC_SRC} loop preload="metadata" autoPlay /><AccessShell><div className="welcome-card welcome-v2"><span className="welcome-petal petal-one">✦</span><span className="welcome-petal petal-two">♡</span><span className="welcome-petal petal-three">✦</span><div className="welcome-seal"><MarkSeal /></div><p className="eyebrow">تم العثور على الرسالة</p><h1>أهلًا بيكي<br /><em>يا رو.</em></h1><p>كل ما في الداخل كُتب لكِ ببطء، ليشبه صوتكِ حين يهدأ.</p><button className="welcome-enter" onClick={() => setShowWelcome(false)}>أدخل إلى رسالتي <ArrowDownLeft size={17} /></button></div></AccessShell></>;
   }
 
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -164,16 +164,16 @@ export default function Home() {
       <div className="grain" aria-hidden="true" />
       <PetalRain />
       <header className="site-header">
-        <a href="#top" className="site-brand" aria-label="رحمة، الصفحة الرئيسية"><span className="mark-wrap"><MarkSeal /></span><span className="font-serif">رحمة</span></a>
+        <a href="#top" className="site-brand" aria-label="رو، الصفحة الرئيسية"><span className="mark-wrap"><MarkSeal /></span><span className="font-serif">رو</span></a>
         <nav className="site-nav" aria-label="التنقل الرئيسي"><button onClick={() => scrollTo("letters")}>رسائل</button><button onClick={() => scrollTo("memories")}>صور</button><button onClick={() => scrollTo("promise")}>وعد</button><button onClick={() => scrollTo("reply")}>ردكِ</button></nav>
         <div className="site-actions"><button className="music-toggle" onClick={toggleMusic} aria-label={isPlaying ? "إيقاف الموسيقى" : "تشغيل الموسيقى"}><Music2 size={14} /><span>{isPlaying ? "إيقاف الموسيقى" : "شغّلي الهدوء"}</span></button><button className="lock-toggle" onClick={relock} aria-label="إعادة قفل الرسالة"><RotateCcw size={14} /><span>إعادة القفل</span></button></div>
       </header>
-      <section id="top" className="hero hero-v2"><img src="/manus-storage/rahma-hero.webp" alt="مغلف ورسالة بين بتلات الورد" className="hero-image" /><div className="hero-wash" /><div className="hero-content hero-content-v2"><div className="hero-kicker"><span>01</span><span className="side-line" /><span>رسالة من القلب</span></div><h1 className="hero-title">إلى رحمة،<br /><em>التي جعلت<br />للحياة معنى آخر.</em></h1><p className="hero-intro">هذه ليست صفحة عادية. إنها المسافة الصغيرة بين ما أشعر به وما لا أعرف كيف أقوله حين تكونين أمامي.</p><button onClick={() => scrollTo("letters")} className="discover"><span className="discover-icon"><ArrowDownLeft size={16} /></span><span>ابدئي من هنا</span></button></div><div className="hero-bottom-mark"><MarkSeal /><span>حسين · 2026</span></div></section>
-      <section id="letters" className="letters-section letters-v2 relative mx-auto max-w-[1440px] px-6 py-28 md:px-12 md:py-40 lg:px-20"><div className="memory-thread" aria-hidden="true" /><div className="letters-intro max-w-xl"><p className="eyebrow">02 · رسائل مخبأة</p><h2 className="section-title">بعض الحب،<br /><em>يُقرأ بين السطور.</em></h2><p className="section-copy">كل بطاقة هنا ظرف صغير. افتحيها واحدة واحدة، ولا تستعجلي ما كُتب لكِ.</p></div><div className="letters-list">{letters.map((letter, index) => <button key={letter.number} onClick={() => setOpenLetter(openLetter === index ? null : index)} className={`letter-card ${openLetter === index ? "is-open" : ""}`} aria-expanded={openLetter === index}><span className="letter-number">{letter.number}</span><span className="letter-content"><small>{letter.label}</small><strong>{letter.teaser}</strong><span className="letter-body">{letter.body}</span></span><span className="letter-action"><ChevronDown size={18} /></span></button>)}</div><div className="letters-stamp"><MarkSeal /><Heart size={14} fill="currentColor" /><span>مكتوبة لكِ وحدكِ</span></div></section>
-      <section id="memories" className="memories-section memories-v2 relative bg-plum px-6 py-28 md:px-12 md:py-36 lg:px-20"><div className="mx-auto max-w-[1440px]"><div className="archive-mark"><MarkSeal /><span>03 · ألبوم محفوظ</span></div><div className="memories-header"><div><p className="eyebrow">صور لا تحتاج إلى شرح</p><h2 className="section-title">اللحظات التي<br /><em>تسكنني.</em></h2></div><p className="section-copy max-w-xs">ست صور، وستة أسباب لأبتسم كلما تذكرت أن هذه التفاصيل كانت لنا.</p></div><div className="memory-grid memory-grid-v2">{memories.map((memory, index) => <figure key={memory.src} className={`memory-card memory-${index + 1}`}><img src={memory.src} alt={memory.label} /><figcaption><span>{memory.label}</span><span>0{index + 1}</span></figcaption></figure>)}</div></div></section>
-      <section id="reply" className="reply-section mx-auto max-w-[1440px] px-6 py-24 md:px-12 md:py-32 lg:px-20"><div className="reply-card"><div className="reply-heading"><p className="eyebrow">05 · صوتكِ هنا</p><h2>والآن…<br /><em>اكتبي لي أنتِ.</em></h2></div><div className="reply-form-wrap"><p>لو تركتِ لي سطرًا واحدًا بعد القراءة، ماذا سيقول؟ اكتبيه هنا كما هو، بلا ترتيب ولا تردد.</p><form onSubmit={saveReply}><textarea value={reply} onChange={event => { setReply(event.target.value); setReplySaved(false); }} placeholder="اكتبي ردكِ لِحسين…" maxLength={500} aria-label="رسالتك إلى حسين" /><div className="reply-form-footer"><span>{reply.length}/500 · يبقى محفوظًا في هذا المتصفح</span><button type="submit" disabled={!reply.trim()}>احفظي ردكِ <ArrowDownLeft size={16} /></button></div>{replySaved && <div className="reply-success"><MarkSeal /> وصلتني كلماتكِ، يا رحمة.</div>}</form></div></div></section>
-      <section id="promise" className="promise-section promise-v2 mx-auto max-w-[1440px] px-6 py-32 md:px-12 md:py-44 lg:px-20"><div className="promise-orbit"><span /><span /><span /></div><div className="promise-inner"><MarkSeal className="promise-mark" /><Sparkles size={19} className="text-gold" /><p className="eyebrow">04 · وعدي لكِ</p><h2>سأختاركِ،<br /><em>في كل مرة.</em></h2><p>ليس لأن الحياة ستكون دائمًا سهلة، بل لأن وجودكِ يجعلها تستحق أن تُعاش بكل تفاصيلها.</p><span className="signature">بحب لا ينتهي،<br /><strong>حسين</strong></span></div></section>
-      <footer className="footer footer-v2 mx-auto flex max-w-[1440px] items-end justify-between border-t border-ivory/10 px-6 py-10 md:px-12 lg:px-20"><div><span className="font-serif text-xl text-ivory">رحمة</span><p className="mt-2 text-xs text-ivory/40">رسالة تُفتح كل مرة من جديد.</p></div><div className="text-left text-xs text-ivory/35"><p>صُنعت بقلب كامل</p><p className="mt-1">© 2026</p></div></footer>
+      <section id="top" className="hero hero-v2"><img src="/manus-storage/rahma-new-hero_cf2bffab.jpg" alt="ليلة رومانسية ورسالة لرو" className="hero-image" /><div className="hero-wash" /><div className="hero-content hero-content-v2"><div className="hero-kicker"><span>01</span><span className="side-line" /><span>رسالة من القلب</span></div><h1 className="hero-title">يا رو،<br /><em>إنتِ اللي<br />مخلّية الدنيا أحلى.</em></h1><p className="hero-intro">دي مش صفحة وخلاص… دي كل كلمة اتكسفت أقولها، وكل مرة قلبي سبق لساني عشانك.</p><button onClick={() => scrollTo("letters")} className="discover"><span className="discover-icon"><ArrowDownLeft size={16} /></span><span>ابدئي من هنا</span></button></div><div className="hero-bottom-mark"><MarkSeal /><span>حسين · ليكي إنتِ</span></div></section>
+      <section id="letters" className="letters-section letters-v2 relative mx-auto max-w-[1440px] px-6 py-28 md:px-12 md:py-40 lg:px-20"><div className="memory-thread" aria-hidden="true" /><div className="letters-intro max-w-xl"><p className="eyebrow">02 · كلام متخبي</p><h2 className="section-title">في حاجات،<br /><em>بتتقال بالإحساس.</em></h2><p className="section-copy">كل رسالة هنا حتة مني. افتحيهم واحدة واحدة، وسيبي كل كلمة تاخد وقتها عندك.</p></div><div className="letters-list">{letters.map((letter, index) => <button key={letter.number} onClick={() => setOpenLetter(openLetter === index ? null : index)} className={`letter-card ${openLetter === index ? "is-open" : ""}`} aria-expanded={openLetter === index}><span className="letter-number">{letter.number}</span><span className="letter-content"><small>{letter.label}</small><strong>{letter.teaser}</strong><span className="letter-body">{letter.body}</span></span><span className="letter-action"><ChevronDown size={18} /></span></button>)}</div><div className="letters-stamp"><MarkSeal /><Heart size={14} fill="currentColor" /><span>مكتوبة لكِ وحدكِ</span></div></section>
+      <section id="memories" className="memories-section memories-v2 relative bg-plum px-6 py-28 md:px-12 md:py-36 lg:px-20"><div className="mx-auto max-w-[1440px]"><div className="archive-mark"><MarkSeal /><span>03 · ألبوم محفوظ</span></div><div className="memories-header"><div><p className="eyebrow">03 · صورنا الحلوة</p><h2 className="section-title">تفاصيل صغيرة،<br /><em>بس بتفرق كتير.</em></h2></div><p className="section-copy max-w-xs">ست صور، وست لحظات كل ما بفتكرهم بحس إن الدنيا لسه فيها حاجات حلوة.</p></div><div className="memory-grid memory-grid-v2">{memories.map((memory, index) => <figure key={memory.src} className={`memory-card memory-${index + 1}`}><img src={memory.src} alt={memory.label} /><figcaption><span>{memory.label}</span><span>0{index + 1}</span></figcaption></figure>)}</div></div></section>
+      <section id="reply" className="reply-section mx-auto max-w-[1440px] px-6 py-24 md:px-12 md:py-32 lg:px-20"><div className="reply-card"><div className="reply-heading"><p className="eyebrow">05 · مستني ردك</p><h2>دلوقتي…<br /><em>قوليلي إنتِ.</em></h2></div><div className="reply-form-wrap"><p>لو عندك كلمة واحدة بعد كل ده، اكتبيها زي ما هي… من غير تفكير كتير، أنا مستنيها.</p><form onSubmit={saveReply}><textarea value={reply} onChange={event => { setReply(event.target.value); setReplySaved(false); }} placeholder="اكتبيلي ردك يا رو…" maxLength={500} aria-label="رسالتك إلى حسين" /><div className="reply-form-footer"><span>{reply.length}/500 · يبقى محفوظًا في هذا المتصفح</span><button type="submit" disabled={!reply.trim()}>خليها عندي <ArrowDownLeft size={16} /></button></div>{replySaved && <div className="reply-success"><MarkSeal /> وصلتني كلماتك يا رو.</div>}</form></div></div></section>
+      <section id="promise" className="promise-section promise-v2 mx-auto max-w-[1440px] px-6 py-32 md:px-12 md:py-44 lg:px-20"><div className="promise-orbit"><span /><span /><span /></div><div className="promise-inner"><MarkSeal className="promise-mark" /><Sparkles size={19} className="text-gold" /><p className="eyebrow">04 · وعد صغير</p><h2>هفضل جنبك،<br /><em>مهما الدنيا لفت.</em></h2><p>مش بوعدك إن كل يوم هيبقى سهل، بس بوعدك إنك عمرك ما هتواجهيه لوحدك وأنا موجود.</p><span className="signature">من قلبي ليكي،<br /><strong>حسين</strong></span></div></section>
+      <footer className="footer footer-v2 mx-auto flex max-w-[1440px] items-end justify-between border-t border-ivory/10 px-6 py-10 md:px-12 lg:px-20"><div><span className="font-serif text-xl text-ivory">رو</span><p className="mt-2 text-xs text-ivory/40">رسالة تُفتح كل مرة من جديد.</p></div><div className="text-left text-xs text-ivory/35"><p>صُنعت بقلب كامل</p><p className="mt-1">© 2026</p></div></footer>
     </main>
   );
 }
