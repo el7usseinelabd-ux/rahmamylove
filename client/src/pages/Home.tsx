@@ -48,6 +48,7 @@ export default function Home() {
   const unlock = trpc.access.unlock.useMutation();
   const lock = trpc.access.lock.useMutation();
   const [staticUnlocked, setStaticUnlocked] = useState(false);
+  const [sessionReady, setSessionReady] = useState(isStatic);
   const [showWelcome, setShowWelcome] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -55,7 +56,12 @@ export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const isUnlocked = isStatic ? staticUnlocked : access.data?.unlocked;
+  const isUnlocked = isStatic ? staticUnlocked : sessionReady && access.data?.unlocked;
+
+  useEffect(() => {
+    if (isStatic) return;
+    lock.mutate(undefined, { onSettled: () => { setSessionReady(true); access.refetch(); } });
+  }, []);
 
   useEffect(() => {
     if (!isUnlocked) return;
@@ -74,7 +80,7 @@ export default function Home() {
       else setError(true);
       return;
     }
-    unlock.mutate({ password }, { onSuccess: () => { setShowWelcome(true); setPassword(""); }, onError: () => setError(true) });
+    unlock.mutate({ password }, { onSuccess: () => { setShowWelcome(true); setPassword(""); access.refetch(); }, onError: () => setError(true) });
   };
 
   const relock = () => {
@@ -84,7 +90,7 @@ export default function Home() {
     setOpenLetter(null);
     setPassword("");
     if (isStatic) setStaticUnlocked(false);
-    else lock.mutate();
+    else lock.mutate(undefined, { onSettled: () => access.refetch() });
   };
 
   const toggleMusic = async () => {
@@ -94,7 +100,7 @@ export default function Home() {
     try { await audio.play(); setIsPlaying(true); } catch { setIsPlaying(false); }
   };
 
-  if (!isStatic && access.isLoading) {
+  if (!isStatic && (!sessionReady || access.isLoading)) {
     return <><audio ref={audioRef} src={MUSIC_SRC} loop preload="metadata" /><AccessShell><div className="access-loader"><span className="loader-heart">♡</span><p>تُفتح الرسالة بهدوء…</p></div></AccessShell></>;
   }
 
